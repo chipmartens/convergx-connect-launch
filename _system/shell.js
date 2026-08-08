@@ -125,7 +125,16 @@
    * 2026-07-28), and the .nav-util hook went with it. What still makes it
    * a second class is that it sits after the primary items. */
   var UTILITY = { label: "About", href: "/about/", mega: "about" };
-  var CTA = { label: "Request access", href: "/access/request/" };
+  /* THE HEADER CTA IS THE CONGRESS, from 2026-08-07, on the client's
+   * instruction. For the six weeks to September the site's job is Congress
+   * attendance, and "Request access" is the label for a service door rather
+   * than for an event. It now reads "Attend the Congress" and goes to the
+   * registration page.
+   * WHAT DID NOT MOVE: /access/request/ and /access/apply/ are untouched and
+   * still reachable from the footer's About column, and the two-path choosers
+   * on the industry pages still carry "Request access" because there the
+   * label IS the door being described. Do not sweep those. */
+  var CTA = { label: "Attend the Congress", href: "/congress/register/" };
 
   /* ---- THE NOTICE BAR ----
    * One line of orange above the header, on every page, pointing at the
@@ -407,7 +416,7 @@
    * alone page."
    *
    * THIS REVERSES the 2026-07-30 cut to four. That cut was made because
-   * Speakers, Regional Xchanges and Xchange Partnerships had no home once
+   * Speakers, Xplore and Xchange Partnerships had no home once
    * the one-pager absorbed them, and pointing the nav at dead standalone
    * pages would have given the site two sources of truth.
    * The anchors solve that: the nav can carry every row WITHOUT the
@@ -424,7 +433,7 @@
    * the one-pager's #tickets and #sponsorship sections are summaries that
    * hand off to them. Do NOT repoint these two at the anchors: that would
    * bury the detail a buyer came for.
-   * Regional Xchanges and Xchange Partnerships are also real pages and were
+   * Xplore and Xchange Partnerships are also real pages and were
    * never part of the one-pager.
    *
    * THE SPLIT IS UNCHANGED in meaning: column one is what the Congress is,
@@ -456,7 +465,13 @@
       note:  "Three passes, priced and published, and what a registration does not buy." },
     { label: "Sponsor",              href: "/congress/sponsor/",  cta: true,
       note:  "Nine tiers with what each one includes. Visibility in the room, never a match." },
-    { label: "Regional Xchanges",    href: "/congress/regional-xchanges/",
+    /* THE APP IS BACK IN THIS COLUMN, 2026-08-07. It stays OUT of the
+     * Congress page's own sticky subnav, which is Chip's 2026-08-04 call:
+     * "remove The App from the sub menu. Keep the block on the page." The
+     * panel is the route that carries it by name from anywhere on the site. */
+    { label: "The app",  href: "/congress/the-app/",
+      note:  "The agenda, the sessions and the people in the room, on the phone you already carry." },
+    { label: "Xplore",    href: "/congress/xplore/",
       note:  "A region asks the question, and the room is composed around it." },
     { label: "Xchange Partnerships", href: "/congress/partnerships/",
       note:  "ConvergX convenes inside events it does not run." }
@@ -583,9 +598,10 @@
       { label: "Overview",             href: "/congress/" },
       { label: "Agenda",               href: "/congress/#agenda" },
       { label: "Speakers",             href: "/congress/#speakers" },
+      { label: "The app",              href: "/congress/the-app/" },
       { label: "Register",             href: "/congress/register/" },
       { label: "Sponsor",              href: "/congress/sponsor/" },
-      { label: "Regional Xchanges",    href: "/congress/regional-xchanges/" },
+      { label: "Xplore",    href: "/congress/xplore/" },
       { label: "Xchange Partnerships", href: "/congress/partnerships/" }
     ]},
     { title: "Consulting", links: [

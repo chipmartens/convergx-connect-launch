@@ -58,7 +58,8 @@
             <li><a href="../congress/#faq">Questions</a></li>
             <li><a href="../congress/register/">Register</a></li>
             <li><a href="../congress/sponsor/">Sponsor</a></li>
-            <li><a href="../congress/regional-xchanges/">Regional Xchanges</a></li>
+            <li><a href="../congress/the-app/">The app</a></li>
+            <li><a href="../congress/xplore/">Xplore</a></li>
             <li><a href="../congress/partnerships/">Xchange Partnerships</a></li>
           </ul>
         </li>
@@ -79,7 +80,7 @@
             <li><a href="../about/#who-we-convene">Who we convene</a></li>
           </ul>
         </li>
-        <li><a href="../access/request/">Request access</a></li>
+        <li><a href="../congress/register/">Attend the Congress</a></li>
       </ul>
     </nav>
   </noscript>
@@ -993,6 +994,11 @@
       <li><a href="#faq">Questions</a></li>
       <li class="subnav-end"><a href="../congress/register/">Register</a></li>
       <li><a href="../congress/sponsor/">Sponsor</a></li>
+      <!-- THE APP STAYS OUT OF THIS BAR, 2026-08-04, Chip: "remove The App from
+           the sub menu. Keep the block on the page, but just leave the app out
+           for now. They find it as they scroll."
+           The #app section below is untouched and the mega menu carries The app,
+           so the page is still reachable by name from anywhere on the site. -->
     </ul>
   </nav>
 
@@ -1517,7 +1523,7 @@
         </details>
       </div>
 
-      <p class="push-m">ConvergX publishes this schedule as subject to change, and the agenda delegates work from during the three days is updated as the programme changes.</p>
+      <p class="push-m">ConvergX publishes this schedule as subject to change. The agenda a delegate carries during the three days lives in the app, which is updated as the programme changes.</p>
       <!-- The link to /congress/agenda/ was removed here on Chip's
            instruction, 2026-07-31: the full timetable is on this page now and
            a second route to a duplicate of it is not a route. The standalone
@@ -1805,6 +1811,60 @@
             <p><a class="link-more" href="#agenda">The Agenda</a></p>
           </div>
         </details>
+        <details class="faq">
+          <summary><span>Is there an app?</span></summary>
+          <div class="faq-a">
+            <p>Yes. The agenda, the sessions and the people in the room sit on it.</p>
+            <p>Push notifications reach Android. Availability for September is not confirmed, and nothing here promises a download.</p>
+            <p><a class="link-more" href="../congress/the-app/">The Congress app</a></p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE CONGRESS APP, promoted to a section of its own 2026-07-31. Chip:
+       "make that a full blue background with the screenshot on the right and
+       the info on the left. Give it a title to match the others that just
+       says The Congress App with no eyebrow, then have the sub head below it
+       with the description."
+       IT WAS A BLOCK INSIDE #agenda until now, which is why it had an eyebrow
+       and an h3: it was a feature sitting under someone else's heading. As a
+       section it takes the same h2 treatment as Congress Overview, The
+       Speakers, The Agenda and Questions, the eyebrow comes off because the
+       heading now says the same thing, and the old h3 becomes the subhead.
+       THE BLUE IS THE PAGE'S ONE FULL-BLEED ACCENT and it is the last band on
+       the page, which is what stops it competing with the hero. .app-band
+       remaps the surface tokens rather than hand-colouring anything, so every
+       component inside it keeps working. Type is --accent-ink at 4.59:1.
+       STANDING RULES, both kept and neither footnoted: push reaches ANDROID
+       and that is qualified in the same sentence it appears in, and September
+       availability is unconfirmed so nothing here promises a download or names
+       a store.
+       THE SCREENSHOT FRAME IS EMPTY ON PURPOSE. Inventing product UI for the
+       Congress app is the one thing this site cannot do and no real capture
+       exists yet (_reference/QUEUED-JARVIS-SCREENSHOTS.md). Drop an <img>
+       inside and the aspect-ratio rule stands down on its own.
+       THE ONE DESTINATION is /congress/the-app/, which is where a delegate
+       reads the boundaries in full. No second competing link goes in a block
+       whose job is one destination. -->
+  <section id="app" class="app-band">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>The Congress App</h2>
+      </div>
+      <div class="app-inner">
+        <div class="app-copy">
+          <p class="app-sub">The three days of the programme are carried on the phone delegates already have</p>
+          <p>The agenda, the sessions and the people in the room sit on the phone of everyone attending, so a schedule that changes on Tuesday reaches delegates rather than leaving them with a printed copy that is out of date. A meeting ConvergX brokers during the three days arrives there too.</p>
+          <p>Push notifications reach Android. Availability for September is not confirmed, and nothing here promises a download.</p>
+          <p class="push-s"><a class="link-more" href="../congress/the-app/">The Congress app</a></p>
+        </div>
+        <figure class="mod-shot-frame mod-shot--empty"
+                data-spec="Screenshot: the Congress app agenda view. Scrubbed or synthetic data, no real attendee or company names">
+          <figcaption>Congress App</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -2138,9 +2198,10 @@
         <li><a href="../congress/">The Conference</a></li>
         <li><a href="../congress/#agenda">Agenda</a></li>
         <li><a href="../congress/#speakers">Speakers</a></li>
+        <li><a href="../congress/the-app/">The app</a></li>
         <li><a href="../congress/register/">Register</a></li>
         <li><a href="../congress/sponsor/">Sponsor</a></li>
-        <li><a href="../congress/regional-xchanges/">Regional Xchanges</a></li>
+        <li><a href="../congress/xplore/">Xplore</a></li>
         <li><a href="../congress/partnerships/">Xchange Partnerships</a></li>
         <li><a href="../xpand/">Consulting</a></li>
         <li><a href="../xpand/#who-it-is-for">Who it is for</a></li>

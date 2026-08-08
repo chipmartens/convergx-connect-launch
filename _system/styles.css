@@ -6115,7 +6115,7 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
 
 
 /* ================= 46. THE VIDEO FACADE ================= */
-/* ONE video on the site, on /congress/regional-xchanges/, and this component
+/* ONE video on the site, on /congress/xplore/, and this component
  * exists because of a rule rather than because of a design idea.
  *
  * THE RULE: no page on this site makes an external request on load. A YouTube
@@ -6148,7 +6148,7 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
 .vid img { display: block; width: 100%; height: auto; }
 
 /* THE SECOND SOLID ACCENT FILL ON ITS PAGE, spent knowingly. Section 8 allows
- * one, and /congress/regional-xchanges/ closes on a Request access link rather
+ * one, and /congress/xplore/ closes on a Request access link rather
  * than a filled button, so this is the page's only fill in practice.
  * IT HAS TO BE A FILL. Every other affordance on this site can rely on the
  * page ground behind it; this one sits on a photograph whose tones are not
