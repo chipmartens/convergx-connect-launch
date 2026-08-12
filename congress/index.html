@@ -38,19 +38,7 @@
     </div>
     <nav aria-label="Primary">
       <ul>
-        <li><a href="../industries/">Industries</a>
-          <ul>
-            <li><a href="../industries/aerospace-defence/">Aerospace and defence</a></li>
-            <li><a href="../industries/agriculture/">Agriculture</a></li>
-            <li><a href="../industries/construction/">Construction</a></li>
-            <li><a href="../industries/energy/">Energy</a></li>
-            <li><a href="../industries/manufacturing/">Manufacturing</a></li>
-            <li><a href="../industries/military/">Military</a></li>
-            <li><a href="../industries/mining-natural-resources/">Mining and natural resources</a></li>
-            <li><a href="../industries/technology/">Technology</a></li>
-          </ul>
-        </li>
-        <li><a href="../congress/">Conference</a>
+        <li><a href="../congress/">Congress</a>
           <ul>
             <li><a href="../congress/#speakers">Speakers</a></li>
             <li><a href="../congress/#agenda">Agenda</a></li>
@@ -321,65 +309,17 @@
            to check when the shop changes rather than five. -->
       <p class="hero-cta"><a class="btn btn--solid" href="../congress/register/">Register for the Congress</a></p>
 
-      <!-- HERO SPONSOR STRIP, Chip 2026-07-31: "just show the sponsor logos in
-           the hero, similar to the homepage. You don't need any sponsorship
-           text in that area." So the standalone #sponsors section is gone and
-           its id lives here, on the strip itself. Nothing else linked to it:
-           shell.js anchors only #agenda, #tickets and #sponsorship, and the
-           nine tiers are still #sponsorship, untouched, further down the page.
-
-           ONE MARK RENDERS AND IT IS THE ONLY ONE THAT CAN. ATCO Frontec is the
-           only 2026 sponsor ConvergX names anywhere, the relationship is
-           published in ConvergX's own words ("Opening reception sponsored by
-           ATCO Frontec"), and ConvergX publishes the lockup itself. A one-logo
-           sponsor strip is honest. Padding it out with the homepage's member
-           marks, or with the eighteen unlabelled marks at the foot of
-           ConvergX's own Congress page, would invent a 2026 sponsorship nobody
-           has stated. The heading is visually hidden but it is the only thing
-           naming what the strip IS, so it must stay accurate: one sponsor, and
-           it says one.
-
-           --mark-src, --mark-ratio and --mark-cap-frac are the component's
-           whole interface and they are per-mark DATA, not styling, which is why
-           they are inline. Both numbers are MEASURED off this file's own alpha
-           channel: 400 / 71 = 5.634, and the ATCO capitals run rows 0 to 50 of
-           a 71px box for 0.718. Re-measure if the file is replaced.
-
-           Six of the eighteen marks on ConvergX's page are government or
-           military crests. Those never render, under any circumstances, and
-           they are not on disk.
-
-           [NEEDS: the eighteen unlabelled marks at the foot of
-           /global-congress-2026/. What ARE those organisations to ConvergX, and
-           in which year? ConvergX attaches no label, so writing one would
-           invent the relationship. From Kim Van Vliet.]
-           [NEEDS: amend the logo clearance register at COMPANY-SITE-SPEC 7B. It
-           records ATCO Frontec as cleared but not rendering because "ATCO
-           publishes no separate Frontec wordmark". ATCO does not; ConvergX
-           does, on its own live sponsors page. The clearance already exists and
-           only the supply note was wrong. From whoever owns 7B.] -->
-      <div class="hero-sponsors" id="sponsors">
-        <h2 class="vh">The 2026 sponsor ConvergX has named</h2>
-        <ul class="proofbar">
-          <!-- SIX MARKS, AND FIVE OF THEM ARE THE SAME LOGO ON PURPOSE.
-             Chip, 2026-07-31: show what the strip looks like carrying a real
-             roster. THIS IS A LAYOUT PLACEHOLDER AND MUST NOT REACH KIM OR A
-             PUBLIC AUDIENCE IN THIS STATE.
-             ATCO Frontec is the ONLY 2026 Congress sponsor ConvergX names and
-             the only one cleared under spec 7B. Repeating its mark six times
-             does not merely pad the row: to a reader it reads as six sponsors,
-             and to ATCO it reads as their mark used six times without cause.
-             Replace five of these the moment a cleared roster exists, or cut
-             back to one. Do not "fix" the duplication by swapping in the
-             homepage member marks, which are not sponsors. -->
-          <li><span class="mark" style="--mark-src: url('/assets/sponsors/2026-atco-frontec.png'); --mark-ratio: 5.634; --mark-cap-frac: 0.718;" role="img" aria-label="ATCO Frontec"></span></li>
-          <li><span class="mark" style="--mark-src: url('/assets/sponsors/2026-atco-frontec.png'); --mark-ratio: 5.634; --mark-cap-frac: 0.718;" role="img" aria-label="ATCO Frontec"></span></li>
-          <li><span class="mark" style="--mark-src: url('/assets/sponsors/2026-atco-frontec.png'); --mark-ratio: 5.634; --mark-cap-frac: 0.718;" role="img" aria-label="ATCO Frontec"></span></li>
-          <li><span class="mark" style="--mark-src: url('/assets/sponsors/2026-atco-frontec.png'); --mark-ratio: 5.634; --mark-cap-frac: 0.718;" role="img" aria-label="ATCO Frontec"></span></li>
-          <li><span class="mark" style="--mark-src: url('/assets/sponsors/2026-atco-frontec.png'); --mark-ratio: 5.634; --mark-cap-frac: 0.718;" role="img" aria-label="ATCO Frontec"></span></li>
-          <li><span class="mark" style="--mark-src: url('/assets/sponsors/2026-atco-frontec.png'); --mark-ratio: 5.634; --mark-cap-frac: 0.718;" role="img" aria-label="ATCO Frontec"></span></li>
-        </ul>
-      </div>
+      <!-- HERO SPONSOR STRIP REMOVED 2026-08-12, on the founder's instruction
+           at the client meeting. What stood here was a row of SIX marks, five of
+           them the same ATCO Frontec logo repeated as a layout placeholder, and
+           the client's word for a logo row in or near the hero was logo soup.
+           SPONSORS ARE NOW ONE COMBINED SECTION further down this page, paying
+           and in-kind together, and id="sponsors" moved onto it. Nothing linked
+           to the strip: shell.js anchors #speakers, #agenda, #accommodations and
+           #faq only, so the id is still present and still unique.
+           The two open notes that hung on this block moved with it and are
+           written out on that section: the eighteen unlabelled marks at the foot
+           of /global-congress-2026/, and the spec 7B clearance amendment. -->
 
       <!-- The dot field and the accent rule came off on Chip's instruction.
            Both were spending horizontal room the headline wanted, and on a
@@ -515,7 +455,7 @@
       <div class="flow-intro">
         <h2 id="flow-title">Who attends the Congress</h2>
         <div class="flow-intro-body">
-          <p class="flow-intro-desc">ConvergX convenes leaders from <a href="../industries/energy/">energy</a>, <a href="../industries/aerospace-defence/">defence</a>, <a href="../industries/aerospace-defence/">aerospace</a>, <a href="../industries/mining-natural-resources/">mining</a>, <a href="../industries/agriculture/">agriculture</a>, <a href="../industries/manufacturing/">manufacturing</a>, <a href="../industries/construction/">construction</a>, <a href="../industries/technology/">technology</a>, government, Indigenous economic development and finance.</p>
+          <p class="flow-intro-desc">ConvergX convenes leaders from energy, defence, aerospace, mining, agriculture, manufacturing, construction, technology, government, Indigenous economic development and finance.</p>
           <!-- THE ADMISSION STANDARD, added 2026-08-04 on Chip's instruction:
              "add a bit more of the original text from their current Who
              attends section... we need a bit of the VP level / decision maker
@@ -536,6 +476,7 @@
              opens /congress/register/. Two is deliberate: the storefront needs
              it before a price, and this page needs it under that heading. -->
           <p class="flow-intro-desc">All attendees are individually vetted, VP level or higher decision makers. Proof of ability to directly influence business direction and lead partnerships and investment is required to be considered to join ConvergX.</p>
+          <!-- [[REVIEW: ConvergX's own Who Attends page describes the format as "a 2.5 day Congress, Summit or Executive Roundtable". This page and /congress/register/ both say three days. The published agenda runs Tuesday 08:00 to Thursday 17:45, and Tuesday's two roundtables are invite only, so a standard pass may cover 2.5 of the three. Kim Van Vliet to settle which figure is right; nothing is changed here in the meantime]] -->
         </div>
       </div>
 
@@ -1345,6 +1286,21 @@
           <p class="speaker-card-name"><a class="bio-trigger" href="#bio-chris-lohmann">Chris Lohmann</a></p>
           <p class="speaker-card-role">Innovation and Market Development, Aerospace Energy Systems and Sustainability, Boeing Canada</p>
         </article>
+        <!-- SIX SPEAKERS ADDED 2026-08-12 from the interim site's published
+             speaker list, which is canon for who is billed. They are inserted in
+             ConvergX's own published order rather than appended.
+             NO PORTRAIT IS ON FILE for any of the six. The card renders name and
+             role only: a silhouette or a grey circle is banned outright, and
+             inventing a portrait is not an option. The bios open from here like
+             every other card. -->
+        <article class="speaker-card" id="speaker-christine-hanson">
+          <p class="speaker-card-name"><a class="bio-trigger" href="#bio-christine-hanson">Christine Hanson</a></p>
+          <p class="speaker-card-role">Regional Director for North America, NATO DIANA</p>
+        </article>
+        <article class="speaker-card" id="speaker-mark-norton">
+          <p class="speaker-card-name"><a class="bio-trigger" href="#bio-mark-norton">Mark Norton</a></p>
+          <p class="speaker-card-role">Executive Director, Northwest I-90 Manufacturing Alliance (NIMA)</p>
+        </article>
         <article class="speaker-card" id="speaker-joy-romero">
           <img class="speaker-card-photo" src="../assets/speakers/joy-romero.jpg" alt="Photograph of Joy Romero." loading="lazy" decoding="async">
           <p class="speaker-card-name"><a class="bio-trigger" href="#bio-joy-romero">Joy Romero</a></p>
@@ -1360,6 +1316,14 @@
           <p class="speaker-card-name"><a class="bio-trigger" href="#bio-emma-spanswick">Dr. Emma Spanswick</a></p>
           <p class="speaker-card-role">Associate Professor and Canada Research Chair, University of Calgary</p>
         </article>
+        <article class="speaker-card" id="speaker-christopher-coates">
+          <p class="speaker-card-name"><a class="bio-trigger" href="#bio-christopher-coates">Christopher Coates</a></p>
+          <p class="speaker-card-role">Director of Foreign Policy, National Defence and National Security, Macdonald-Laurier Institute</p>
+        </article>
+        <article class="speaker-card" id="speaker-stephane-masson">
+          <p class="speaker-card-name"><a class="bio-trigger" href="#bio-stephane-masson">Major-General St&eacute;phane Masson, OMM, MSM, CD</a></p>
+          <p class="speaker-card-role">Chief of Army Force Development and Senior Serving Gunner, Canadian Army</p>
+        </article>
         <article class="speaker-card" id="speaker-joshua-potter">
           <img class="speaker-card-photo" src="../assets/speakers/joshua-potter.jpg" alt="Photograph of Joshua J. Potter." loading="lazy" decoding="async">
           <p class="speaker-card-name"><a class="bio-trigger" href="#bio-joshua-potter">Joshua J. Potter</a></p>
@@ -1370,7 +1334,16 @@
           <p class="speaker-card-name"><a class="bio-trigger" href="#bio-rob-huebert">Rob Huebert Ph.D.</a></p>
           <p class="speaker-card-role">Professor, Political Science, University of Calgary</p>
         </article>
+        <article class="speaker-card" id="speaker-anton-sestritsyn">
+          <p class="speaker-card-name"><a class="bio-trigger" href="#bio-anton-sestritsyn">Anton Sestritsyn</a></p>
+          <p class="speaker-card-role">Principal, VOSAVIS</p>
+        </article>
+        <article class="speaker-card" id="speaker-john-sheehan">
+          <p class="speaker-card-name"><a class="bio-trigger" href="#bio-john-sheehan">John Sheehan</a></p>
+          <p class="speaker-card-role">CEO, AVX Defense Technologies</p>
+        </article>
       </div>
+      <!-- [[NEEDS: cleared portraits for Christine Hanson, Mark Norton, Christopher Coates, Major-General St&eacute;phane Masson, Anton Sestritsyn and John Sheehan, from Kim Van Vliet. Six of the fourteen billed speakers currently render without one]] -->
 
       <!-- The link out to /congress/speakers/ was removed on Chip's
            instruction, 2026-07-31: the roster is here and a second page
@@ -1479,7 +1452,7 @@
               </thead>
               <tbody>
                 <tr><th scope="row">07:30 to 08:00</th><td>Breakfast</td></tr>
-                <tr><th scope="row">08:00 to 08:15</th><td><details class="sess"><summary>Welcome and Opening Remarks</summary><p>Kimberley Van Vliet.</p></details></td></tr>
+                <tr><th scope="row">08:00 to 08:15</th><td><details class="sess"><summary>Welcome and Opening Remarks</summary><p>Kimberley Van Vliet, Founder and CEO, WaVv and ConvergX; Canadian Delegation, NATO Industrial Advisory Group (NIAG).</p></details></td></tr>
                 <tr><th scope="row">08:15 to 08:45</th><td><details class="sess"><summary>Welcome from the Province, and Opening Keynote</summary><p>Tracy LaTourette, "Building Resilience to Perform in the Storm".</p></details></td></tr>
                 <tr><th scope="row">08:45 to 10:00</th><td><details class="sess"><summary>Session #1. ConvergX-U</summary><p>Four State of the Union slots. Defence, Dr. David Perry, President, Canadian Global Affairs Institute. Energy, Gurpreet Lail, President, Enserva. Mining and Agriculture, speakers not named.</p></details></td></tr>
                 <tr><th scope="row">10:00 to 10:15</th><td>Break</td></tr>
@@ -1506,7 +1479,7 @@
               </thead>
               <tbody>
                 <tr><th scope="row">07:30 to 08:00</th><td>Breakfast</td></tr>
-                <tr><th scope="row">08:00 to 08:15</th><td><details class="sess"><summary>Welcome and Opening Remarks</summary><p>Kimberley Van Vliet.</p></details></td></tr>
+                <tr><th scope="row">08:00 to 08:15</th><td><details class="sess"><summary>Welcome and Opening Remarks</summary><p>Kimberley Van Vliet, Founder and CEO, WaVv and ConvergX; Canadian Delegation, NATO Industrial Advisory Group (NIAG).</p></details></td></tr>
                 <tr><th scope="row">08:15 to 08:45</th><td><details class="sess"><summary>Keynote</summary><p>Speaker to be announced.</p></details></td></tr>
                 <tr><th scope="row">08:45 to 10:00</th><td><details class="sess"><summary>Panel #5. Integrated Resource Security and Commercial Resilience</summary><p>Covers energy, food and public health systems, and the satellite, IoT, AI, biosensing and edge computing capabilities underneath them.</p></details></td></tr>
                 <tr><th scope="row">10:00 to 10:15</th><td>Break</td></tr>
@@ -1681,6 +1654,66 @@
     </div>
   </section>
 
+
+
+  <!-- ============================================================
+       SPONSORS. Built 2026-08-12 on the founder's instruction at the client
+       meeting: ONE combined section, paying and in-kind sponsors together,
+       placed down the page rather than in the hero. It replaces the six-mark
+       placeholder strip that sat in the hero, and it carries the id="sponsors"
+       that strip held. Nothing links to that id; shell.js anchors #speakers,
+       #agenda, #accommodations and #faq only.
+
+       ONE MARK RENDERS AND IT IS THE ONLY ONE THAT CAN. ATCO Frontec is the
+       only 2026 sponsor ConvergX names anywhere. The relationship is published
+       in ConvergX's own words on /2026-congress-sponsors/ ("Opening reception
+       sponsored by ATCO Frontec"), and ConvergX publishes the lockup itself. It
+       renders ONCE. Repeating a mark to fill a row reads as several sponsors to
+       a delegate and as an unearned use to ATCO. Do not pad the row with the
+       homepage member marks, which are not sponsors.
+
+       --mark-src, --mark-ratio and --mark-cap-frac are the component's whole
+       interface and they are per-mark DATA, not styling, which is why they are
+       inline. Both numbers are MEASURED off this file's own alpha channel:
+       400 / 71 = 5.634, and the ATCO capitals run rows 0 to 50 of a 71px box
+       for 0.718. Re-measure if the file is replaced.
+
+       Six of the eighteen marks at the foot of ConvergX's own Congress page are
+       government or military crests. Those never render, under any
+       circumstances, and they are not on disk.
+
+       Reuses .proofbar and .mark from styles.css section 25 and the .sec-head
+       and .editorial pattern this page already uses. No new CSS.
+
+       [NEEDS: the eighteen unlabelled marks at the foot of
+       /global-congress-2026/. What ARE those organisations to ConvergX, and in
+       which year? ConvergX attaches no label, so writing one would invent the
+       relationship. From Kim Van Vliet.]
+       [NEEDS: amend the logo clearance register at COMPANY-SITE-SPEC 7B. It
+       records ATCO Frontec as cleared but not rendering because "ATCO publishes
+       no separate Frontec wordmark". ATCO does not; ConvergX does, on its own
+       live sponsors page. The clearance already exists and only the supply note
+       was wrong. From whoever owns 7B.]
+       ============================================================ -->
+  <section id="sponsors" class="section--dense">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Sponsors</h2>
+      </div>
+      <div class="editorial push-end-l">
+        <div class="lede">
+          <p>ConvergX thanks the sponsors of the 2026 Global Congress.</p>
+        </div>
+        <div class="body">
+          <p>The opening reception is sponsored by ATCO Frontec.</p>
+        </div>
+      </div>
+      <ul class="proofbar">
+        <li><span class="mark" style="--mark-src: url('../assets/sponsors/2026-atco-frontec.png'); --mark-ratio: 5.634; --mark-cap-frac: 0.718;" role="img" aria-label="ATCO Frontec"></span></li>
+      </ul>
+    <!-- [[NEEDS: combined paying + in-kind sponsor roster and logo files from Lindsay Robertson. One mark renders until that arrives, because one mark is all ConvergX has published]] -->
+    </div>
+  </section>
 
   </div><!-- /light -->
 
@@ -1986,6 +2019,7 @@
                  for her. Omitted rather than filled. -->
             <!-- CREST-WORDS-ONLY: U.S. Air Force, Colorado National Guard, U.S. Air Force Academy, Air War College, Operation Iraqi Freedom. Named in the bio below as published. No crest, mark, flag or insignia is rendered. -->
             <div class="bio-prose">
+              <!-- [[REVIEW: softened vs interim per danger-words pass]] The interim bio reads "A combat mission-ready F-16 pilot". The rank, the aircraft and the record are kept; the danger word is not carried. -->
               <p>Tracy LaTourette was Colorado's first female fighter pilot and among the first women globally to fly fighter aircraft. She is a mission-ready F-16 pilot, a leadership expert and a resilience coach, and a retired Lieutenant Colonel with 22 years in the U.S. Air Force and Colorado National Guard. She flew missions worldwide, including post-9/11 presidential protection and Operation Iraqi Freedom.</p>
               <p>A graduate of the U.S. Air Force Academy and Air War College, Tracy earned numerous military honors and logged 3,300+ flight hours as a pilot and AWACS Air Weapons Director.</p>
               <p>Today, she is an internationally recognized keynote speaker, executive coach, and 4X Emmy-nominated PBS host, helping leaders and teams build accountability, resilience, and high-performance cultures. Tracy has worked with Fortune 100 companies, spoken at Harvard Business School, and shared stages with a U.S. President.</p>
@@ -2100,8 +2134,8 @@
             <p class="bio-role">Professor in the Departments of Radiology, Otolaryngology, Neurosurgery, and Anatomy, Mayo Clinic</p>
             <!-- CREST-WORDS-ONLY: NIH, NINDS, NLM. Named in the bio below as published. No crest, mark, flag or insignia is rendered. -->
             <div class="bio-prose">
-              <p>Dr. Jonathan M. Morris is a Professor in the Departments of Radiology, Otolaryngology, Neurosurgery, and Anatomy at Mayo Clinic. He earned his M.D. from Howard University College of Medicine, followed by an internship at Washington Hospital Center and research fellowships at NIH/NINDS/NLM. He then completed his radiology and neuroradiology fellowships at Mayo Clinic. Dr. Morris serves as the Medical Director of the 3D Printing Anatomic Modeling Unit and the Center for Biomedical and Scientific Visualization, as well as the Executive Medical Director of Immersive and Experiential Learning at Mayo Clinic. His expertise spans Point-of-Care manufacturing for digital twinning, preoperative and virtual surgical planning, and the development of patient-specific surgical devices.</p>
-              <p>A recognized leader in extended reality (VR/AR/MR), Dr. Morris is driving innovation in medical education, clinical applications, intraoperative navigation, workforce training, and medical capital equipment training. Clinically, he specializes in minimally invasive thermal ablation of tumors affecting the neuroaxis and musculoskeletal system. With over 270 published articles, multiple books, and book chapters, Dr. Morris is regarded as an international authority in his fields. He has been married to his wife, Trina, since 1996, and together they have four sons.</p>
+              <p>Dr. Jonathan M. Morris is a Professor in the Departments of Radiology, Otolaryngology, Neurosurgery, Radiation Oncology, and Anatomy at Mayo Clinic. He earned his M.D. from Howard University College of Medicine, followed by an internship at Washington Hospital Center and research fellowships at NIH/NINDS/NLM. He then completed his radiology and neuroradiology fellowships at Mayo Clinic. Dr. Morris serves as the Medical Director of the 3D Printing Anatomic Modeling Unit and the Center for Biomedical and Scientific Visualization, as well as the Executive Medical Director of Immersive and Experiential Learning at Mayo Clinic. His expertise spans Point-of-Care manufacturing for digital twinning, preoperative and virtual surgical planning, and the development of patient-specific surgical devices.</p>
+              <p>A recognized leader in extended reality (VR/AR/MR), Dr. Morris is driving innovation in medical education, clinical applications, intraoperative navigation, workforce training, and medical capital equipment training. His current focus is on creating AI enabled photorealistic digital twinned humans to serve as medical experts. Clinically, he specializes in minimally invasive thermal ablation of tumors affecting the neuroaxis and musculoskeletal system. With over 270 published articles, multiple books, and book chapters, Dr. Morris is regarded as an international authority in his fields. He has been married to his wife, Trina, since 1996, and together they have four sons.</p>
             </div>
           </div>
         </div>
@@ -2144,6 +2178,7 @@
             <h2 class="bio-name" id="bio-joshua-potter-name">Joshua J. Potter</h2>
             <p class="bio-role">CEO, Kalashnikov USA (KUSA)</p>
             <!-- CREST-WORDS-ONLY: U.S. Special Operations Command (USSOCOM), the Department of Defense. Named in the bio below as published. No crest, mark, flag or insignia is rendered. -->
+            <!-- [[REVIEW: softened vs interim per danger-words pass]] The interim bio runs roughly twice this length and carries seven phrases the danger-words doctrine bans outright, including weapon glorification, a joke about wartime injury and a named hostile group. They are not quoted here, because a comment is view-sourceable and the doctrine says nowhere on the site. Every fact ConvergX publishes about him is kept. The performance around them is not, and it does not come back on the grounds that ConvergX publishes it. Compare against _reference/INTERIM-CRAWL-2026-08-12/2026-congress-speakers.txt if the cut is ever questioned. -->
             <div class="bio-prose">
               <p>Joshua is the CEO of Kalashnikov USA (KUSA), a United States manufacturer of AK-pattern firearms and munitions supplying defence and commercial customers. Under his leadership, KUSA works across defence manufacturing, product development and national security supply, and the company states that its focus is on continued improvement in what it builds.</p>
               <p>A retired military officer, Josh completed over 27 years of servant-leader experience, culminating as a Colonel with U.S. Special Operations Command (USSOCOM). There he oversaw global operations, led elite teams and contributed to the doctrine that governs special operations. He served in over 47 countries, and his specialisms were Special Forces, Civil Affairs, PATRIOT missile defense and multi-domain reconnaissance.</p>
@@ -2180,22 +2215,151 @@
     </div>
   </div>
 
+  <!-- SIX BIOS ADDED 2026-08-12 alongside their cards, from the interim
+       site's published speaker page. Verbatim on the facts, in the same
+       overlay pattern as the ten above. Banned dash glyphs are converted to
+       commas or full stops, which is the same conversion the ten above had
+       at capture time, and no word is altered doing it. -->
+
+  <div class="bio-overlay" id="bio-christine-hanson" data-surface="dark" role="dialog" aria-modal="true" aria-labelledby="bio-christine-hanson-name">
+    <div class="bio-head">
+      <a class="bio-close" href="#speaker-christine-hanson"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 4 L20 20 M20 4 L4 20"></path></svg><span class="vh">Close</span></a>
+    </div>
+    <div class="bio-scroll">
+      <div class="wrap">
+        <!-- No .bio-figure wrapper and no .bio-photo: no portrait is on file, and
+             the two-column grid with an empty column reads as a missing image. -->
+        <div class="bio-text">
+          <h2 class="bio-name" id="bio-christine-hanson-name">Christine Hanson</h2>
+          <p class="bio-role">Regional Director for North America, NATO DIANA</p>
+            <!-- CREST-WORDS-ONLY: NATO DIANA, Global Affairs Canada, the Canadian Embassy in Washington, Canada's Mission to the United Nations, the Canadian Red Cross. Named in the bio below as published. No crest, mark, flag or insignia is rendered. -->
+          <div class="bio-prose">
+              <p>Christine Hanson has had a distinguished career spanning over two decades in public service, both in Canada and internationally. As an international lawyer, diplomat, and senior government executive, she brings expertise in Canada-U.S. trade, foreign policy, and intergovernmental affairs. Christine is known for shaping public policy, negotiating international agreements, and fostering collaboration among global leaders and governments.</p>
+              <p>Christine's early professional work was with Global Affairs Canada, where she held a variety of diplomatic roles. She served as a senior diplomat at the Canadian Embassy in Washington, D.C., managing Canada's relationship with the U.S. Congress. She provided strategic advice to Canadian ambassadors, ministers, premiers, and parliamentarians on key trade and foreign policy issues related to the American political landscape. She also worked at Canada's Mission to the United Nations in New York.</p>
+              <p>After many years of living and working abroad, Christine returned to her home province of Nova Scotia. She served as the Chief Executive Officer of the Nova Scotia Human Rights Commission from 2016 to 2021. Later, she took on a significant role as Executive Director and Chief Administrative Officer of the Mass Casualty Commission, a federal and provincial public inquiry into the mass casualty event in Nova Scotia in April 2020. Christine most recently served as the Regional Director of International Trade for Atlantic Canada at Global Affairs Canada. In this role, she led a team across the region that helped Canadian businesses expand into global markets and promoted economic growth through exports.</p>
+              <p>In addition to her professional roles, Christine has been serving on the Board of Directors of the Canadian Red Cross since 2020. Christine earned degrees in law, public administration, and political science from Dalhousie University in Halifax. She later earned a graduate degree in international law from Georgetown University in Washington, D.C. From 2015 to 2016, she was an International Women's Forum Global Leadership Foundation Fellow at Harvard Business School and INSEAD in France.</p>
+              <p>Christine was appointed to be the NATO Defence Innovation Accelerator for the North Atlantic (DIANA) Regional Director for North America in 2025.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bio-overlay" id="bio-mark-norton" data-surface="dark" role="dialog" aria-modal="true" aria-labelledby="bio-mark-norton-name">
+    <div class="bio-head">
+      <a class="bio-close" href="#speaker-mark-norton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 4 L20 20 M20 4 L4 20"></path></svg><span class="vh">Close</span></a>
+    </div>
+    <div class="bio-scroll">
+      <div class="wrap">
+        <!-- No .bio-figure wrapper and no .bio-photo: no portrait is on file, and
+             the two-column grid with an empty column reads as a missing image. -->
+        <div class="bio-text">
+          <h2 class="bio-name" id="bio-mark-norton-name">Mark Norton</h2>
+          <p class="bio-role">Executive Director, Northwest I-90 Manufacturing Alliance (NIMA)</p>
+          <div class="bio-prose">
+              <p>Mark Norton is an industry veteran in advanced manufacturing and currently serves as the Executive Director for the Northwest I-90 Manufacturing Alliance (NIMA) and Principal of Norton Strategic Consulting. His expertise is deeply grounded in business development for advanced manufacturing, economic development for industry, and workforce pipeline development for the trades. He is a thought leader on LinkedIn, frequently writing about emerging technologies and markets in manufacturing, and issues related to workforce development for the trades and industry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bio-overlay" id="bio-christopher-coates" data-surface="dark" role="dialog" aria-modal="true" aria-labelledby="bio-christopher-coates-name">
+    <div class="bio-head">
+      <a class="bio-close" href="#speaker-christopher-coates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 4 L20 20 M20 4 L4 20"></path></svg><span class="vh">Close</span></a>
+    </div>
+    <div class="bio-scroll">
+      <div class="wrap">
+        <!-- No .bio-figure wrapper and no .bio-photo: no portrait is on file, and
+             the two-column grid with an empty column reads as a missing image. -->
+        <div class="bio-text">
+          <h2 class="bio-name" id="bio-christopher-coates-name">Christopher Coates</h2>
+          <p class="bio-role">Director of Foreign Policy, National Defence and National Security, Macdonald-Laurier Institute</p>
+            <!-- CREST-WORDS-ONLY: North American Aerospace Defense Command (NORAD), Canadian Joint Operations Command (CJOC). Named in the bio below as published. No crest, mark, flag or insignia is rendered. -->
+          <div class="bio-prose">
+              <p>Christopher Coates is a former senior Canadian military leader with extensive experience in defence, security, and allied operations. A helicopter pilot specializing in tactical and special operations aviation, he served in senior command roles in Canada and overseas, including as Deputy Commander of North American Aerospace Defense Command (NORAD) and as Commander of Canadian Joint Operations Command (CJOC), leading to his focus on continental defence and the Arctic. Following military service, he worked in defence advisory roles both in Canada and internationally and now leads defence, security, and foreign policy programming at the Macdonald-Laurier Institute, a leading Canadian public policy think tank.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bio-overlay" id="bio-stephane-masson" data-surface="dark" role="dialog" aria-modal="true" aria-labelledby="bio-stephane-masson-name">
+    <div class="bio-head">
+      <a class="bio-close" href="#speaker-stephane-masson"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 4 L20 20 M20 4 L4 20"></path></svg><span class="vh">Close</span></a>
+    </div>
+    <div class="bio-scroll">
+      <div class="wrap">
+        <!-- No .bio-figure wrapper and no .bio-photo: no portrait is on file, and
+             the two-column grid with an empty column reads as a missing image. -->
+        <div class="bio-text">
+          <h2 class="bio-name" id="bio-stephane-masson-name">Major-General St&eacute;phane Masson, OMM, MSM, CD</h2>
+          <p class="bio-role">Chief of Army Force Development and Senior Serving Gunner, Canadian Army</p>
+            <!-- CREST-WORDS-ONLY: the Canadian Army, CFB Valcartier, CFB Gagetown, Canadian Forces Base Kingston, 5th Canadian Division, Canadian Joint Operations Command Headquarters. Named in the bio below as published. No crest, mark, flag or insignia is rendered. -->
+          <div class="bio-prose">
+              <p>Major-General St&eacute;phane Masson began his military career in 1991 as a reservist with the 6e R&eacute;giment d'artillerie de campagne in Quebec City. In 2003, he transferred to the Regular Force.</p>
+              <p>Over the course of his service, he has held a variety of command and staff appointments. In 2008, as a Major, he commanded Q Battery, 5e R&eacute;giment d'artillerie l&eacute;g&egrave;re du Canada at CFB Valcartier. Promoted to Lieutenant-Colonel in 2012, he served as Commandant of the Royal Regiment of Canadian Artillery School at CFB Gagetown. He later served in several staff and leadership roles, including at Canadian Joint Operations Command Headquarters and as Commander of Canadian Forces Base Kingston.</p>
+              <p>In 2024, he concluded his tenure as Commander of 5th Canadian Division, known as the Army's &quot;Mighty Maroon Machine&quot;. He subsequently served as Chief of Staff Army Strategy at Army Headquarters. Promoted to his current rank in 2026, he now serves as Chief of Army Force Development and as the Senior Serving Gunner in the Canadian Army.</p>
+              <p>Major-General Masson has deployed operationally to Bosnia-Herzegovina, Afghanistan, and Egypt, and has supported a number of domestic operations. He is a graduate of the Canadian Land Forces Command and Staff College, the Joint Command and Staff Program, and the National Security Program. He holds a Bachelor of Science, a Master of Defence Studies, and a Master of Public Administration.</p>
+              <p>Outside of his military duties, he values time with his wife and their three children.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bio-overlay" id="bio-anton-sestritsyn" data-surface="dark" role="dialog" aria-modal="true" aria-labelledby="bio-anton-sestritsyn-name">
+    <div class="bio-head">
+      <a class="bio-close" href="#speaker-anton-sestritsyn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 4 L20 20 M20 4 L4 20"></path></svg><span class="vh">Close</span></a>
+    </div>
+    <div class="bio-scroll">
+      <div class="wrap">
+        <!-- No .bio-figure wrapper and no .bio-photo: no portrait is on file, and
+             the two-column grid with an empty column reads as a missing image. -->
+        <div class="bio-text">
+          <h2 class="bio-name" id="bio-anton-sestritsyn-name">Anton Sestritsyn</h2>
+          <p class="bio-role">Principal, VOSAVIS</p>
+            <!-- CREST-WORDS-ONLY: the United Nations, the U.S. Senate, the U.S. State Department. Named in the bio below as published. No crest, mark, flag or insignia is rendered. -->
+          <div class="bio-prose">
+              <p>Anton Sestritsyn is a VOSAVIS Principal based in Ottawa, bringing extensive experience in federal politics, public affairs, and strategic communications. His experience spans senior roles including Legislative Assistant, Campaign Manager, Strategic Communications Advisor, International Parliamentary Friendship Group Coordinator, and Manager of Stakeholder Relations for two Leaders of the Official Opposition.</p>
+              <p>With a strong background in foreign affairs, human rights, and multilateral engagement, Anton has advised international delegations at the United Nations, the U.S. Senate, and the U.S. State Department, as well as Canadian parliamentarians and party leaders. His professional background also includes journalism and NGO work focused on international policy issues.</p>
+              <p>In the private sector, Anton has held executive and consulting positions, including Director of Public Affairs Strategy, Executive Director of Canadian and international organizations, and a Vice-President role within a Canadian defence company.</p>
+              <p>Anton holds a degree in Public Affairs and Policy Management from Carleton University. He is fluent in three languages and has working proficiency in three others.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bio-overlay" id="bio-john-sheehan" data-surface="dark" role="dialog" aria-modal="true" aria-labelledby="bio-john-sheehan-name">
+    <div class="bio-head">
+      <a class="bio-close" href="#speaker-john-sheehan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 4 L20 20 M20 4 L4 20"></path></svg><span class="vh">Close</span></a>
+    </div>
+    <div class="bio-scroll">
+      <div class="wrap">
+        <!-- No .bio-figure wrapper and no .bio-photo: no portrait is on file, and
+             the two-column grid with an empty column reads as a missing image. -->
+        <div class="bio-text">
+          <h2 class="bio-name" id="bio-john-sheehan-name">John Sheehan</h2>
+          <p class="bio-role">CEO, AVX Defense Technologies</p>
+            <!-- CREST-WORDS-ONLY: the US Army Aviation community. Named in the bio below as published. No crest, mark, flag or insignia is rendered. -->
+            <!-- [[REVIEW: softened vs interim per danger-words pass]] The interim bio describes the team as developing disruptive capabilities for a banned noun. The claim is kept, as new capabilities for the US Army Aviation community. The noun is not carried, and it is not quoted here either. -->
+          <div class="bio-prose">
+              <p>John Sheehan is an executive leader with more than 25 years of experience across the defense, aerospace, and technology sectors. He currently serves as CEO of AVX Defense Technologies, leading a 35-person team focused on new capabilities and on deepening AVX's partnership with the US Army Aviation community. Before AVX, he was VP of Corporate Strategy at Booz Allen Hamilton, led go-to-market for AWS's Aerospace &amp; Satellite Division, and spent 20 years at Lockheed Martin, including 10 years with Skunk Works, in engineering, strategy, and technology-program leadership roles.</p>
+              <p>He holds master's degrees in Strategic Foresight (University of Houston) and Aeronautical Science (Embry-Riddle), bachelor's degrees in Aerospace Engineering (University of Arizona) and Finance, summa cum laude (University of Connecticut), and is an FAA Certified Flight Instructor and Commercial Pilot with more than 2,000 flight hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer data-shell="footer">
   <noscript>
     <nav aria-label="Footer">
       <ul>
-        <li><a href="../industries/">Industries</a></li>
-        <li><a href="../industries/aerospace-defence/">Aerospace and defence</a></li>
-        <li><a href="../industries/agriculture/">Agriculture</a></li>
-        <li><a href="../industries/construction/">Construction</a></li>
-        <li><a href="../industries/energy/">Energy</a></li>
-        <li><a href="../industries/manufacturing/">Manufacturing</a></li>
-        <li><a href="../industries/military/">Military</a></li>
-        <li><a href="../industries/mining-natural-resources/">Mining and natural resources</a></li>
-        <li><a href="../industries/technology/">Technology</a></li>
-        <li><a href="../congress/">The Conference</a></li>
+        <li><a href="../congress/">The Congress</a></li>
         <li><a href="../congress/#agenda">Agenda</a></li>
         <li><a href="../congress/#speakers">Speakers</a></li>
         <li><a href="../congress/the-app/">The app</a></li>

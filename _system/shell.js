@@ -69,20 +69,25 @@
    * is live. A new item is added here with live:false until its page
    * exists, then that one word flips. */
   var NAV = [
-    { label: "Industries",     href: "/industries/", mega: "industries", live: true },
-    /* Label and path differ deliberately. "The Congress" is the event's
-     * real name and a distinctive asset; "Conference" is the plain word
-     * that tells a cold reader from another sector what the item is. The
-     * panel standfirst resolves the two. No path changes.
+    /* INDUSTRIES CAME OUT OF THE BAR FOR V1, 2026-08-12, on the client's
+     * instruction at that day's meeting: the site should not enumerate the
+     * sectors, because a published list reads as a closed list and they do
+     * not want to look exclusive. The nine pages under /industries/ are
+     * still on disk and still resolve; nothing links to them.
+     * The panel data that lived in this file went with the row, the eight
+     * descriptors and the promo cell both, because an array read by nothing
+     * is a fact waiting to go stale. That is the same call the SIDES array
+     * got in 2026-07-29. It is recoverable from the full-site tree beside
+     * this one. Restoring the item is this row, that data, and the branch in
+     * megaPanel and megaMobile.
      *
-     * 2026-07-30, Lindsay Robertson's call: the definite articles came
-     * off all three items. The reason is user feedback on ConvergX's own
-     * site, not tidiness. Readers cannot find the conference, and cannot
-     * tell Xpand from Xchange. Her line was that nobody knows what a
-     * ConvergX Xchange is. Kim keeps the X-names, so they stay on the
-     * homepage blocks and their logos; the BAR carries the plain word for
-     * the thing. Bar label and brand name are now doing separate jobs. */
-    { label: "Conference",     href: "/congress/",   mega: "congress",   live: true },
+     * THE LABEL IS "CONGRESS", from 2026-08-12. It read "Conference", the
+     * plain word for a cold reader, on the 2026-07-30 reasoning that nobody
+     * outside knows what a ConvergX Xchange is. The founder does not want
+     * the word conference used for the event, and every page already calls
+     * it the Congress, so the bar now agrees with them. No path changes:
+     * /congress/ was always the path. */
+    { label: "Congress",       href: "/congress/",   mega: "congress",   live: true },
     /* Xpand takes a panel, decided 2026-07-28. The earlier reading was that
      * two pages do not earn one; what that missed is that the bar now shows
      * a panel on every other item, so the one item without one reads as the
@@ -305,89 +310,7 @@
    * (UTC-6 in September). Nothing else needs touching then. */
   var NOTICE_UNTIL = Date.parse("2026-09-25T00:00:00-06:00");
 
-  /* Number words, so no count in this component is ever typed. A
-   * hardcoded "four" that outlives a sector being added or pulled is a
-   * false claim in the one component that renders on every page. */
-  var NUM = ["zero", "one", "two", "three", "four", "five", "six", "seven",
-             "eight", "nine", "ten", "eleven", "twelve"];
-  function numWord(n) { return NUM[n] || String(n); }
-
-  /* The Industries panel. One line each, drawn from the copy already live
-   * on /industries/ and on each sector page: no new claim enters the site
-   * through the nav. No figure appears here by design, the distance and
-   * the window length on the index page are deliberately not carried into
-   * a component that renders on every page.
-   *
-   * THE GATE. This array is the single source of truth for which sectors
-   * exist. A sector enters it only once its page is written and has
-   * passed the research gate. A sector that is not here has no nav row,
-   * no hub row and no page. Every count that renders is generated from
-   * this length, never typed.
-   *
-   * Order is ALPHABETICAL and identical everywhere. Any other order
-   * encodes something: researched-first would make the nav visibly stop
-   * where the research stopped. Alphabetical asserts nothing.
-   *
-   * 2026-07-29: construction, manufacturing, military and technology
-   * joined. Each page was read before its descriptor was written and
-   * every line below is drawn from copy already live on that page. */
-  var INDUSTRIES = [
-    { label: "Aerospace and defence",
-      href:  "/industries/aerospace-defence/",
-      note:  "Qualification takes quarters. The obligation has a date." },
-    { label: "Agriculture",
-      href:  "/industries/agriculture/",
-      note:  "A harvest window with no second chance, and the engineering that came out of it." },
-    { label: "Construction",
-      href:  "/industries/construction/",
-      note:  "Bonding capacity and safety history clear the gate. Neither one reads the work." },
-    { label: "Energy",
-      href:  "/industries/energy/",
-      note:  "Long-lead packages committed during engineering, off a vendor list built from the last project." },
-    { label: "Manufacturing",
-      href:  "/industries/manufacturing/",
-      note:  "The approval belongs to the tool, not the shop. None of them travels." },
-    { label: "Military",
-      href:  "/industries/military/",
-      note:  "A serviceability gap has no date on it. Both routes back run through whoever holds the contract." },
-    { label: "Mining and natural resources",
-      href:  "/industries/mining-natural-resources/",
-      note:  "Finding the part is not the hard problem. Qualifying the second source is." },
-    { label: "Technology",
-      href:  "/industries/technology/",
-      note:  "An authorization clears one buyer. Passing it for somebody else buys nothing here." }
-  ];
-
-  /* The ninth cell of the industries grid, and it is NOT a sector. It sits
-   * in the last position and it is not counted: every count on this panel
-   * is generated from INDUSTRIES.length, which this is not in.
-   *
-   * The destination is the existing door, /access/request/, under the
-   * locked CTA label from spec 3.5. No new label, no new destination, no
-   * second front door invented for a nav cell.
-   *
-   * THE LINE IS DRAWN FROM LIVE COPY, like every other descriptor here.
-   * /access/request/ already tells a reader why it asks which industries
-   * they source from: "This is how ConvergX works out which industries
-   * have not been looked at." That sentence is what makes this cell
-   * honest. It promises no page, no timeline and no new sector, and it
-   * does not say ConvergX will do anything, because the request page is
-   * explicit that no timeline can be given honestly. */
-  var PROMO = {
-    label: "Another industry",
-    note:  "Not one of these? Name it on the request form. That is how ConvergX works out which industries have not been looked at.",
-    cta:   "Request access",
-    href:  "/access/request/"
-  };
-
-  /* The Industries panel used to carry a second column holding a "Two
-   * paths" chooser. It was REMOVED on 2026-07-29 at Chip's instruction:
-   * with eight sectors the panel is a grid, and a chooser wedged beside it
-   * made the sectors the aside. The SIDES array and its builder went with
-   * the column, because an array read by nothing is a fact waiting to go
-   * stale.
-   *
-   * The Conference panel. Two columns.
+  /* The Congress panel. Two columns.
    *
    * Column one is the Congress itself. Column two is the convening that
    * is NOT the Congress, and the split is the pages' own: the
@@ -580,21 +503,11 @@
    *
    * Agenda and Speakers point at SECTIONS of the one-pager, not at their
    * old standalone pages, which no longer exist. */
-  /* INDUSTRIES CAME OUT OF THE FOOTER, 2026-08-04, Chip's call: "Maybe you
-   * need to remove Industries from the footer just to keep it to 5 columns."
-   *
-   * WHY THIS COLUMN AND NOT ANOTHER, and why it costs no navigability: the
-   * eight sectors are the ONE group already reachable two other ways from
-   * every page. They fill their own mega panel as a grid, and the no-JS
-   * <noscript> block in every page's <header> lists all eight under
-   * Industries. Every other footer column is the only place its rows are
-   * gathered. So the rule this footer was built on, that it carries every
-   * page the panels carry, is bent here knowingly and only here: Industries
-   * is not lost, it is not duplicated a third time.
-   * The header bar still carries Industries as a top-level item, so the
-   * section itself did not get quieter, only its footer repetition. */
+  /* INDUSTRIES CAME OUT OF THE FOOTER on 2026-08-04 to hold the column count,
+   * and out of the whole site on 2026-08-12. There is nothing left to restore
+   * here on its own: see the note on NAV. */
   var FOOTER = [
-    { title: "The Conference", links: [
+    { title: "The Congress", links: [
       { label: "Overview",             href: "/congress/" },
       { label: "Agenda",               href: "/congress/#agenda" },
       { label: "Speakers",             href: "/congress/#speakers" },
@@ -642,48 +555,30 @@
   }
 
   /* ONE list builder for every panel column: link plus a descriptor
-   * sibling, the same shape as the .link-index already on /industries/.
-   * Industries, the Conference pages, Consulting and About are all this
-   * list, so a change to the row shape happens once.
+   * sibling. The Congress pages, Consulting and About are all this list, so
+   * a change to the row shape happens once.
    * `attrs` carries the labelling: aria-labelledby on desktop, where a
-   * visible .label owns the name, aria-label on mobile, where it does
-   * not. `cls` is an extra class on the <ul>, `extra` is raw markup
-   * appended as a final <li>. Both are optional and both exist for the
-   * industries grid, which is this same list laid out in columns with a
-   * last cell that is not a link row. */
-  function indexList(items, current, attrs, cls, extra) {
-    return '<ul class="link-index' + (cls ? " " + cls : "") + '"' + (attrs || "") + ">" +
+   * visible .label owns the name, aria-label on mobile, where it does not.
+   * It took `cls` and `extra` as well until 2026-08-12; both existed only
+   * for the industries grid and went with it. */
+  function indexList(items, current, attrs) {
+    return '<ul class="link-index"' + (attrs || "") + ">" +
       items.map(function (i) {
         var cur = current === i.href ? ' aria-current="page"' : "";
         /* i.cta marks a row that leads somewhere a reader can act rather than
-         * read. Only the Conference panel sets it, on Register and Sponsor.
+         * read. Only the Congress panel sets it, on Register and Sponsor.
          * A class on the <li>, not a second list: the rows stay one component
          * and the emphasis is a modifier, so nothing forks. */
         var liCls = i.cta ? ' class="nav-mega-cta"' : "";
         return "<li" + liCls + "><a href=\"" + i.href + "\"" + cur + ">" + i.label + "</a>" +
           "<span class=\"descriptor\">" + i.note + "</span></li>";
-      }).join("") + (extra || "") + "</ul>";
-  }
-
-  /* The promo cell. The prompt leads and the call closes it, which is the
-   * opposite order to a sector row and is what stops it reading as a
-   * ninth sector called "Request access". Both spans are existing
-   * components: .label--lo and .link-more. */
-  function promoCell() {
-    return '<li class="mega-promo">' +
-      '<span class="label label--lo">' + PROMO.label + "</span>" +
-      '<span class="descriptor">' + PROMO.note + "</span>" +
-      '<a class="link-more" href="' + PROMO.href + '">' + PROMO.cta + "</a>" +
-    "</li>";
+      }).join("") + "</ul>";
   }
 
   function allLink(href, label, current) {
     var cur = current === href ? ' aria-current="page"' : "";
     return '<a class="link-more" href="' + href + '"' + cur + ">" + label + "</a>";
   }
-
-  /* Every count that renders is generated from the array it counts. */
-  function allIndustriesLabel() { return "All " + numWord(INDUSTRIES.length) + " industries"; }
 
   function megaCol(id, label, body, cls) {
     return '<div class="mega-col' + (cls ? " " + cls : "") + '">' +
@@ -696,13 +591,11 @@
    * single line of behaviour runs. One builder, every panel: the shape is
    * identical, only the columns differ.
    *
-   * One width modifier, declared in styles.css:
-   *   .mega-inner--1  one full-width column, the Industries panel, whose
-   *                   single column holds a grid and must not sit in the
-   *                   2fr of the default 2fr 1fr */
+   * The .mega-inner--1 width modifier in styles.css has no caller here as of
+   * 2026-08-12: it existed for the Industries panel's full-width grid. */
   function megaPanel(key, current) {
     var id = "mega-" + key;
-    var cols, wide = "";
+    var cols;
 
     if (key === "congress") {
       cols =
@@ -714,34 +607,14 @@
     } else if (key === "xpand") {
       cols = megaCol(id + "-h", XPAND_STANDFIRST,
         indexList(XPAND_PAGES, current, ' aria-labelledby="' + id + '-h"'));
-    } else if (key === "about") {
+    } else {
       cols = megaCol(id + "-h", ABOUT_STANDFIRST,
         indexList(ABOUT_PAGES, current, ' aria-labelledby="' + id + '-h"'));
-    } else {
-      /* Industries. One full-width column holding a grid of sector cells
-       * with the promo in the last position. The column count is a LAYOUT
-       * constant in styles.css and is not derived from and does not encode
-       * how many sectors exist: cells flow, so the grid absorbs a sector
-       * arriving or being pulled without a line changing here or there. */
-      wide = " mega-inner--1";
-      /* NO EYEBROW. Chip, 2026-07-29: it read "Eight industries" above a grid
-       * of eight named industries in a panel opened from Industries.
-       * The column is built without megaCol because megaCol's whole job is to
-       * render that label. The list keeps an accessible NAME via aria-label:
-       * without it the aria-labelledby would point at an element that no
-       * longer exists and the grid would be an unnamed list of eight links.
-       * The name is the plain word, no count. Typed counts go stale; that is
-       * the same reason the closing link derives its own from the array. */
-      cols = '<div class="mega-col">' +
-        indexList(INDUSTRIES, current, ' aria-label="Industries"',
-                  "link-index--grid", promoCell()) +
-        '<p class="mega-all">' + allLink("/industries/", allIndustriesLabel(), current) + "</p>" +
-      "</div>";
     }
 
     return (
       '<div class="mega" id="' + id + '" hidden>' +
-        '<div class="mega-inner' + wide + '">' + cols + "</div>" +
+        '<div class="mega-inner">' + cols + "</div>" +
       "</div>"
     );
   }
@@ -754,26 +627,17 @@
     if (key === "congress") {
       body =
         '<p class="label label--lo">' + CONGRESS_STANDFIRST + "</p>" +
-        indexList(CONGRESS_PAGES, current, ' aria-label="The Conference"') +
+        indexList(CONGRESS_PAGES, current, ' aria-label="The Congress"') +
         '<p class="label label--lo">' + CONGRESS_TAKEPART_LABEL + "</p>" +
         indexList(CONGRESS_TAKEPART, current, ' aria-label="' + CONGRESS_TAKEPART_LABEL + '"');
     } else if (key === "xpand") {
       body =
         '<p class="label label--lo">' + XPAND_STANDFIRST + "</p>" +
         indexList(XPAND_PAGES, current, ' aria-label="Xpand"');
-    } else if (key === "about") {
+    } else {
       body =
         '<p class="label label--lo">' + ABOUT_STANDFIRST + "</p>" +
         indexList(ABOUT_PAGES, current, ' aria-label="About"');
-    } else {
-      /* Every sector plus the promo, one under the other. No grid on a
-       * phone: three columns of 375px thirds is not a layout. The promo is
-       * the same last cell the desktop grid carries, so a no-grid reader
-       * loses nothing. */
-      body =
-        indexList(INDUSTRIES, current, ' aria-label="Industries"',
-                  "", promoCell()) +
-        '<p class="nav-sub-all">' + allLink("/industries/", allIndustriesLabel(), current) + "</p>";
     }
     return (
       '<li><details class="nav-sub"><summary>' + label +

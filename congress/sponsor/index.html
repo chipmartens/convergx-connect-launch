@@ -38,19 +38,7 @@
     </div>
     <nav aria-label="Primary">
       <ul>
-        <li><a href="../../industries/">Industries</a>
-          <ul>
-            <li><a href="../../industries/aerospace-defence/">Aerospace and defence</a></li>
-            <li><a href="../../industries/agriculture/">Agriculture</a></li>
-            <li><a href="../../industries/construction/">Construction</a></li>
-            <li><a href="../../industries/energy/">Energy</a></li>
-            <li><a href="../../industries/manufacturing/">Manufacturing</a></li>
-            <li><a href="../../industries/military/">Military</a></li>
-            <li><a href="../../industries/mining-natural-resources/">Mining and natural resources</a></li>
-            <li><a href="../../industries/technology/">Technology</a></li>
-          </ul>
-        </li>
-        <li><a href="../../congress/">Conference</a>
+        <li><a href="../../congress/">Congress</a>
           <ul>
             <li><a href="../../congress/#speakers">Speakers</a></li>
             <li><a href="../../congress/#agenda">Agenda</a></li>
@@ -728,45 +716,25 @@
     </div>
   </section>
 
-  <!-- ===================== THE ENQUIRY FORM, added 2026-08-04 =====================
-       WHY IT EXISTS. The nine buttons above serve the sponsor who already knows
-       which tier they want and is ready to pay. Nobody commits 50,000 USD off a
-       button without a conversation first, and until now this page had no route
-       for the larger group who need one. That is the only gap it fills.
+  <!-- ===================== THE ENQUIRY FORM CAME OUT, 2026-08-12 =================
+       Client instruction at that day's meeting: the form is past its usefulness
+       for this cycle. What it was for still stands, so the slot keeps a section
+       rather than closing up: the nine buttons serve a sponsor who already knows
+       which tier they want, and everyone else needs a conversation first.
 
-       IT DOES NOT COMPETE WITH THE NINE. It carries no price, no tier action and
-       no second checkout path. The tier field is a question, not a selection that
-       does anything. Do not move it above the storefront, and do not add a link
-       to it from inside the nine cards.
+       WHAT REPLACED IT is two sentences and an address that is already on this
+       site (the homepage hero). No form, no fields, no second checkout path.
 
-       PLACEMENT, deliberate and a conscious renegotiation of the note at the
-       bottom of this file. That note says nothing may follow "What a cheque does
-       not move", because a sponsor's last read should be the boundary rather than
-       a button. That still holds and the closer has NOT moved: the form sits
-       BEFORE it, so the boundary is still the last thing read, and a reader who
-       has just been asked what they want the room to know them for meets the
-       limits of what money moves immediately after. Do not reorder these two.
+       PLACEMENT IS UNCHANGED and still deliberate. This sits BEFORE "What a
+       cheque does not move", so the boundary is still the last thing a sponsor
+       reads. Do not reorder these two and do not add anything after the closer.
 
-       NO PROMISE OF A REPLY, a call, a meeting or an outcome. ConvergX asks,
-       decides, vets, brokers and convenes. The page states what the form is for
-       and stops. There is no response time because there is no number here that
-       is not already published.
-
-       THE "where would your name make the most sense" FIELD is about which tiers
-       to discuss, and its helper says so in those words. It is not audience
-       targeting and it must never be reworded into it, because sponsorship
-       reaching who meets whom is the one thing this whole page denies.
-
-       ZERO NUMBERS ADDED. No attendance, no reach, no slots, no closing date. -->
+       NO PROMISE of a reply, a call, a meeting or an outcome, and no response
+       time, for the same reason the form carried none. -->
   <section>
     <div class="wrap">
       <div class="sec-head">
-        <!-- WAS "Talk to someone before you pick a tier", changed 2026-08-04 by
-             the heading-doctrine pass. The section body is a form, so it takes
-             a LABEL heading, and a label is a noun phrase rather than an
-             instruction. The instruction is not lost: the lede and the body
-             directly below say who the form is for in full. -->
-        <h2>Before you pick a tier</h2>
+        <h2>Sponsorship conversations start by email.</h2>
         <span class="label label--lo label--edge">Sponsorship enquiry</span>
       </div>
       <div class="editorial">
@@ -774,126 +742,9 @@
           <p>The nine buttons above are for sponsors who already know what they want.</p>
         </div>
         <div class="body">
-          <p>This form is for everyone else. Tell ConvergX what you want to be known for in Calgary, and it will point you to the tiers that fit.</p>
+          <p>Anyone still weighing the tiers can write to ConvergX at <a href="mailto:info@convergx.co">info@convergx.co</a>. Say which tiers you are looking at and what you want the room to know you for, and ConvergX will point you to the ones that fit.</p>
         </div>
       </div>
-
-      <p>Every question is required unless the label says optional.</p>
-
-      <!-- Inert by construction, the same two ways as /requirement/: the submit
-           control is disabled, which also removes implicit submission on Enter,
-           and the method is post rather than the default get, so nothing a
-           sponsor writes can end up in a URL query string.
-           FOR WHOEVER BUILDS THIS: remove the disabled attribute, set a real
-           action and keep method="post". The nine field names below are the
-           ones to map. -->
-      <form class="req-form" method="post" action="#">
-
-        <fieldset>
-          <legend>The sponsorship</legend>
-
-          <!-- The nine, verbatim, in their three store categories and in their
-               order inside each, so the select reads as the page above it.
-               Optgroup labels are ConvergX's own category names. If the
-               storefront changes, change this with it. -->
-          <div class="field">
-            <label for="tier">Which tier are you looking at?</label>
-            <p class="helper" id="tier-help">The nine above, grouped the way ConvergX groups them. Selecting Not sure yet is fine.</p>
-            <select id="tier" name="tier" aria-describedby="tier-help" required>
-              <option value="">Select one</option>
-              <optgroup label="Tier 1 Sponsor">
-                <option value="presenting-partner">Presenting Partner</option>
-                <option value="cross-sector-innovation">Cross-Sector / Innovation</option>
-              </optgroup>
-              <optgroup label="Medal Sponsor">
-                <option value="industry-partner-platinum">Industry Partner Platinum</option>
-                <option value="gold">Gold</option>
-                <option value="silver">Silver</option>
-              </optgroup>
-              <optgroup label="Sponsorship">
-                <option value="opening-reception">Opening Reception</option>
-                <option value="awards-reception">Awards Reception</option>
-                <option value="breakfast-and-lunch">Breakfast and Lunch</option>
-                <option value="networking-break">Networking Break</option>
-              </optgroup>
-              <option value="not-sure">Not sure yet</option>
-            </select>
-          </div>
-
-          <!-- THE FIELD DOING THE REAL WORK. Given room on purpose. Everything
-               else here is routing; this is the one a person at ConvergX
-               actually needs in order to have a useful conversation. -->
-          <div class="field">
-            <label for="known-for">What do you want the room to know you for?</label>
-            <p class="helper" id="known-for-help">The work you want your name attached to over the three days. Write it in the words you would use in conversation rather than the words in a company profile.</p>
-            <textarea id="known-for" name="known-for" rows="7" aria-describedby="known-for-help" required></textarea>
-          </div>
-
-          <div class="field">
-            <label for="placement">Where would your name make the most sense? (optional)</label>
-            <p class="helper" id="placement-help">The moments across the three days that fit what you do, like the opening reception or the breaks. It tells ConvergX which tiers to talk to you about, and nothing else.</p>
-            <textarea id="placement" name="placement" rows="4" aria-describedby="placement-help"></textarea>
-          </div>
-
-          <div class="field">
-            <label for="sponsored-before">Have you sponsored a ConvergX event before?</label>
-            <select id="sponsored-before" name="sponsored-before" required>
-              <option value="">Select one</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>You</legend>
-
-          <div class="field">
-            <label for="name">What is your name?</label>
-            <input type="text" id="name" name="name" autocomplete="name" required>
-          </div>
-
-          <div class="field">
-            <label for="role">What is your role?</label>
-            <p class="helper" id="role-help">What you are accountable for on this.</p>
-            <input type="text" id="role" name="role" aria-describedby="role-help" autocomplete="organization-title" required>
-          </div>
-
-          <div class="field">
-            <label for="company">What company do you work for?</label>
-            <p class="helper" id="company-help">The name you want on the signage. This goes to ConvergX and nowhere else.</p>
-            <input type="text" id="company" name="company" aria-describedby="company-help" autocomplete="organization" required>
-          </div>
-
-          <div class="field">
-            <label for="email">What is your work email?</label>
-            <p class="helper" id="email-help">Use your company's own domain.</p>
-            <input type="email" id="email" name="email" aria-describedby="email-help" autocomplete="email" required>
-          </div>
-
-          <!-- The eight the site already convenes, in the order the nav carries
-               them. No free-text box and no ninth option: a taxonomy invented
-               here is one nothing downstream can read. -->
-          <div class="field">
-            <label for="industry">What industry are you in?</label>
-            <p class="helper" id="industry-help">The eight ConvergX convenes.</p>
-            <select id="industry" name="industry" aria-describedby="industry-help" required>
-              <option value="">Select one</option>
-              <option value="aerospace-defence">Aerospace and defence</option>
-              <option value="agriculture">Agriculture</option>
-              <option value="construction">Construction</option>
-              <option value="energy">Energy</option>
-              <option value="manufacturing">Manufacturing</option>
-              <option value="military">Military</option>
-              <option value="mining-natural-resources">Mining and natural resources</option>
-              <option value="technology">Technology</option>
-            </select>
-          </div>
-        </fieldset>
-
-        <p><button class="btn btn--solid" type="submit" disabled>Send this to ConvergX</button></p>
-        <p class="helper">This is a demonstration. The form is not wired up yet, so nothing is sent or saved.</p>
-      </form>
     </div>
   </section>
 
@@ -947,16 +798,7 @@
   <noscript>
     <nav aria-label="Footer">
       <ul>
-        <li><a href="../../industries/">Industries</a></li>
-        <li><a href="../../industries/aerospace-defence/">Aerospace and defence</a></li>
-        <li><a href="../../industries/agriculture/">Agriculture</a></li>
-        <li><a href="../../industries/construction/">Construction</a></li>
-        <li><a href="../../industries/energy/">Energy</a></li>
-        <li><a href="../../industries/manufacturing/">Manufacturing</a></li>
-        <li><a href="../../industries/military/">Military</a></li>
-        <li><a href="../../industries/mining-natural-resources/">Mining and natural resources</a></li>
-        <li><a href="../../industries/technology/">Technology</a></li>
-        <li><a href="../../congress/">The Conference</a></li>
+        <li><a href="../../congress/">The Congress</a></li>
         <li><a href="../../congress/#agenda">Agenda</a></li>
         <li><a href="../../congress/#speakers">Speakers</a></li>
         <li><a href="../../congress/the-app/">The app</a></li>
