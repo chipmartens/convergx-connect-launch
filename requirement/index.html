@@ -67,18 +67,6 @@
 
   <hr class="rule-double">
 
-  <!-- THE TOP NOT-LIVE BLOCK WAS REMOVED, 2026-08-04. Chip: "Remove the not
-       accepting submissions part. The goal of the form is to get people
-       excited about the event and know that we want to make sure that they
-       are going to meet with the right people to solve their problems."
-       Leading with a disclaimer was the wrong first thing to read. The page
-       now opens on what the form is FOR.
-       THE FACT DID NOT GO AWAY, it moved to the button, which is the honest
-       place for it: a reader meets it at the moment it matters rather than
-       before they know what the page is. The button stays disabled, so the
-       form cannot look live and quietly discard a stated requirement.
-       If this should read as fully live, the form needs a real endpoint. That
-       is a decision, not a copy change. -->
 
   <section>
     <div class="wrap">
@@ -113,17 +101,12 @@
 
       <p>Every question is required unless the label says optional.</p>
 
-      <!-- Inert by construction and in two ways at once, because one is not
-           enough for a form collecting this. The submit control is disabled,
-           which also removes implicit submission on Enter; and the method is
-           post rather than the default get, so no browser can put a stated
-           requirement into a URL query string. Do not wire an endpoint
-           without being asked.
-
-           Labels ask a question a person would ask. Hints sit under the
-           label as real text: a placeholder disappears the moment typing
-           starts and is unreliable for a screen reader. -->
-      <form class="req-form" method="post" action="#">
+      <form class="req-form" method="post" action="https://formsubmit.co/info@convergx.co">
+          <input type="hidden" name="_subject" value="Website: requirement submitted">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://chipmartens.github.io/convergx-connect-launch/thanks/">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" aria-hidden="true">
 
         <fieldset>
           <legend>The problem</legend>
@@ -224,22 +207,7 @@
           </div>
         </fieldset>
 
-        <!-- DEMO STATE, Chip 2026-08-04: "this is still just a demo until we're
-             ready to pass it over to the developer to build in with a CMS back
-             end and connect their HubSpot."
-             So the button carries the label it will have when it works, because
-             the job of this page right now is to SHOW the finished thing to
-             Kim and then hand a developer a spec they can build against. A
-             button reading "not accepting submissions" describes a live
-             audience this page does not have.
-             IT STAYS disabled, and that is not caution for its own sake: the
-             URL can be shared, and a form that looks live and silently
-             discards a stated requirement is the one failure mode worth
-             engineering against. Disabled also kills implicit submit on Enter.
-             FOR WHOEVER BUILDS THIS: remove the disabled attribute, set a real
-             action and keep method="post" so a requirement never lands in a
-             URL. The eleven field names are already the ones to map. -->
-        <p><button class="btn btn--solid" type="submit" disabled>Send this to ConvergX</button></p>
+        <p><button class="btn btn--solid" type="submit">Send this to ConvergX</button></p>
         <!-- THE ROUTE OUT, added 2026-08-04. The demo note told a reader
              nothing was being sent and then left them with nowhere to go, so
              anyone who actually had a requirement hit a dead end on the one

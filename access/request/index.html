@@ -111,10 +111,17 @@
           <p>These six decide where a requirement goes and who at ConvergX picks it up.</p>
         </div>
 
-        <!-- Staged markup. The form submits nowhere and stores nothing. -->
-        <form class="body" method="post" action="#" aria-describedby="staged-note">
-          <p>Nothing you write here is visible outside ConvergX review.</p>
-    <!-- OPEN, not public: [[PLACEHOLDER: staged form, submits nowhere. Endpoint and handling to be wired before Sep 22]] -->
+        <!-- WIRED 2026-08-12 (stopgap until the WordPress port): posts to FormSubmit
+             -> info@convergx.co. FIRST live submission triggers a one-time activation
+             email to that inbox; someone at ConvergX must click Activate before
+             deliveries flow. _next must be updated when the domain changes. -->
+        <form class="body" method="post" action="https://formsubmit.co/info@convergx.co">
+          <input type="hidden" name="_subject" value="Website: access request">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://chipmartens.github.io/convergx-connect-launch/thanks/">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" aria-hidden="true">
+          <p>What you send here goes to ConvergX by email, and a person reads it.</p>
 
           <div class="field">
             <label for="org">Organisation</label>

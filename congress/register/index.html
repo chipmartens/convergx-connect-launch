@@ -586,42 +586,6 @@
        went from one to three on this page, all to convergx.co product pages,
        and that is the storefront working rather than a rule being broken. -->
 
-  <!-- ============================== THE FORM ==============================
-       Added 2026-08-04. ConvergX's own checkout places a hold and takes the
-       payment once the registration is approved, which is stated in the panel
-       above. That makes a registration an application, and an application
-       with nowhere to state your case is the gap this form fills. It collects
-       what the approval is made against.
-
-       IT SITS BELOW THE THREE PRODUCTS ON PURPOSE, and the position is an
-       argument rather than a layout preference. A reader meets the passes,
-       then meets the fact that the card is held until approval, and arrives
-       here already holding the question this form answers. Above the products
-       it would be a wall across the money path and would read as a second
-       checkout. Do not move it up.
-
-       IT IS NOT A CHECKOUT AND MUST NEVER BECOME ONE. No card field, no
-       quantity, no cart, no total, no stored state. Payment stays on
-       convergx.co, on the three product buttons above, and not one of those
-       three hrefs moves for this. The only field that touches the passes asks
-       which one the registrant intends to take, which is information rather
-       than an order.
-
-       Built the same way as /requirement/, for the same two reasons: the
-       submit control is disabled, which also removes implicit submission on
-       Enter, and the method is post rather than the default get, so nothing
-       written here can land in a URL. No JavaScript, so it renders complete
-       with scripts off.
-
-       Labels ask a question a person would ask out loud. Hints sit under the
-       label as real text, never as a placeholder, which disappears the moment
-       typing starts and is unreliable for a screen reader.
-
-       ZERO NUMBERS beyond what the page already carries, and no promise of
-       any kind: no meeting, no introduction, no response time, no closing
-       date, no seat count, no field count in the heading. ConvergX asks,
-       decides, vets, brokers and convenes, and no person at ConvergX is given
-       a verb outside that five either. -->
   <section class="section--dense">
     <div class="wrap">
       <div class="sec-head">
@@ -645,7 +609,12 @@
 
       <p>Every question is required.</p>
 
-      <form class="req-form" method="post" action="#">
+      <form class="req-form" method="post" action="https://formsubmit.co/info@convergx.co">
+          <input type="hidden" name="_subject" value="Website: Congress registration enquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://chipmartens.github.io/convergx-connect-launch/thanks/">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" aria-hidden="true">
 
         <fieldset>
           <legend>You</legend>
@@ -749,18 +718,7 @@
           </div>
         </fieldset>
 
-        <!-- DEMO STATE. The button carries the label it will have when it
-             works, because the job of this page right now is to show the
-             finished thing and then hand a developer something to build
-             against. It STAYS disabled: the URL can be shared, and a form that
-             looks live and silently discards what someone wrote is the one
-             failure mode worth engineering against. Disabled also kills
-             implicit submit on Enter.
-             FOR WHOEVER BUILDS THIS: remove the disabled attribute, set a real
-             action and keep method="post" so nothing lands in a URL. The nine
-             field names above are the ones to map. Wiring this does NOT
-             replace checkout, which stays on the three convergx.co links. -->
-        <p class="push-l"><button class="btn btn--solid" type="submit" disabled>Send this to ConvergX</button></p>
+        <p class="push-l"><button class="btn btn--solid" type="submit">Send this to ConvergX</button></p>
         <p class="helper">This is a demonstration. The form is not wired up yet, so nothing is sent or saved.</p>
       </form>
     <!-- [[NEEDS: what ConvergX actually asks an applicant for, and who reads

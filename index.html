@@ -1014,12 +1014,25 @@
             </svg>
             </div>
         <svg class="flow-art" viewBox="0 0 1600 540" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <!-- THE FEED SIDE CAME OFF, 2026-08-12. It was eight resting lines
-               and one travelling pulse, one line per named industry, and the
-               industry list they left from is gone with them (see below). A
-               line arriving from an empty column is worse than no line. What
-               the band shows now is the reaching-out half: ConvergX at the hub
-               and the connections it makes, which names nobody. -->
+          <!-- FEED. A requirement leaving an industry for ConvergX. EIGHT
+               RESTING LINES, ONE TRAVELLING PULSE. There is only ever one
+               requirement in flight, because only one industry is up at a time,
+               so flow.js re-points the single pulse at the live row rather than
+               the markup shipping eight pulses that mostly sit at zero.
+               THE ORIGINS BELOW ARE A SNAPSHOT, measured at 1280 and written
+               down for the no-script view. flow.js measures each row's dot for
+               real and overwrites all eight, because the end of a word moves
+               with the label and the type scale. Do not treat these as solved
+               numbers and do not try to keep them in sync by hand. -->
+          <path class="flow-line flow-feed is-live" pathLength="100" vector-effect="non-scaling-stroke" d="M 316 34 C 534 34 582 270 800 270"/>
+          <path class="flow-line flow-feed" pathLength="100" vector-effect="non-scaling-stroke" d="M 218 101 C 480 101 538 270 800 270"/>
+          <path class="flow-line flow-feed" pathLength="100" vector-effect="non-scaling-stroke" d="M 232 169 C 488 169 544 270 800 270"/>
+          <path class="flow-line flow-feed" pathLength="100" vector-effect="non-scaling-stroke" d="M 156 236 C 446 236 510 270 800 270"/>
+          <path class="flow-line flow-feed" pathLength="100" vector-effect="non-scaling-stroke" d="M 252 304 C 499 304 553 270 800 270"/>
+          <path class="flow-line flow-feed" pathLength="100" vector-effect="non-scaling-stroke" d="M 174 371 C 456 371 518 270 800 270"/>
+          <path class="flow-line flow-feed" pathLength="100" vector-effect="non-scaling-stroke" d="M 404 439 C 583 439 621 270 800 270"/>
+          <path class="flow-line flow-feed" pathLength="100" vector-effect="non-scaling-stroke" d="M 208 506 C 474 506 534 270 800 270"/>
+          <path class="flow-pulse flow-feed-pulse" pathLength="100" vector-effect="non-scaling-stroke" d="M 316 34 C 534 34 582 270 800 270"/>
           <!-- FAN. ConvergX reaching out, landing on the globe. FIVE SLOTS, of
                which flow.js draws three to five each slot, the count picked
                fresh: Chip asked for "3-5 random parts on the globe in NATO
@@ -1070,14 +1083,31 @@
           <circle class="flow-out" cx="800" cy="454" r="15" vector-effect="non-scaling-stroke"/>
         </svg>
 
-          <!-- THE INDUSTRY LIST CAME OFF, 2026-08-12, on the client's
-               instruction: the site should not enumerate sectors, because a
-               published list reads as a closed list. The stage keeps its three
-               columns and the globe and hub are positioned, not flowed, so the
-               left column is simply empty now and nothing moved.
-               _system/flow.js is no longer loaded on this page: its whole job
-               was rotating which industry is up. It still runs on /congress/,
-               which keeps its own band. -->
+          <!-- THE LIST STAYS ALPHABETICAL, which is how a reader scans it. The
+               ORDER THINGS LIGHT UP IN is a separate thing and it lives in
+               flow.js: aerospace, military, energy, construction, technology,
+               agriculture, mining, manufacturing, which is the run Chip
+               described. It is fixed, not reshuffled per loop; he wants a
+               legible rotation, not noise.
+               --d IS GONE FROM THESE ROWS. It scattered eight simultaneous
+               animations; there is now one industry at a time and a class says
+               which. Putting a delay back here would light a second one.
+               --g is the gap between a word and its dot, varied per row so the
+               eight feed origins do not line up on a neat diagonal. The dot is
+               where that row's line starts, and flow.js measures it. -->
+          <!-- RESTORED 2026-08-12: Chip kept the industry column as a VISUAL after the
+           Industries tab came out of the nav. Names only, no links: the pages are
+           staged unlinked for a later release. -->
+        <ul class="flow-sectors">
+          <li class="flow-sector is-live" style="--g:0.75rem"><span class="flow-sector-name">Aerospace and defence</span><span class="flow-dot" aria-hidden="true"></span></li>
+          <li class="flow-sector" style="--g:1.5rem"><span class="flow-sector-name">Agriculture</span><span class="flow-dot" aria-hidden="true"></span></li>
+          <li class="flow-sector" style="--g:1rem"><span class="flow-sector-name">Construction</span><span class="flow-dot" aria-hidden="true"></span></li>
+          <li class="flow-sector" style="--g:2rem"><span class="flow-sector-name">Energy</span><span class="flow-dot" aria-hidden="true"></span></li>
+          <li class="flow-sector" style="--g:1.25rem"><span class="flow-sector-name">Manufacturing</span><span class="flow-dot" aria-hidden="true"></span></li>
+          <li class="flow-sector" style="--g:0.5rem"><span class="flow-sector-name">Military</span><span class="flow-dot" aria-hidden="true"></span></li>
+          <li class="flow-sector" style="--g:1.75rem"><span class="flow-sector-name">Mining and natural resources</span><span class="flow-dot" aria-hidden="true"></span></li>
+          <li class="flow-sector" style="--g:0.875rem"><span class="flow-sector-name">Technology</span><span class="flow-dot" aria-hidden="true"></span></li>
+          </ul>
 
           <!-- THE MARK, NOT THE WORD, and the word is the fallback. Chip asked
                for the real logo here. shell.js already inlines the lockup once
@@ -1285,6 +1315,7 @@
      page cost one loop. Optional by design: with it absent, blocked or
      broken, both plates in the markup are already finished globes. -->
 <script src="_system/globe.js" defer></script>
+<script src="_system/flow.js" defer></script>
 <!-- _system/flow.js is NOT loaded here as of 2026-08-12. It drove the industry
      rotation and the feed lines, both of which came off this page. The band is
      now a finished static figure plus globe.js turning the plate. -->
