@@ -6404,6 +6404,9 @@ main .quotes .quote-track {
 .mega .descriptor { display: none; }
 .mega .link-index a { font-size: var(--step-1); }
 
-/* Whitespace below the sponsor wall (Chip): the logo row sat flush against
-   the section's end. */
-#sponsors .proofbar { margin-block-start: var(--space-l); margin-block-end: var(--space-2xl); }
+/* Whitespace below the sponsor wall (Chip, twice): the logo rows sat flush
+   against the ground change. The first fix used margin on the wall, which
+   COLLAPSES through the section boundary and vanishes into the next band.
+   Padding on the section cannot collapse. */
+#sponsors .proofbar { margin-block-start: var(--space-l); }
+#sponsors.section--dense { padding-block-end: var(--space-3xl); }
