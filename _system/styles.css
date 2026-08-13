@@ -6423,3 +6423,19 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
     transparent 0, #000 var(--reel-edge),
     #000 calc(100% - var(--reel-edge)), transparent 100%);
 }
+
+/* SECTION 55 (2026-08-13): collapsed team bios. Names and roles show; the
+   prose sits behind the interim site's own affordance, "View full bio",
+   as a native disclosure. No JS. */
+.bio-more > summary {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  margin-block-start: var(--space-s);
+  width: fit-content;
+}
+.bio-more > summary::-webkit-details-marker { display: none; }
+.bio-more { margin-block-start: var(--space-2xs); }
+.bio-more[open] > summary { margin-block-end: var(--space-s); }
