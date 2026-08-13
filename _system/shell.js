@@ -403,7 +403,7 @@
      * [[REVIEW: Xplore vs Regional Congresses as the page's own name is open
      * with Cam and Kim. Whichever wins, this label and /congress/xplore/'s h1
      * are the two places that have to agree]] */
-    { label: "Regional Congresses", href: "/congress/xplore/",
+    { label: "Regional Xchanges", href: "/congress/xplore/",
       note:  "The same format composed around one regional economy." },
     { label: "Xchange Partnerships", href: "/congress/partnerships/",
       note:  "ConvergX convenes inside events it does not run." }
@@ -1321,7 +1321,13 @@
         returnTo = null;
         /* Only when nothing is opening in its place, so moving straight from
          * one bio to another does not bounce focus out to the grid. */
-        if (back && !next && document.contains(back)) back.focus();
+        if (back && !next && document.contains(back)) {
+          /* focusVisible:false (2026-08-13, Chip): restoring focus after a
+           * mouse-driven overlay close was painting the keyboard focus ring
+           * on the trigger. Keyboard closes still show it: the browser's own
+           * heuristic wins where the option is unsupported. */
+          back.focus({ focusVisible: false });
+        }
       }
 
       if (next) {
@@ -1332,7 +1338,7 @@
         var scroller = next.querySelector(".bio-scroll");
         if (scroller) scroller.scrollTop = 0;
         var close = next.querySelector(".bio-close");
-        if (close) close.focus();
+        if (close) close.focus({ focusVisible: false });
       }
     }
 
@@ -1423,6 +1429,11 @@
       footer.innerHTML = buildFooter();
       localise(footer);
       wireQuotes(footer);
+      /* The congress page testimonial wall adopted the footer quotes grammar
+       * (2026-08-13); same wiring, different root. Pages without the section
+       * no-op on the querySelector. */
+      var pageQuotes = document.querySelector("main .quotes.footer-quotes");
+      if (pageQuotes) wireQuotes(pageQuotes);
     }
   }
 
