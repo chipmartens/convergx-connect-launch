@@ -533,8 +533,12 @@
   }
 
   function megaCol(id, label, body, cls) {
+    /* EYEBROWS OFF, Chip 2026-08-13: the standfirst labels came out of every
+     * panel visually. The element STAYS and goes .vh because it is each
+     * panel list's aria-labelledby target; deleting it would leave the
+     * lists unnamed to screen readers. */
     return '<div class="mega-col' + (cls ? " " + cls : "") + '">' +
-      '<p class="label label--lo" id="' + id + '">' + label + "</p>" +
+      '<p class="vh" id="' + id + '">' + label + "</p>" +
       body +
     "</div>";
   }
@@ -552,7 +556,8 @@
     if (key === "congress") {
       cols =
         megaCol(id + "-h", CONGRESS_STANDFIRST,
-          indexList(CONGRESS_PAGES, current, ' aria-labelledby="' + id + '-h"')) +
+          indexList(CONGRESS_PAGES, current, ' aria-labelledby="' + id + '-h"'),
+        "mega-col--two") +
         megaCol(id + "-e", CONGRESS_TAKEPART_LABEL,
           indexList(CONGRESS_TAKEPART, current, ' aria-labelledby="' + id + '-e"'),
           "mega-col--aside");
