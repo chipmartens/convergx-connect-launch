@@ -403,7 +403,7 @@
      * [[REVIEW: Xplore vs Regional Congresses as the page's own name is open
      * with Cam and Kim. Whichever wins, this label and /congress/xplore/'s h1
      * are the two places that have to agree]] */
-    { label: "Regional Xchanges", href: "/congress/xplore/",
+    { label: "Regional Conferences", href: "/congress/xplore/",
       note:  "The same format composed around one regional economy." },
     { label: "Xchange Partnerships", href: "/congress/partnerships/",
       note:  "ConvergX convenes inside events it does not run." }
@@ -432,18 +432,12 @@
   ];
   var XPAND_STANDFIRST = "A consulting practice. One problem, asked across industries.";
   var XPAND_PAGES = [
-    { label: "Who it is for",   href: "/xpand/#who-it-is-for",
+    { label: "Our approach",   href: "/xpand/#who-it-is-for",
       note:  "An organisation carrying a problem, and a company whose answer was built elsewhere." },
-    { label: "The last mile",   href: "/xpand/#the-last-mile",
-      note:  "Procurement, qualification and financing, the three things ConvergX names as the blockers." },
-    { label: "What Xpand does", href: "/xpand/#what-xpand-does",
+    { label: "Where we excel", href: "/xpand/#what-xpand-does",
       note:  "Consulting, access to testing and validation, and the one that is not running." },
     { label: "Xpand Prep",      href: "/xpand/#xpand-prep",
-      note:  "Getting a buyer to a requirement, and a supplier through a large buyer's questions." },
-    { label: "How it works",    href: "/xpand/#how-it-works",
-      note:  "Six phases, and the named document each of the first four ends in." },
-    { label: "Readiness",       href: "/xpand/#what-readiness-means",
-      note:  "TRL and the commercial scale, and why the stated floor sits where it does." }
+      note:  "Getting a buyer to a requirement, and a supplier through a large buyer's questions." }
   ];
 
   /* Footer sitemap.
@@ -482,12 +476,9 @@
     ]},
     { title: "Consulting", links: [
       { label: "Overview",        href: "/xpand/" },
-      { label: "Who it is for",   href: "/xpand/#who-it-is-for" },
-      { label: "The last mile",   href: "/xpand/#the-last-mile" },
-      { label: "What Xpand does", href: "/xpand/#what-xpand-does" },
-      { label: "Xpand Prep",      href: "/xpand/#xpand-prep" },
-      { label: "How it works",    href: "/xpand/#how-it-works" },
-      { label: "Readiness",       href: "/xpand/#what-readiness-means" }
+      { label: "Our approach",   href: "/xpand/#who-it-is-for" },
+      { label: "Where we excel", href: "/xpand/#what-xpand-does" },
+      { label: "Xpand Prep",      href: "/xpand/#xpand-prep" }
     ]},
     { title: "About", links: [
       { label: "Overview",       href: "/about/" },
@@ -873,6 +864,10 @@
    * The track is a scroll-snap row: with scripts off it is still every
    * quote, readable and scrollable, and the arrows simply do not appear. */
   function buildQuotes() {
+    /* CONGRESS-ONLY, Chip 2026-08-13: the testimonial wall renders in the
+     * footer of the Congresses page alone; every other footer drops it. */
+    var path = location.pathname.replace(/index\.html$/, "");
+    if (!/\/congress\/$/.test(path)) return "";
     var items = FOOTER_QUOTES.map(function (q) {
       return '<li class="quote"><figure>' +
         "<blockquote><p>" + q.quote + "</p></blockquote>" +
