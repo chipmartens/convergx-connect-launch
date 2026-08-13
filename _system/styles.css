@@ -6294,3 +6294,36 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
   .rl { grid-template-columns: 1fr 1fr; gap: var(--space-2xl); }
   .rl figcaption { grid-column: 1 / -1; }
 }
+
+/* ================================================================
+   SECTION 48: SPONSOR REEL (2026-08-12). One slow, continuous strip
+   of the Congress sponsor marks on the homepage, under the congress
+   band. The track holds TWO identical .sponsor-set lists and slides
+   half its own width, so the loop is seamless; each set carries half
+   the inter-set gap as inline padding to keep the junction rhythm.
+   Marks are the same masked, cap-height-normalised component the
+   proofbar uses, one size up. Reduced motion gets a static wrapped
+   row and the duplicate set display:none. No JS.
+   ================================================================ */
+.sponsor-reel { overflow: hidden; margin-block-start: var(--space-l); }
+.sponsor-reel-track {
+  display: flex;
+  width: max-content;
+  animation: sponsor-reel 80s linear infinite;
+}
+.sponsor-set {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3xl);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-inline: calc(var(--space-3xl) / 2);
+}
+.sponsor-reel .mark { --mark-cap: 1rem; }
+@keyframes sponsor-reel { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-reel-track { animation: none; width: auto; flex-wrap: wrap; }
+  .sponsor-set[aria-hidden="true"] { display: none; }
+  .sponsor-set { flex-wrap: wrap; row-gap: var(--space-l); }
+}
