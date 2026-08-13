@@ -557,8 +557,11 @@
           indexList(CONGRESS_TAKEPART, current, ' aria-labelledby="' + id + '-e"'),
           "mega-col--aside");
     } else if (key === "xpand") {
+      /* Two columns, Chip 2026-08-13: six rows in one column left half the
+       * panel empty and ran tall. Modifier styled in styles.css section 52. */
       cols = megaCol(id + "-h", XPAND_STANDFIRST,
-        indexList(XPAND_PAGES, current, ' aria-labelledby="' + id + '-h"'));
+        indexList(XPAND_PAGES, current, ' aria-labelledby="' + id + '-h"'),
+        "mega-col--two");
     } else {
       cols = megaCol(id + "-h", ABOUT_STANDFIRST,
         indexList(ABOUT_PAGES, current, ' aria-labelledby="' + id + '-h"'));

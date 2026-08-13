@@ -6378,3 +6378,15 @@ main .quotes .quote-track {
 @media (max-width: 48rem) {
   main .quotes .quote-track { grid-template-columns: 1fr; }
 }
+
+/* SECTION 52 (2026-08-13): two-column mega list. First use: the Consulting
+   panel, six rows that left half the panel empty in one column. Row-flow
+   grid, so reading order stays left-right; the first TWO items sit on the
+   top row and both drop the border the single-column rule only stripped
+   from the first. */
+.mega-col--two .link-index {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--space-2xl);
+}
+.mega-col--two .link-index li:nth-child(2) { border-top: 0; }
