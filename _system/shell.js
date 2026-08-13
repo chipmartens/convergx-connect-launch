@@ -370,9 +370,7 @@
     { label: "Agenda",   href: "/congress/#agenda",
       note:  "The published schedule for all three days, one disclosure per day." },
     { label: "Accommodations", href: "/congress/#accommodations",
-      note:  "Four Calgary hotels ConvergX publishes, and the rate code covering two." },
-    { label: "Questions", href: "/congress/#faq",
-      note:  "Cost, vetting, sponsorship and the practicalities, answered in short." }
+      note:  "Four Calgary hotels ConvergX publishes, and the rate code covering two." }
   ];
   /* REGISTER AND SPONSOR LEAD THIS COLUMN, 2026-08-04. Chip: "there should be
    * the most emphasis on the right on Register and Sponsor."
