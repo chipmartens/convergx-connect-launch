@@ -71,28 +71,38 @@
   if (line.length !== SLOTS || out.length !== SLOTS ||
       back.length !== SLOTS || node.length !== SLOTS) return;
 
-  /* The eight resting feed lines, and the ONE pulse that travels whichever of
+  /* The ten resting feed lines, and the ONE pulse that travels whichever of
    * them belongs to the industry currently up. One requirement is in flight at
-   * a time because one industry is up at a time. */
+   * a time because one industry is up at a time.
+   * ROWS WENT 8 -> 10 on 2026-08-13 with the client's approved vertical list.
+   * The guard below is deliberate and is the whole safety net: markup and
+   * script must agree or this file leaves the static figure alone. If the band
+   * ever goes dead, count the <li>s and the .flow-feed paths first. */
   var sector = band.querySelectorAll(".flow-sector");
   var dot    = band.querySelectorAll(".flow-dot");
   var feed   = art.querySelectorAll(".flow-feed");
   var feedPulse = art.querySelector(".flow-feed-pulse");
   var hub    = band.querySelector(".flow-hub");
-  var ROWS = 8;
+  var ROWS = 10;
   if (sector.length !== ROWS || dot.length !== ROWS || feed.length !== ROWS ||
       !feedPulse || !hub) return;
 
   /* THE ROTATION, in DOM index order of the alphabetical list. Chip's run was
    * "aerospace and defense... and then military lights up... and then energy
    * and then construction and then technology and then agriculture and then
-   * mining", which is seven of the eight; manufacturing is the one he did not
-   * name so it takes the empty slot at the end.
+   * mining". REMAPPED 2026-08-13 onto the client's ten: military folded into
+   * Aerospace, Defence, Security & Space, and technology into Digital
+   * Infrastructure & Cybersecurity, so his run survives as
+   *   aerospace, energy, construction, digital, agriculture, mining,
+   * and the four he never named take the tail:
+   *   advanced manufacturing, health & life sciences, supply chain, financial.
+   * ORDER[0] is row 1, which is also the row the markup ships lit.
    * FIXED, NOT SHUFFLED. He asked for a legible rotation. Randomising the order
    * per loop would make it impossible to tell the sequence is a sequence. The
    * randomness in this component is the connection COUNT and the SITES, both of
-   * which are about the network, not about the industries. */
-  var ORDER = [0, 5, 3, 2, 7, 1, 6, 4];
+   * which are about the network, not about the industries.
+   * Every index 0-9 appears exactly once. Keep it that way. */
+  var ORDER = [1, 5, 3, 4, 2, 8, 0, 7, 9, 6];
 
   /* Where the fan leaves, in the art viewBox: dead centre under the hub box,
    * whose own ground hides the join. HOLD is how much of a slot the pair stays
@@ -404,7 +414,7 @@
    * cause and effect the dot is there to show. That is also why the per-row
    * jitter lives on --g in the markup, moving the dot itself, rather than being
    * added to the path here and pulling the line off the dot.
-   * Cheap: eight rects on resize, not per frame. */
+   * Cheap: ten rects on resize, not per frame. */
   var feedOrigins = null;
   function measureFeeds(m) {
     var box = art.getBoundingClientRect(), i, r, p, a;

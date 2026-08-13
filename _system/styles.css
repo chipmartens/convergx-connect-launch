@@ -5403,10 +5403,12 @@ html:has(.subnav) { scroll-behavior: smooth; }
 }
 
 /* ---- the sectors column ---- */
-/* Eight equal rows is not a style choice, it is the registration contract:
- * chip i is centred at (i + 0.5)/8 of the stage height and the eight feed
- * paths leave at exactly those eight numbers. Add a ninth industry and the
- * path data has to be regenerated. */
+/* TEN equal rows is not a style choice, it is the registration contract:
+ * chip i is centred at (i + 0.5)/10 of the stage height and the ten feed
+ * paths leave at exactly those ten numbers. It was eight until 2026-08-13,
+ * when the client's approved vertical list replaced them. Change the count
+ * and FOUR things move together: this repeat(), the <li>s, the .flow-feed
+ * paths beside them, and ROWS plus ORDER in flow.js. */
 .flow-sectors {
   grid-column: 1;
   grid-row: 1;
@@ -5415,7 +5417,7 @@ html:has(.subnav) { scroll-behavior: smooth; }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-rows: repeat(10, 1fr);
 }
 /* THE DOT IS THE ORIGIN, and that is now literal: flow.js measures each dot's
  * centre off the DOM and starts that row's feed path exactly there. Nothing

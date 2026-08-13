@@ -386,12 +386,25 @@
       note:  "Three passes, priced and published, and what a registration does not buy." },
     { label: "Sponsor",              href: "/congress/sponsor/",  cta: true,
       note:  "Nine tiers with what each one includes. Visibility in the room, never a match." },
-    /* THE APP IS BACK IN THIS COLUMN, 2026-08-07. It stays OUT of the
-     * Congress page's own sticky subnav, which is Chip's 2026-08-04 call:
-     * "remove The App from the sub menu. Keep the block on the page." The
-     * panel is the route that carries it by name from anywhere on the site. */
-    { label: "The app",  href: "/congress/the-app/",
-      note:  "The agenda, the sessions and the people in the room, on the phone you already carry." },
+    /* THE APP IS OUT OF THIS PANEL AGAIN, 2026-08-13, Chip's call. It was
+     * added on 2026-08-07 as the one route that carried it by name; the app
+     * is now marked coming soon on /congress/, and a menu row is a promise a
+     * coming-soon thing should not make. NOTHING ELSE MOVED: /congress/the-app/
+     * still resolves, the section on /congress/ stays, and the FOOTER below
+     * still carries the row, so the page is still reachable without JS.
+     * Its old note, if the row comes back: "The agenda, the sessions and the
+     * people in the room, on the phone you already carry."
+     *
+     * REGIONAL CONGRESSES, added 2026-08-13. Lindsay Robertson renamed this
+     * item "Congresses" precisely because it covers the Global Congress AND
+     * the regional ones, and the regional page had no route under her own
+     * vocabulary. The label is the nav-level fix; the page keeps its Xplore
+     * branding and its own h1 for now.
+     * [[REVIEW: Xplore vs Regional Congresses as the page's own name is open
+     * with Cam and Kim. Whichever wins, this label and /congress/xplore/'s h1
+     * are the two places that have to agree]] */
+    { label: "Regional Congresses", href: "/congress/xplore/",
+      note:  "The same format composed around one regional economy." },
     { label: "Xchange Partnerships", href: "/congress/partnerships/",
       note:  "ConvergX convenes inside events it does not run." }
   ];
