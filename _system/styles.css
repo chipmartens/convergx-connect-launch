@@ -4037,6 +4037,10 @@ html:has(.subnav) { scroll-behavior: smooth; }
   padding: 0;
   display: block;
   max-width: var(--measure);
+  /* Breathing room after the intro line ("Attendees leave with:"), Chip
+   * 2026-08-13: the first row drops its own top padding, so without this
+   * the list sat flush against the sentence introducing it. */
+  margin-block-start: var(--space-m);
 }
 .outcome-list > li {
   position: relative;
