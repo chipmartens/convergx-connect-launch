@@ -412,62 +412,17 @@
    * title. The path says network and the label does not, deliberately:
    * "network" is the thing the page spends its whole argument denying,
    * that anything here accumulated. No path changes. */
-  var ABOUT_STANDFIRST = "ConvergX convenes, and that is all it does.";
+  var ABOUT_STANDFIRST = "ConvergX began with a simple observation.";
   var ABOUT_PAGES = [
     { label: "Overview",       href: "/about/",
       note:  "It does not manufacture, supply or bid, and has no side in the work it introduces." },
-    { label: "How we vet",     href: "/about/#how-we-vet",
-      note:  "Two sets of questions. One a file can answer, one it cannot." },
+    { label: "Who we are",     href: "/about/#who-we-are",
+      note:  "The founding observation, and what ConvergX is at its core." },
     { label: "Leadership",     href: "/about/#leadership",
-      note:  "The people ConvergX names, with roles as ConvergX publishes them." },
-    { label: "Who we convene", href: "/about/#who-we-convene",
-      note:  "Nothing about this room accumulated. Both sides were composed, company by company." }
+      note:  "The people ConvergX names, with roles as ConvergX publishes them." }
   ];
-
-  /* The Xpand panel. Same shape as the Conference panel: one column, a
-   * standfirst in the label slot, then the rows.
-   *
-   * HONESTY GATE. Both descriptors are drawn from copy already live on
-   * the two pages, the same rule the other three panels run under. No new
-   * claim enters the site through the nav. The standfirst is the pages'
-   * own load-bearing sentence, that a stream has a named owner and the
-   * owner is not ConvergX, which is the one thing a reader has to
-   * understand before either row means anything.
-   *
-   * Row labels match the footer's Xpand column exactly. Two routes to the
-   * same page that disagree on what it is called is a reader's problem,
-   * not a tidiness one. */
-  /* Rebuilt 2026-07-29. The previous rows described a "Stream Lead" model
-   * taken from ConvergX's OLD site. Their relaunched site does not publish
-   * it: "stream", "Stream Lead" and "stream owner" appear zero times across
-   * every live page. Xpand is a consulting practice. Do not restore the
-   * stream rows. Capture: _reference/CONVERGX-CO-2026-07-29.md */
-  /* THE ROWS ARE ANCHORS NOW, not pages. Chip, 2026-08-03: "updating the
-   * Consulting and About pages to be a similar single page design as the
-   * Conference page. The mega-menu bar links can just link to the scroll
-   * elements on the pages. I just feel like it's maybe silly to have so many
-   * pages."
-   * Same move the Conference panel made on 2026-07-31 and for the same reason:
-   * pointing the nav at a standalone page whose content now also lives in a
-   * section gives the site two sources of truth for one argument. The old
-   * pages still exist and still resolve; nothing links to them.
-   * The ids are the contract. They are declared on /xpand/ and /about/ and
-   * listed in this file's sibling comment on ABOUT_PAGES. Rename a section id
-   * and these rows break silently, because a bad fragment does not 404. */
   var XPAND_STANDFIRST = "A consulting practice. One problem, asked across industries.";
-  /* FIVE ROWS as of 2026-08-04, was three, and they match the five links in
-   * the page's own sticky subnav in the same order. That is the convention
-   * Chip set on the Conference panel: "Match the mega-menu links for The
-   * Conference to the sub menu links."
-   * ONE DELIBERATE DIFFERENCE, and it is the same one /congress/ carries: row
-   * one reads "Overview" and points at the page itself, where the on-page bar
-   * reads "Where it sits" and points at the first section. A panel's first row
-   * always offers the whole page. Do not "fix" this into a match.
-   * "What readiness means" shortened to "Readiness" alongside the subnav, for
-   * the same crowding reason. The section head still says the full phrase. */
   var XPAND_PAGES = [
-    { label: "Overview",        href: "/xpand/",
-      note:  "Where a consulting engagement sits next to the Congress." },
     { label: "Who it is for",   href: "/xpand/#who-it-is-for",
       note:  "An organisation carrying a problem, and a company whose answer was built elsewhere." },
     { label: "The last mile",   href: "/xpand/#the-last-mile",
@@ -528,9 +483,8 @@
     ]},
     { title: "About", links: [
       { label: "Overview",       href: "/about/" },
-      { label: "How we vet",     href: "/about/#how-we-vet" },
+      { label: "Who we are",     href: "/about/#who-we-are" },
       { label: "Leadership",     href: "/about/#leadership" },
-      { label: "Who we convene", href: "/about/#who-we-convene" },
       { label: "Access",         href: "/access/" },
       { label: "Request access", href: "/access/request/" },
       { label: "Apply to join",  href: "/access/apply/" }
