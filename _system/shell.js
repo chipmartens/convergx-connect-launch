@@ -349,7 +349,7 @@
    * MIXED TARGETS, and the mix is the point. Most rows are anchors on the
    * one-pager. Two rows are real pages and stay real pages:
    *   Register -> /congress/register/
-   *   Sponsor  -> /congress/sponsor/
+   *   Sponsor  -> /congress/#sponsor-contact
    * Chip, same instruction: "Register and Sponsor should still be
    * standalone pages that go into more details." They are the storefronts,
    * they carry the per-product prices, inclusions and tax qualifiers, and
@@ -384,8 +384,11 @@
   var CONGRESS_TAKEPART = [
     { label: "Register",             href: "/congress/register/", cta: true,
       note:  "Three passes, priced and published, and what a registration does not buy." },
-    { label: "Sponsor",              href: "/congress/sponsor/",  cta: true,
-      note:  "Nine tiers with what each one includes. Visibility in the room, never a match." },
+    /* The tiers page was RETIRED 2026-08-13 (Kim, via Lindsay: no page
+     * listing sponsorship tiers/spends). Sponsor now lands on the
+     * sponsorship contact form on /congress/. */
+    { label: "Sponsor",              href: "/congress/#sponsor-contact",  cta: true,
+      note:  "Contact us for sponsorship information." },
     /* THE APP IS OUT OF THIS PANEL AGAIN, 2026-08-13, Chip's call. It was
      * added on 2026-08-07 as the one route that carried it by name; the app
      * is now marked coming soon on /congress/, and a menu row is a promise a
@@ -479,7 +482,7 @@
       { label: "Speakers",             href: "/congress/#speakers" },
       { label: "The app",              href: "/congress/the-app/" },
       { label: "Register",             href: "/congress/register/" },
-      { label: "Sponsor",              href: "/congress/sponsor/" },
+      { label: "Sponsor",              href: "/congress/#sponsor-contact" },
       { label: "Xchange Partnerships", href: "/congress/partnerships/" }
     ]},
     { title: "Consulting", links: [

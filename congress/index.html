@@ -6,8 +6,8 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>The Congress | ConvergX</title>
 <meta name="description" content="Sep 22 to 24, 2026, Calgary. Two invite-only roundtables, a reception, then two days of sessions. The 10th Anniversary.">
-<link rel="stylesheet" href="../_system/tokens.css">
-<link rel="stylesheet" href="../_system/styles.css">
+<link rel="stylesheet" href="../_system/tokens.css?v=9abb69d9">
+<link rel="stylesheet" href="../_system/styles.css?v=9abb69d9">
 </head>
 <body data-surface="dark" data-hero="photo">
 
@@ -44,7 +44,7 @@
             <li><a href="../congress/#agenda">Agenda</a></li>
             <li><a href="../congress/#accommodations">Accommodations</a></li>
             <li><a href="../congress/register/">Register</a></li>
-            <li><a href="../congress/sponsor/">Sponsor</a></li>
+            <li><a href="../congress/#sponsor-contact">Sponsor</a></li>
             <li><a href="../congress/xplore/">Regional Conferences</a></li>
             <li><a href="../congress/partnerships/">Xchange Partnerships</a></li>
           </ul>
@@ -88,7 +88,7 @@
        #agenda rather than a separate table, because a summary table and a
        full timetable on ONE page is a repeat rather than a refrain.
 
-       ABSORBED, not deleted: /congress/register/, /congress/sponsor/ and
+       ABSORBED, not deleted: /congress/register/, /congress/#sponsor-contact and
        /congress/agenda/ still exist and still resolve, but as of 2026-07-31
        the nav no longer points at them. It anchors into the sections here
        instead, because two routes to the same content is two sources of
@@ -312,7 +312,7 @@
            boundary, shows the three passes with ConvergX's own admin-fee and tax
            qualifiers, and hands off to the product pages from there.
            THIS PAGE NOW HAS ZERO EXTERNAL LINKS. Every route to money runs
-           through /congress/register/ or /congress/sponsor/, which is one place
+           through /congress/register/ or /congress/#sponsor-contact, which is one place
            to check when the shop changes rather than five. -->
       <p class="hero-cta"><a class="btn btn--solid" href="../congress/register/">Attend the Congress</a></p>
 
@@ -978,8 +978,10 @@
       <li><a href="#agenda">Agenda</a></li>
       <li><a href="#accommodations">Accommodations</a></li>
       <li><a href="#sponsors">Sponsors</a></li>
-      <li class="subnav-end"><a href="../congress/register/">Register</a></li>
-      <li><a href="../congress/sponsor/">Sponsor</a></li>
+      <!-- REGISTER + SPONSOR PAGE LINKS REMOVED 2026-08-13 (Lindsay: duplicates).
+           The header CTA carries Register; sponsorship asks go to the form at
+           #sponsor-contact below. -->
+      <li><a href="#sponsor-contact">Contact</a></li>
       <!-- THE APP STAYS OUT OF THIS BAR, 2026-08-04, Chip: "remove The App from
            the sub menu. Keep the block on the page, but just leave the app out
            for now. They find it as they scroll."
@@ -1858,6 +1860,65 @@
        THE ONE DESTINATION is /congress/the-app/, which is where a delegate
        reads the boundaries in full. No second competing link goes in a block
        whose job is one destination. -->
+  <!-- SPONSORSHIP CONTACT, added 2026-08-13 on Lindsay Robertson's emailed
+       instruction: a form after the sponsor logos, "Contact us for
+       sponsorship information," asking name, email, industry and message,
+       delivered to adam@convergx.co. Replaces the sponsorship-tiers page,
+       which Kim retired the same day. Same FormSubmit stopgap wiring as the
+       other forms; adam@convergx.co gets its OWN one-time activation email
+       on first submission, someone must click it before deliveries flow. -->
+  <section id="sponsor-contact" class="section--dense">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Contact us for sponsorship information</h2>
+        <span class="label label--lo label--edge">Sponsorship</span>
+      </div>
+      <div class="editorial">
+        <form class="body" method="post" action="https://formsubmit.co/adam@convergx.co">
+          <input type="hidden" name="_subject" value="Website: sponsorship inquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://chipmartens.github.io/convergx-connect-launch/thanks/">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" aria-hidden="true">
+
+          <div class="field">
+            <label for="sp-name">Name</label>
+            <input type="text" id="sp-name" name="name" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="sp-email">Email</label>
+            <input type="email" id="sp-email" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="sp-industry">Industry</label>
+            <select id="sp-industry" name="industry" required>
+              <option value="">Select one</option>
+              <option>Advanced Manufacturing</option>
+              <option>Aerospace, Defence, Security &amp; Space</option>
+              <option>Agriculture &amp; Food Systems</option>
+              <option>Construction &amp; Infrastructure</option>
+              <option>Digital Infrastructure &amp; Cybersecurity</option>
+              <option>Energy</option>
+              <option>Financial Services</option>
+              <option>Health &amp; Life Sciences</option>
+              <option>Mining &amp; Critical Minerals</option>
+              <option>Supply Chain, Logistics &amp; Trade</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="sp-message">Message</label>
+            <textarea id="sp-message" name="message" rows="5" required></textarea>
+          </div>
+
+          <p><button class="btn btn--solid" type="submit">Send</button></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <section id="app" class="app-band">
     <div class="wrap">
       <div class="sec-head">
@@ -1904,7 +1965,7 @@
        visibility-never-a-match argument).
        NOTHING WAS LOST. Every one of those three is now the OPENING of its own
        standalone page: /congress/register/ leads with the admission standard
-       and the boundary, /congress/sponsor/ leads with the visibility line.
+       and the boundary, /congress/#sponsor-contact leads with the visibility line.
        Both are storefronts and carry the prices, inclusions, fees and hotels,
        none of which was ever on this page. The subnav sends readers straight
        there.
@@ -2375,7 +2436,7 @@
         <li><a href="../congress/#speakers">Speakers</a></li>
         <li><a href="../congress/the-app/">The app</a></li>
         <li><a href="../congress/register/">Register</a></li>
-        <li><a href="../congress/sponsor/">Sponsor</a></li>
+        <li><a href="../congress/#sponsor-contact">Sponsor</a></li>
         <li><a href="../congress/partnerships/">Xchange Partnerships</a></li>
         <li><a href="../xpand/">Consulting</a></li>
         <li><a href="../xpand/#who-it-is-for">Our approach</a></li>
