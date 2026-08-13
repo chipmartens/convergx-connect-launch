@@ -6439,3 +6439,134 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
 .bio-more > summary::-webkit-details-marker { display: none; }
 .bio-more { margin-block-start: var(--space-2xs); }
 .bio-more[open] > summary { margin-block-end: var(--space-s); }
+
+/* ========================================================================
+ * SECTION 56 (2026-08-13, Chip): the who-attends industries as CARDS.
+ * Chip: "Can you make these cards instead on the Congresses page?" The
+ * eight industries were .whatis rows (title left, body right); they are
+ * now a two-up card grid. The card ground is --block, the token whose
+ * stated job is "a panel on a white page", so the cards read against the
+ * paper ground without needing a border. The h3 keeps the .whatis-title
+ * ramp so the page's subheading scale stays one scale.
+ * ==================================================================== */
+.industry-cards {
+  display: grid;
+  gap: var(--space-m);
+  margin-block-start: var(--space-xl);
+}
+@media (min-width: 48rem) {
+  .industry-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.industry-card {
+  background: var(--block);
+  padding: var(--space-l);
+}
+.industry-card > h3 {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 500;
+  letter-spacing: var(--track-2);
+  line-height: var(--lh-heading);
+  color: var(--fg-hi);
+  text-wrap: balance;
+  margin-block-end: var(--space-s);
+}
+.industry-card > p { max-width: none; }
+
+/* ========================================================================
+ * SECTION 57 (2026-08-13, Chip): the commercialization cluster (/xpand/
+ * #the-last-mile + #what-readiness-means) on the BRAND NAVY so it pops
+ * from the black ground. Navy fails AS an accent on dark (1.32:1 against
+ * the ground) but works AS a ground: white type on navy is 13.57:1 and
+ * the ice accent holds ~8.7:1. --bg follows so anything painting
+ * var(--bg) inside the band matches.
+ * ==================================================================== */
+.band--navy {
+  background: var(--navy);
+  --bg: var(--navy);
+}
+
+/* ========================================================================
+ * SECTION 58 (2026-08-13, Chip): team layout. Kim and Jessilyn hold full
+ * .bio-figure rows with real air between them; the remaining eight sit in
+ * a three-wide grid, photo on top, name and title under it, bios still
+ * collapsed behind View full bio. Below 48rem the grid folds to one
+ * column and everyone reads as a single stack again.
+ * ==================================================================== */
+.team-list > .bio-figure + .bio-figure,
+.team-list > * + .team-grid { margin-block-start: var(--space-3xl); }
+.team-grid {
+  display: grid;
+  gap: var(--space-2xl) var(--space-l);
+}
+@media (min-width: 48rem) {
+  .team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* Inside the grid the two-column figure folds: one track, photo first. */
+.team-grid > .bio-figure {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-m);
+}
+.team-grid .bio-photo { max-inline-size: none; }
+
+/* Adam's source is a wide conference shot, not a studio square; the 1/1
+ * cover crop was taking the top of his head. Bias the crop upward. */
+#card-adam-frost .bio-photo,
+#bio-adam-frost .bio-photo { object-position: 50% 10%; }
+
+/* SECTION 59 (2026-08-13, Chip: "Make these logos larger"): the sponsor
+ * marks on /congress/#sponsors step up from the site-wide 0.75rem cap to
+ * 1.1rem. Scoped to that section so the hero reel and the other proofbars
+ * keep their own size. */
+#sponsors .mark { --mark-cap: 1.1rem; }
+
+/* SECTION 58b (2026-08-13, Chip): Kim's and Jessilyn's photos take half the
+ * container, names to the right. Only the two full rows; the grid keeps its
+ * own single-track figure. The 18rem photo cap is overridden here on
+ * purpose: both source files are the 800px studio squares and hold up at
+ * half the page width. */
+.team-list > .bio-figure {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+/* SECTION 60 (2026-08-13, Chip): the app screenshot is a full phone-height
+ * capture and ran far past the copy beside it. The figure now takes exactly
+ * the copy column's height (height:0 + min-height:100% inside the stretched
+ * grid row, so the COPY sets the row) and the capture fades out over its
+ * last stretch instead of ending on a hard cut. Below the stack breakpoint
+ * the trick would measure an auto row, so a plain max-height takes over. */
+@media (min-width: 60rem) {
+  .app-band .app-inner { align-items: stretch; }
+  .app-band .mod-shot-frame {
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 98%);
+            mask-image: linear-gradient(to bottom, #000 72%, transparent 98%);
+  }
+}
+@media (max-width: 59.99rem) {
+  .app-band .mod-shot-frame {
+    max-height: 30rem;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 98%);
+            mask-image: linear-gradient(to bottom, #000 72%, transparent 98%);
+  }
+}
+
+/* SECTION 61 (2026-08-13, Chip): the About hero split. Copy left, the team
+ * group composite in the right half that used to be whitespace. Below the
+ * fold breakpoint the image drops under the copy at full width. */
+.about-hero-split {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: end;
+}
+@media (min-width: 64rem) {
+  .about-hero-split { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
+}
+.team-hero {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}

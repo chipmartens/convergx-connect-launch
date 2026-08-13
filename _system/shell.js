@@ -422,20 +422,28 @@
    * "network" is the thing the page spends its whole argument denying,
    * that anything here accumulated. No path changes. */
   var ABOUT_STANDFIRST = "ConvergX began with a simple observation.";
+  /* MENUS MIRROR THE SUBNAVS (2026-08-13, Chip: "update the mega menus to
+   * have the same links as the sub menus"). Each panel's rows are its
+   * page's on-page subnav, same labels, same order. When a subnav changes,
+   * change the matching array here in the same edit. */
   var ABOUT_PAGES = [
     { label: "Overview",       href: "/about/",
-      note:  "It does not manufacture, supply or bid, and has no side in the work it introduces." },
-    { label: "Who we are",     href: "/about/#who-we-are",
       note:  "The founding observation, and what ConvergX is at its core." },
-    { label: "Leadership",     href: "/about/#leadership",
-      note:  "The people ConvergX names, with roles as ConvergX publishes them." }
+    { label: "Our team",       href: "/about/#leadership",
+      note:  "The people ConvergX names, with roles as ConvergX publishes them." },
+    { label: "Contact",        href: "/about/#get-in-touch",
+      note:  "General inquiries, read by a person at ConvergX." }
   ];
   var XPAND_STANDFIRST = "A consulting practice. One problem, asked across industries.";
   var XPAND_PAGES = [
     { label: "Our approach",   href: "/xpand/#who-it-is-for",
       note:  "An organisation carrying a problem, and a company whose answer was built elsewhere." },
+    { label: "Our process",    href: "/xpand/#our-process",
+      note:  "Defining the challenge before searching across industries." },
+    { label: "Commercialization", href: "/xpand/#the-last-mile",
+      note:  "From proven solution to market success." },
     { label: "Where we excel", href: "/xpand/#what-xpand-does",
-      note:  "Consulting, access to testing and validation, and the one that is not running." },
+      note:  "Consulting services, commercialization 101, and Xpand Prep." },
     { label: "Xpand Prep",      href: "/xpand/#xpand-prep",
       note:  "Getting a buyer to a requirement, and a supplier through a large buyer's questions." }
   ];
@@ -1294,6 +1302,32 @@
     var returnTo = null;
     var savedY = 0;
 
+    /* The SAME bio can have two triggers on one page: the speaker card in
+     * #speakers and the speaker's name in the agenda. Focus must return to
+     * the one the reader actually clicked, or closing from the agenda
+     * scrolls them back up to the speakers grid (Chip, 2026-08-13). The
+     * click is remembered here; hash-only routes (pasted URL, Back) still
+     * fall back to the first matching trigger in sync(). */
+    var lastClicked = null;
+    document.addEventListener("click", function (e) {
+      var t = e.target.closest ? e.target.closest(".bio-trigger") : null;
+      if (!t) return;
+      lastClicked = t;
+      /* INTERCEPTED like the close link below, and for the same reason: the
+       * browser's scroll-to-fragment runs on the OPEN navigation too, and
+       * with scroll-behavior:smooth it shifts the page under the overlay
+       * before sync() records savedY, so the restore later "faithfully"
+       * returns the reader to the wrong place. pushState moves the URL
+       * without scrolling and keeps Back as a close. */
+      var id = (t.getAttribute("href") || "").slice(1);
+      var el = id ? document.getElementById(id) : null;
+      if (el && el.classList.contains("bio-overlay")) {
+        e.preventDefault();
+        history.pushState(null, "", "#" + id);
+        sync();
+      }
+    });
+
     function targetOverlay() {
       var id = window.location.hash.slice(1);
       if (!id) return null;
@@ -1310,7 +1344,13 @@
 
       if (openEl) {
         root.classList.remove("has-bio-open");
-        window.scrollTo(0, savedY);
+        /* behavior:"instant", not the bare two-arg form (2026-08-13): the
+         * site sets scroll-behavior:smooth on the root, so the browser's own
+         * scroll-to-fragment for the close link ANIMATES, and a scrollTo that
+         * inherits smooth loses the race to it — the viewport glided to the
+         * card after this restore ran. An instant scroll starting later
+         * cancels the in-flight smooth one and wins. */
+        window.scrollTo({ top: savedY, left: 0, behavior: "instant" });
         var back = returnTo;
         openEl = null;
         returnTo = null;
@@ -1326,7 +1366,10 @@
       }
 
       if (next) {
-        returnTo = document.querySelector('.bio-trigger[href="#' + next.id + '"]');
+        returnTo = (lastClicked && lastClicked.getAttribute("href") === "#" + next.id)
+          ? lastClicked
+          : document.querySelector('.bio-trigger[href="#' + next.id + '"]');
+        lastClicked = null;
         savedY = window.scrollY;
         openEl = next;
         root.classList.add("has-bio-open");
@@ -1336,6 +1379,24 @@
         if (close) close.focus({ focusVisible: false });
       }
     }
+
+    /* THE CLOSE LINK NAVIGATES ONLY WITHOUT SCRIPT (2026-08-13). With script
+     * running, the browser's own scroll-to-fragment for the close href is
+     * what yanked the reader away on close: with scroll-behavior:smooth on
+     * the root it animates AFTER the restore in sync() and wins the race,
+     * landing on the card (or, from the agenda, up on the speakers grid).
+     * So the click is intercepted, the fragment is cleared with
+     * replaceState, which scrolls nothing and fires no hashchange, and
+     * sync() runs directly to do the restore and the focus return. The
+     * href stays real for the no-JS reader, for whom the jump-to-card IS
+     * the close behaviour. */
+    document.addEventListener("click", function (e) {
+      var c = e.target.closest ? e.target.closest(".bio-close") : null;
+      if (!c || !openEl) return;
+      e.preventDefault();
+      history.replaceState(null, "", location.pathname + location.search);
+      sync();
+    });
 
     document.addEventListener("keydown", function (e) {
       if (!openEl) return;
