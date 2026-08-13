@@ -6554,19 +6554,15 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
   }
 }
 
-/* SECTION 61 (2026-08-13, Chip): the About hero split. Copy left, the team
- * group composite in the right half that used to be whitespace. Below the
- * fold breakpoint the image drops under the copy at full width. */
+/* SECTION 61 (2026-08-13, Chip): the About hero split. Heading left, the
+ * founding-observation lede in the right half, aligned to the heading's
+ * baseline area, so the hero reads balanced. (The team composite that
+ * briefly lived here was cut the same day.) */
 .about-hero-split {
   display: grid;
-  gap: var(--space-xl);
+  gap: var(--space-l) var(--space-xl);
   align-items: end;
 }
 @media (min-width: 64rem) {
   .about-hero-split { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
-}
-.team-hero {
-  display: block;
-  inline-size: 100%;
-  block-size: auto;
 }
