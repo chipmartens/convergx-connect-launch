@@ -6327,3 +6327,43 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
   .sponsor-set[aria-hidden="true"] { display: none; }
   .sponsor-set { flex-wrap: wrap; row-gap: var(--space-l); }
 }
+
+/* ================================================================
+   SECTION 49: STEEL CONGRESS BAND (2026-08-12, Chip). The homepage
+   congress band takes the notice bar's chrome fill. Chrome is a
+   MID-TONE: white fails 4.5:1 on it (3.43:1) and navy fails even the
+   3:1 boundary floor (2.38:1), so the band re-points the semantic
+   inks locally: type is ink-900 (5.23:1 on chrome, AA), the eyebrow
+   likewise, and the button borrows the notice bar's own measured
+   pairing (paper fill, 3.43:1 boundary; navy text on paper, 13.57:1).
+   ================================================================ */
+.congress-band--steel {
+  background: var(--chrome);
+  --fg: var(--ink-900);
+  --fg-hi: var(--ink-900);
+  --label-ink: var(--ink-900);
+  color: var(--ink-900);
+  padding-block: var(--space-2xl);   /* a filled band cannot sit on the
+                                        section's default open bottom */
+}
+.congress-band--steel .btn--solid {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--accent-text);
+}
+
+/* ================================================================
+   SECTION 50: CONGRESS DOORS SPLIT (2026-08-12, Chip). Prose left,
+   the four congress links alone on the right. A plain grid on
+   purpose: .editorial's named-line system auto-places lede and body
+   onto shared rows and cannot hold this shape without leaving holes.
+   The section also closes the light band, so it carries its own
+   bottom interval before the ground change.
+   ================================================================ */
+#congress-doors { padding-block-end: var(--space-4xl); }
+.congress-split { display: grid; gap: var(--space-2xl); align-items: start; }
+@media (min-width: 64rem) {
+  .congress-split { grid-template-columns: 7fr 5fr; gap: var(--space-3xl); }
+}
+.congress-split-copy > p + p { margin-block-start: var(--space-m); }
+.congress-split-copy .lede-text { margin-block-end: var(--space-l); }
