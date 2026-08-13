@@ -87,7 +87,7 @@
      * the word conference used for the event, and every page already calls
      * it the Congress, so the bar now agrees with them. No path changes:
      * /congress/ was always the path. */
-    { label: "Congress",       href: "/congress/",   mega: "congress",   live: true },
+    { label: "Congresses",       href: "/congress/",   mega: "congress",   live: true },
     /* Xpand takes a panel, decided 2026-07-28. The earlier reading was that
      * two pages do not earn one; what that missed is that the bar now shows
      * a panel on every other item, so the one item without one reads as the
@@ -392,8 +392,6 @@
      * panel is the route that carries it by name from anywhere on the site. */
     { label: "The app",  href: "/congress/the-app/",
       note:  "The agenda, the sessions and the people in the room, on the phone you already carry." },
-    { label: "Xplore",    href: "/congress/xplore/",
-      note:  "A region asks the question, and the room is composed around it." },
     { label: "Xchange Partnerships", href: "/congress/partnerships/",
       note:  "ConvergX convenes inside events it does not run." }
   ];
@@ -467,7 +465,6 @@
       { label: "The app",              href: "/congress/the-app/" },
       { label: "Register",             href: "/congress/register/" },
       { label: "Sponsor",              href: "/congress/sponsor/" },
-      { label: "Xplore",    href: "/congress/xplore/" },
       { label: "Xchange Partnerships", href: "/congress/partnerships/" }
     ]},
     { title: "Consulting", links: [

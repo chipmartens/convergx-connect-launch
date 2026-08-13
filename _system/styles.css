@@ -6394,3 +6394,14 @@ main .quotes .quote-track {
   column-gap: var(--space-2xl);
 }
 .mega-col--two .link-index li:nth-child(2) { border-top: 0; }
+
+/* SECTION 53 (2026-08-13, Lindsay working session): clean mega menus.
+   The item blurbs read as AI filler and are off for launch; link type
+   steps up one size to carry the panel alone. The blurb markup stays in
+   shell.js so restoring them is deleting two lines here. */
+.mega .descriptor { display: none; }
+.mega .link-index a { font-size: var(--step-1); }
+
+/* Whitespace below the sponsor wall (Chip): the logo row sat flush against
+   the section's end. */
+#sponsors .proofbar { margin-block-start: var(--space-l); margin-block-end: var(--space-2xl); }
