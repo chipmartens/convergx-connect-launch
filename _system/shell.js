@@ -567,9 +567,13 @@
         indexList(ABOUT_PAGES, current, ' aria-labelledby="' + id + '-h"'));
     }
 
+    /* The Consulting panel is one column holding a two-column list, so its
+     * inner takes the full-width modifier (same reasoning the Industries
+     * panel used: in the default 2fr 1fr the last third sits empty). */
+    var innerCls = key === "xpand" ? "mega-inner mega-inner--1" : "mega-inner";
     return (
       '<div class="mega" id="' + id + '" hidden>' +
-        '<div class="mega-inner">' + cols + "</div>" +
+        '<div class="' + innerCls + '">' + cols + "</div>" +
       "</div>"
     );
   }
