@@ -6367,3 +6367,14 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
 }
 .congress-split-copy > p + p { margin-block-start: var(--space-m); }
 .congress-split-copy .lede-text { margin-block-end: var(--space-l); }
+
+/* SECTION 51 (2026-08-13): the in-page testimonial wall on /congress/ reuses
+   the footer quote components, but carries FULL quotes (one is three
+   paragraphs), and the footer's 16rem minimum packs them into four tall
+   ribbons. Scoped to main so the footer wall keeps its own density. */
+main .quotes .quote-track {
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+}
+@media (max-width: 48rem) {
+  main .quotes .quote-track { grid-template-columns: 1fr; }
+}
