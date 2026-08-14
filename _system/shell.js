@@ -1299,6 +1299,9 @@
     if (!document.querySelector(".bio-overlay")) return;
 
     var root = document.documentElement;
+    /* The CSS reveals on :target only for the no-JS reader; this class is
+     * the switch. See the .bio-overlay reveal rule. */
+    root.classList.add("js");
     var FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea,' +
                     ' [tabindex]:not([tabindex="-1"])';
     var openEl = null;

@@ -4458,11 +4458,15 @@ html:has(.subnav) { scroll-behavior: smooth; }
    * delay so the panel is never a click target before it is drawn. */
   transition: opacity var(--t) linear, visibility 0s linear var(--t);
 }
-.bio-overlay:target,
+html:not(.js) .bio-overlay:target,
 .bio-overlay.is-open {
   /* .is-open (2026-08-14): the script opens overlays via pushState, which
-   * does NOT recompute :target. The class is the script's reveal channel;
-   * :target stays for the no-JS route. */
+   * does NOT recompute :target. The class is the script's ONLY reveal
+   * channel; :target reveals only without script (html:not(.js)), because
+   * a stale :target ALSO survives the script's replaceState close: a page
+   * entered at #bio-<x> kept that overlay invisibly "on" and, sitting last
+   * in the DOM, it painted over whoever was actually opened (Chip's
+   * Kim-shows-Frances report, 2026-08-14). */
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
