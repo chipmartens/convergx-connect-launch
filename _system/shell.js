@@ -1346,6 +1346,7 @@
       if (next === openEl) return;
 
       if (openEl) {
+        openEl.classList.remove("is-open");
         root.classList.remove("has-bio-open");
         /* behavior:"instant", not the bare two-arg form (2026-08-13): the
          * site sets scroll-behavior:smooth on the root, so the browser's own
@@ -1375,6 +1376,9 @@
         lastClicked = null;
         savedY = window.scrollY;
         openEl = next;
+        /* pushState opens do not recompute :target; the class is what the
+         * CSS reveals on. Set on every open, harmless when :target also holds. */
+        next.classList.add("is-open");
         root.classList.add("has-bio-open");
         var scroller = next.querySelector(".bio-scroll");
         if (scroller) scroller.scrollTop = 0;

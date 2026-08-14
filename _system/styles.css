@@ -4458,7 +4458,11 @@ html:has(.subnav) { scroll-behavior: smooth; }
    * delay so the panel is never a click target before it is drawn. */
   transition: opacity var(--t) linear, visibility 0s linear var(--t);
 }
-.bio-overlay:target {
+.bio-overlay:target,
+.bio-overlay.is-open {
+  /* .is-open (2026-08-14): the script opens overlays via pushState, which
+   * does NOT recompute :target. The class is the script's reveal channel;
+   * :target stays for the no-JS route. */
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
@@ -6566,3 +6570,40 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
 @media (min-width: 64rem) {
   .about-hero-split { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
 }
+
+/* SECTION 62 (2026-08-14, Chip): the sponsorship contact section reshaped.
+ * Intro (eyebrow, h2, description) holds the left half, top-aligned with
+ * the form; the form sits in a --block panel with more air between fields.
+ * One column below 60rem, intro above form. */
+.sponsor-split {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: start;
+}
+@media (min-width: 60rem) {
+  .sponsor-split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.sponsor-intro > .label { display: block; margin-block-end: var(--space-s); }
+.sponsor-intro > h2 { margin-block-end: var(--space-m); }
+.sponsor-intro > p { max-width: var(--measure); }
+.sponsor-form-box {
+  background: var(--block);
+  padding: var(--space-xl);
+}
+.sponsor-form-box .field + .field { margin-block-start: var(--space-l); }
+.sponsor-form-box .field > label { display: block; margin-block-end: var(--space-2xs); }
+.sponsor-form-box > p:last-child { margin-block-start: var(--space-l); }
+
+/* SECTION 60b (2026-08-14, Chip): the app capture was "too cut off" at full
+ * column width; the height cap showed only the status bar and header.
+ * Narrower frame, same cap: more of the actual app fits the slice. */
+.app-band .mod-shot-frame {
+  max-inline-size: 20rem;
+  margin-inline: auto;
+}
+
+/* SECTION 63 (2026-08-14, Chip): /xpand/#our-process ran straight into the
+ * navy band below it with no air. The section was promoted out of
+ * #what-xpand-does, whose inner sections carried their own end padding;
+ * top-level bare sections do not. */
+#our-process { padding-block-end: var(--space-3xl); }
