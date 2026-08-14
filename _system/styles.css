@@ -4569,7 +4569,14 @@ html:not(.js) .bio-overlay:target,
   text-decoration-thickness: var(--rule-hair);
   text-underline-offset: 0.18em;
 }
-.bio-trigger::after {
+/* SCOPED 2026-08-14 to the two parents that position themselves for it.
+ * Unscoped, every trigger on /about/'s team section stretched over the SAME
+ * containing block (the cards there are not positioned), and the last one in
+ * the DOM swallowed every real click in the region: clicking Kim's View full
+ * bio opened Frances. Programmatic .click() bypasses hit-testing, which is
+ * why automated checks kept passing. */
+.speaker-card .bio-trigger::after,
+.modules--people > .module .bio-trigger::after {
   content: "";
   position: absolute;
   inset: 0;
