@@ -6341,7 +6341,7 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
   padding: 0;
   padding-inline: calc(var(--space-3xl) / 2);
 }
-.sponsor-reel .mark { --mark-cap: 1rem; }
+.sponsor-reel .mark { --mark-cap: 1.35rem; } /* 1rem -> 1.35 (Chip 2026-08-14: bigger) */
 @keyframes sponsor-reel { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
   .sponsor-reel-track { animation: none; width: auto; flex-wrap: wrap; }
@@ -6473,7 +6473,10 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
   .industry-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .industry-card {
-  background: var(--block);
+  /* ICE, not the warm grey (Chip 2026-08-14: "they don't use this grey
+   * anywhere"). Ice #C4D2E2 is the brand's light tone; ink-900 headings
+   * (~13:1) and cool-700 body (~9:1) both clear AA on it comfortably. */
+  background: var(--ice);
   padding: var(--space-l);
 }
 .industry-card > h3 {
@@ -6533,7 +6536,7 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
  * marks on /congress/#sponsors step up from the site-wide 0.75rem cap to
  * 1.1rem. Scoped to that section so the hero reel and the other proofbars
  * keep their own size. */
-#sponsors .mark { --mark-cap: 1.1rem; }
+#sponsors .mark { --mark-cap: 1.45rem; } /* 1.1 -> 1.45 (Chip 2026-08-14: bigger) */
 
 /* SECTION 58b (2026-08-13, Chip): Kim's and Jessilyn's photos take half the
  * container, names to the right. Only the two full rows; the grid keeps its
@@ -6624,3 +6627,7 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
  * column height shows more of the app through the same fade cap. */
 .app-copy > .label { display: block; margin-block-end: var(--space-s); }
 .app-copy > h2 { margin-block-end: var(--space-l); }
+
+/* SECTION 64 (2026-08-14, Chip live review): the boxed sponsorship form ran
+ * to the section's bottom edge; give the section real end padding. */
+#sponsor-contact { padding-block-end: var(--space-3xl); }
