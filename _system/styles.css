@@ -6607,3 +6607,9 @@ main > [data-surface]:not(:has(~ :not(.bio-overlay))) {
  * #what-xpand-does, whose inner sections carried their own end padding;
  * top-level bare sections do not. */
 #our-process { padding-block-end: var(--space-3xl); }
+
+/* SECTION 60c (2026-08-14, Chip): eyebrow and h2 live inside the app copy
+ * column now, so the capture top-aligns with the title and the taller
+ * column height shows more of the app through the same fade cap. */
+.app-copy > .label { display: block; margin-block-end: var(--space-s); }
+.app-copy > h2 { margin-block-end: var(--space-l); }
