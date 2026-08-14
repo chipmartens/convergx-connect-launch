@@ -364,13 +364,26 @@ strong { font-weight: 600; color: var(--fg-hi); }
  * minmax(0, ...) throughout: the 0 minimum stops a long unbroken string
  * (a part number, a URL) blowing out a spec-sheet grid. */
 .editorial {
+  /* REBUILT 2026-08-14 for Safari compatibility. The old template computed
+   * its edge tracks with max()/calc() math (viewport-relative clamps
+   * inside); some Safari versions drop math functions in grid track lists
+   * at computed-value time, which voids the WHOLE template: the grid falls
+   * to a single content-sized column pinned left, which is exactly the
+   * broken layout two ConvergX reviewers saw. This template contains ZERO
+   * math in the track list (pure fr tracks, supported everywhere); the
+   * container centres itself with plain width/max-width instead of edge
+   * tracks. Line names are unchanged, so every child placement
+   * (grid-column: main / full / col-start N) still resolves.
+   * TRADE, accepted: grid-column: full now spans the content column rather
+   * than the viewport edge (2 usages site-wide). */
   --col-gap: var(--space-m);
-  --edge: max(var(--gutter), calc((100% - var(--page-max)) / 2 + var(--gutter)));
+  --edge: var(--gutter); /* kept for .bleed--inset */
   display: grid;
   grid-template-columns:
-    [full-start] minmax(0, calc(var(--edge) - var(--col-gap)))
-    [main-start] repeat(12, [col-start] minmax(0, 1fr)) [main-end]
-    minmax(0, calc(var(--edge) - var(--col-gap))) [full-end];
+    [full-start main-start] repeat(12, [col-start] minmax(0, 1fr)) [main-end full-end];
+  width: calc(100% - 2 * var(--gutter));
+  max-width: calc(var(--page-max) - 2 * var(--gutter));
+  margin-inline: auto;
   column-gap: var(--col-gap);
   row-gap: var(--editorial-row-gap);
 }
