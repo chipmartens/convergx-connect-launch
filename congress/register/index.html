@@ -232,8 +232,8 @@
              label untouched. -->
         <!-- STEP FRAMING 2026-08-14 (Chip): the passes and the form are one
              registration process, not two things. -->
-        <h2>Choose your pass</h2>
-        <span class="label label--lo label--edge">Step 1</span>
+        <h2>Pricing</h2>
+        <span class="label label--lo label--edge">Passes</span>
       </div>
       <div class="editorial push-end-l">
         <div class="lede">
@@ -402,154 +402,8 @@
        went from one to three on this page, all to convergx.co product pages,
        and that is the storefront working rather than a rule being broken. -->
 
-  <section class="section--dense">
-    <div class="wrap">
-      <div class="sec-head">
-        <!-- WAS "Put yourself forward", changed 2026-08-04 by the
-             heading-doctrine pass. The section body is a form, so it takes a
-             LABEL heading, and a label is a noun phrase rather than an
-             imperative. The replacement also answers the question a reader
-             actually has at this point, which is what the approval above is
-             going to be made against. Edge label untouched. -->
-        <h2>Complete your registration</h2>
-        <span class="label label--lo label--edge">Step 2</span>
-      </div>
-      <div class="editorial push-end-l">
-        <div class="lede">
-          <p>Tell ConvergX who you are and what you are bringing to Calgary.</p>
-        </div>
-        <div class="body">
-          <p>Answer in your own words, and be specific.</p>
-        </div>
-      </div>
-
-      <p>Every question is required.</p>
-
-      <form class="req-form" method="post" action="https://formsubmit.co/info@convergx.co">
-          <input type="hidden" name="_subject" value="Website: Congress registration enquiry">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://chipmartens.github.io/convergx-connect-launch/thanks/">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" aria-hidden="true">
-
-        <fieldset>
-          <legend>You</legend>
-
-          <div class="field">
-            <label for="name">What is your name?</label>
-            <input type="text" id="name" name="name" autocomplete="name" required>
-          </div>
-
-          <div class="field">
-            <label for="role">What is your role?</label>
-            <p class="helper" id="role-help">Your title, and what you are accountable for.</p>
-            <input type="text" id="role" name="role" aria-describedby="role-help" autocomplete="organization-title" required>
-          </div>
-
-          <div class="field">
-            <label for="company">What company do you work for?</label>
-            <p class="helper" id="company-help">The legal entity rather than a division or a programme name.</p>
-            <input type="text" id="company" name="company" aria-describedby="company-help" autocomplete="organization" required>
-          </div>
-
-          <div class="field">
-            <label for="email">What is your work email?</label>
-            <p class="helper" id="email-help">Use your company's own domain.</p>
-            <input type="email" id="email" name="email" aria-describedby="email-help" autocomplete="email" required>
-          </div>
-
-          <!-- The TEN the site convenes, alphabetical, the same list and the
-               same strings as the homepage and Congress flow bands. It was
-               eight until 2026-08-13, when the client approved this list. No
-               eleventh option and no free-text box: a second taxonomy would
-               disagree with the one this site already has, and nothing
-               downstream could read it.
-               THE VALUES CHANGED WITH THE LABELS. Anything that starts to
-               consume them must read these slugs, not the old eight. -->
-          <div class="field">
-            <label for="industry">What industry are you in?</label>
-            <p class="helper" id="industry-help">The ten ConvergX convenes.</p>
-            <select id="industry" name="industry" aria-describedby="industry-help" required>
-              <option value="">Select one</option>
-              <option value="advanced-manufacturing">Advanced Manufacturing</option>
-              <option value="aerospace-defence-security-space">Aerospace, Defence, Security &amp; Space</option>
-              <option value="agriculture-food-systems">Agriculture &amp; Food Systems</option>
-              <option value="construction-infrastructure">Construction &amp; Infrastructure</option>
-              <option value="digital-infrastructure-cybersecurity">Digital Infrastructure &amp; Cybersecurity</option>
-              <option value="energy">Energy</option>
-              <option value="financial-services">Financial Services</option>
-              <option value="health-life-sciences">Health &amp; Life Sciences</option>
-              <option value="mining-critical-minerals">Mining &amp; Critical Minerals</option>
-              <option value="supply-chain-logistics-trade">Supply Chain, Logistics &amp; Trade</option>
-            </select>
-          </div>
-
-          <!-- The three passes, in the order the storefront above carries
-               them, which is ConvergX's own shop order. If that row reorders,
-               reorder these with it. -->
-          <div class="field">
-            <label for="pass">Which pass are you taking?</label>
-            <p class="helper" id="pass-help">Pick the one you intend to buy from the three above.</p>
-            <select id="pass" name="pass" aria-describedby="pass-help" required>
-              <option value="">Select one</option>
-              <option value="standard">Standard</option>
-              <option value="military">Military</option>
-              <option value="government">Government</option>
-            </select>
-          </div>
-        </fieldset>
-
-        <fieldset class="push-l">
-          <legend>What you bring</legend>
-
-          <!-- FIRST in this fieldset, because it changes how the two answers
-               under it are read. It mirrors the two doors at the foot of the
-               page deliberately: same two sides, asked here as information
-               rather than as a route off the page. -->
-          <div class="field">
-            <label for="side">Which side of an introduction are you on?</label>
-            <p class="helper" id="side-help">Pick the one that brought you.</p>
-            <select id="side" name="side" aria-describedby="side-help" required>
-              <option value="">Select one</option>
-              <option value="requirement">I have a requirement to fill</option>
-              <option value="capability">I have a capability to sell</option>
-            </select>
-          </div>
-
-          <!-- THE FIELD THAT DOES THE WORK, and it is where the instruction
-               cut from "What a registration buys" landed. Given real room on
-               purpose: this page exists to ask what someone carries, and a
-               two-line box asks for a summary instead. -->
-          <div class="field">
-            <label for="bring">What are you bringing, and what do you want to walk out with?</label>
-            <p class="helper" id="bring-help">Write it the way you would say it to a colleague. A requirement with a date on it, or a capability already running somewhere, is the thing worth putting down. Do not include controlled, export-restricted or classified technical data.</p>
-            <textarea id="bring" name="bring" rows="8" aria-describedby="bring-help" required></textarea>
-          </div>
-
-          <!-- THE ADMISSION STANDARD, ASKED IN PLAIN WORDS. The helper quotes
-               the standard published at the top of this page rather than
-               paraphrasing it into a softer test, because a softer test here
-               would contradict the panel the whole page opens on. Do not
-               soften it and do not drop the field: without it the form
-               collects an intention to pay and nothing an approval could be
-               made against. -->
-          <div class="field">
-            <label for="authority">What do you have the authority to decide?</label>
-            <p class="helper" id="authority-help">ConvergX asks for proof of ability to directly influence business direction and lead partnerships and investment. Say what you can commit your company to.</p>
-            <textarea id="authority" name="authority" rows="5" aria-describedby="authority-help" required></textarea>
-          </div>
-        </fieldset>
-
-        <p class="push-l"><button class="btn btn--solid" type="submit">Send this to ConvergX</button></p>
-      </form>
-    <!-- [[NEEDS: what ConvergX actually asks an applicant for, and who reads
-         it, from Kim Van Vliet. These questions are drawn from ConvergX's own
-         published admission standard and from what this page already states
-         about the hold and the approval. No response time, retention rule or
-         handling policy is stated anywhere here, because none is published.
-         Do not invent one]] -->
-    </div>
-  </section>
+  <!-- REGISTRATION FORM SECTION REMOVED 2026-08-14 (Chip): the page is
+       hero, who it is for, and the passes. -->
 
   <!-- ========================== ACCOMMODATION ==========================
        BUILT OUT 2026-07-31 on Chip's instruction: registration detail should
@@ -582,36 +436,8 @@
            code, not a rate.
        No deadline and no room-block cutoff appears, because none is
        published. Do not add one to create urgency. -->
-  <section class="section--dense">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Where to stay</h2>
-        <span class="label label--lo label--edge">Accommodation</span>
-      </div>
-      <div class="editorial push-end-l">
-        <div class="lede">
-          <p>ConvergX publishes four Calgary hotels for September, and a corporate rate code that covers two of them.</p>
-        </div>
-        <div class="body">
-          <p>Book direct with the hotel. A room is separate from a registration and is not bought here.</p>
-        </div>
-      </div>
-
-      <!-- THE HOTEL TABLE AND THE BOOKING STEPS MOVED, 2026-08-04, to
-           /congress/#accommodations, where Chip asked for them as an
-           accordion. They are not duplicated here.
-           WHY THE MOVE RATHER THAN A SECOND COPY: four phone numbers, four
-           addresses and a rate code in two places is five facts that can
-           disagree, and the first future edit updates one page. A rate code
-           that is right on one page and stale on the other is worse for a
-           delegate than one that lives in a single place.
-           WHAT STAYS HERE is the fact a registrant needs at this moment, that
-           accommodation exists and is separate from the pass, plus the route
-           to it. -->
-      <p><a class="link-more" href="../../congress/#accommodations">Accommodations</a></p>
-    <!-- [[NEEDS: the Congress venue, from Kim Van Vliet. ConvergX publishes no venue on any of its six Congress pages. This page names the city, which the hotel list already makes public, and names no venue at all. Add it here, next to the hotels, the moment it is confirmed]] -->
-    </div>
-  </section>
+  <!-- WHERE-TO-STAY SECTION REMOVED 2026-08-14 (Chip). Accommodations live
+       on /congress/#accommodations. -->
 
   <!-- The two-path chooser, carried from /congress/attend/. This page serves
        both audiences, which is what sanctions the chooser here. Foot of page,
