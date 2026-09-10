@@ -131,12 +131,14 @@
 .cxapp-hero-shot { position: relative; isolation: isolate; }
 .cxapp-glow {
   position: absolute;
-  inset: -12% -6%;
+  /* Reaching past the frame on every side, so what shows is the halo around
+     it rather than a wash behind it. The frame covers the middle. */
+  inset: -16% -14%;
   z-index: 0;
   border-radius: 50%;
-  background: radial-gradient(closest-side, var(--accent), transparent 72%);
-  opacity: 0.13;
-  filter: blur(40px);
+  background: radial-gradient(closest-side, var(--accent), transparent 70%);
+  opacity: 0.22;
+  filter: blur(56px);
   pointer-events: none;
 }
 
@@ -144,10 +146,24 @@
    Copy on the left eight columns as every hero on the site, the frame in the
    four beside it. Below 60rem the grid is one column and the frame follows the
    copy, which is the order the markup is already in. */
+/* Half the hero, not a third of it. The shot is the thing the page is about,
+   and at four columns it was a thumbnail beside a headline. The copy gives up
+   the two columns and a step of type size to pay for it. */
 .cxapp-hero-shot {
-  grid-column: col-start 9 / main-end;
+  grid-column: col-start 7 / main-end;
   grid-row: 1 / 5;
   align-self: center;
+}
+/* The frame fills its columns now, and takes its size from a height instead of
+   a width: this screenshot is nearly twice as tall as it is wide, so widening
+   it by half again would have run the hero past a laptop screen and pushed the
+   button under the fold. It crops at the bottom edge instead, which is honest
+   about a screen that continues, and keeps the whole hero above the fold. */
+.cxapp-hero-shot .cxapp-phone { max-inline-size: none; }
+.cxapp-hero-shot .cxapp-phone img {
+  height: min(58vh, 560px);
+  object-fit: cover;
+  object-position: top center;
 }
 .cxapp-actions {
   display: flex;
@@ -160,17 +176,32 @@
    was cut for, so it takes the display measure and the step below the hero
    one. Left at --step-6 it runs five lines of 101px type and pushes the
    button off a laptop screen. */
+/* One step down from the hero size and one column narrower, which is what
+   buys the shot its width. The headline is a sentence rather than the two or
+   three words --measure-hero was cut for, so it takes the display measure. */
 .cxapp-hero .hero-title {
-  font-size: var(--step-5);
-  letter-spacing: var(--track-5);
+  grid-column: col-start 1 / col-start 7;
+  font-size: var(--step-4);
+  letter-spacing: var(--track-4);
   max-width: var(--measure-display);
 }
+.cxapp-hero .hero-head,
+.cxapp-hero .hero-sub,
+.cxapp-hero .hero-cta { grid-column: col-start 1 / col-start 7; }
 @media (max-width: 60rem) {
   .cxapp-hero-shot {
     grid-column: main;
     grid-row: auto;
     justify-self: center;
   }
+  .cxapp-hero .hero-title,
+  .cxapp-hero .hero-head,
+  .cxapp-hero .hero-sub,
+  .cxapp-hero .hero-cta { grid-column: main; }
+  /* A phone shows the frame under the copy with nothing beside it, so there is
+     nothing to fit it next to and no reason to crop it. */
+  .cxapp-hero-shot .cxapp-phone { max-inline-size: var(--measure-lede); }
+  .cxapp-hero-shot .cxapp-phone img { height: auto; object-fit: fill; }
 }
 
 /* ---- The part spine ----
