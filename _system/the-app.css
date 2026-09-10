@@ -1,0 +1,483 @@
+/* ================= CONGRESS APP PAGE, START ================= */
+/* Everything here is scoped to .cxapp-* and is used on /congress/the-app/ only.
+   No colour, type or spacing value is stated: every one resolves through a
+   token already in tokens.css, so the block follows any later token change.
+   Paste as one block at the end of assets/styles.css, keeping both markers. */
+
+/* ---- The live indicator ----
+   The one moving thing on the page, and the only blue that is not a button.
+   A dot beside the eyebrow, breathing once every few seconds. */
+.cxapp-live {
+  display: inline-block;
+  width: var(--dot-fine);
+  height: var(--dot-fine);
+  border-radius: 50%;
+  background: var(--accent);
+  margin-inline-end: var(--space-2xs);
+  animation: cxapp-breathe 3.2s ease-in-out infinite;
+}
+@keyframes cxapp-breathe {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cxapp-live { animation: none; }
+}
+
+/* ---- The device frame ----
+   Drawn, not photographed: a hairline, a corner radius off the spacing scale,
+   and an inner vignette in the surface's own ground so the screenshot settles
+   into the page instead of sitting on top of it. */
+.cxapp-hero-shot .cxapp-phone { position: relative; z-index: 1; }
+.cxapp-phone {
+  margin: 0;
+  max-inline-size: var(--measure-lede);
+  border: var(--rule-hair) solid var(--rule-ink-load);
+  border-radius: var(--space-m);
+  overflow: hidden;
+  background: var(--block);
+  box-shadow: inset 0 0 var(--space-l) var(--bg);
+}
+.cxapp-phone img { display: block; width: 100%; height: auto; }
+
+/* ---- Every screenshot opens ----
+   .is-live is added by the script, so none of this shows on a page whose
+   script did not run, where there is no control to press. The whole frame is
+   the target; the visible control is a corner label that arrives on hover and
+   on keyboard focus, so the affordance is quiet until it is wanted. */
+.cxapp-phone.is-live { position: relative; cursor: zoom-in; }
+.cxapp-phone.is-live:hover,
+.cxapp-phone.is-live:focus-within {
+  border-color: var(--fg-hi);
+}
+.cxapp-expand {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: var(--space-xs);
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+.cxapp-expand > span {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  line-height: var(--lh-label);
+  color: var(--accent-ink);
+  background: var(--accent);
+  padding: var(--space-3xs) var(--space-xs);
+  opacity: 0;
+  transform: translateY(var(--space-2xs));
+  transition: opacity var(--t), transform var(--t);
+}
+.cxapp-phone.is-live:hover .cxapp-expand > span,
+.cxapp-expand:focus-visible > span {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cxapp-expand > span { transition: none; transform: none; }
+}
+
+/* ---- The enlargement ----
+   Native dialog, so the browser supplies the modal behaviour, the focus trap
+   and Escape. The backdrop is the page ground at four fifths rather than the
+   browser default, which is a blue-black that belongs to no palette here. */
+.cxapp-lightbox {
+  border: 0;
+  padding: 0;
+  margin: auto;
+  background: transparent;
+  max-width: min(92vw, 30rem);
+  max-height: 92vh;
+  overflow: visible;
+}
+.cxapp-lightbox::backdrop { background: rgb(0 0 0 / 0.8); }
+.cxapp-lightbox img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 84vh;
+  object-fit: contain;
+  border: var(--rule-hair) solid var(--rule-ink-load);
+  border-radius: var(--space-m);
+}
+.cxapp-lightbox-close {
+  display: block;
+  margin: var(--space-s) auto 0;
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  line-height: var(--lh-label);
+  color: var(--ink-hi);
+  background: transparent;
+  border: var(--rule-hair) solid var(--cool-500);
+  padding: var(--space-2xs) var(--space-m);
+  cursor: pointer;
+}
+.cxapp-lightbox-close:hover { border-color: var(--ink-hi); }
+
+/* ---- The glow behind the hero frame ----
+   The one piece of decoration on the page. A dark screenshot on a dark ground
+   has nothing to sit against and reads as a hole cut in the page; this is the
+   accent at a tenth of its strength, blurred, behind the frame. It is inside
+   the shot's own box so it travels with it at every width, and it is marked
+   aria-hidden because there is nothing in it to read. */
+.cxapp-hero-shot { position: relative; isolation: isolate; }
+.cxapp-glow {
+  position: absolute;
+  /* Reaching past the frame on every side, so what shows is the halo around
+     it rather than a wash behind it. The frame covers the middle. */
+  inset: -16% -14%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--accent), transparent 70%);
+  opacity: 0.22;
+  filter: blur(56px);
+  pointer-events: none;
+}
+
+/* ---- The hero ----
+   Copy on the left eight columns as every hero on the site, the frame in the
+   four beside it. Below 60rem the grid is one column and the frame follows the
+   copy, which is the order the markup is already in. */
+/* Half the hero, not a third of it. The shot is the thing the page is about,
+   and at four columns it was a thumbnail beside a headline. The copy gives up
+   the two columns and a step of type size to pay for it. */
+.cxapp-hero-shot {
+  grid-column: col-start 7 / main-end;
+  grid-row: 1 / 5;
+  align-self: center;
+}
+/* The frame fills its columns now, and takes its size from a height instead of
+   a width: this screenshot is nearly twice as tall as it is wide, so widening
+   it by half again would have run the hero past a laptop screen and pushed the
+   button under the fold. It crops at the bottom edge instead, which is honest
+   about a screen that continues, and keeps the whole hero above the fold. */
+.cxapp-hero-shot .cxapp-phone { max-inline-size: none; }
+.cxapp-hero-shot .cxapp-phone img {
+  height: min(58vh, 560px);
+  object-fit: cover;
+  object-position: top center;
+}
+.cxapp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-s) var(--space-l);
+  max-width: none;
+}
+/* The hero headline is a sentence, not the two or three words --measure-hero
+   was cut for, so it takes the display measure and the step below the hero
+   one. Left at --step-6 it runs five lines of 101px type and pushes the
+   button off a laptop screen. */
+/* One step down from the hero size and one column narrower, which is what
+   buys the shot its width. The headline is a sentence rather than the two or
+   three words --measure-hero was cut for, so it takes the display measure. */
+.cxapp-hero .hero-title {
+  grid-column: col-start 1 / col-start 7;
+  font-size: var(--step-4);
+  letter-spacing: var(--track-4);
+  max-width: var(--measure-display);
+}
+.cxapp-hero .hero-head,
+.cxapp-hero .hero-sub,
+.cxapp-hero .hero-cta { grid-column: col-start 1 / col-start 7; }
+@media (max-width: 60rem) {
+  .cxapp-hero-shot {
+    grid-column: main;
+    grid-row: auto;
+    justify-self: center;
+  }
+  .cxapp-hero .hero-title,
+  .cxapp-hero .hero-head,
+  .cxapp-hero .hero-sub,
+  .cxapp-hero .hero-cta { grid-column: main; }
+  /* A phone shows the frame under the copy with nothing beside it, so there is
+     nothing to fit it next to and no reason to crop it. */
+  .cxapp-hero-shot .cxapp-phone { max-inline-size: var(--measure-lede); }
+  .cxapp-hero-shot .cxapp-phone img { height: auto; object-fit: fill; }
+}
+
+/* ---- The part spine ----
+   The page carries two different things, so it is numbered. The numeral is a
+   figure in the margin, not a heading: it is aria-hidden and the words beside
+   it carry the meaning. On a phone the margin is gone and the numeral sits
+   above the words. */
+.cxapp-part {
+  display: grid;
+  /* The numeral in the margin, the heading beside it, and the paragraph in the
+     column to its right. Stacked under the heading instead, the paragraph left
+     half the width of the page empty next to a two-line title. */
+  grid-template-columns: auto minmax(0, 6fr) minmax(0, 5fr);
+  column-gap: var(--space-2xl);
+  align-items: start;
+  border-top: var(--rule-med) solid var(--rule-ink-load);
+  padding-block-start: var(--space-m);
+  margin-block-end: var(--space-2xl);
+}
+.cxapp-part > div { display: contents; }
+.cxapp-part .label { grid-column: 2; grid-row: 1; }
+.cxapp-part h2 { grid-column: 2; grid-row: 2; }
+.cxapp-part p  { grid-column: 3; grid-row: 1 / span 2; }
+.cxapp-part-no { grid-column: 1; grid-row: 1 / span 2; }
+.cxapp-part-no {
+  font-family: var(--font-mono);
+  font-size: var(--step-3);
+  line-height: 1;
+  color: var(--fg-lo);
+  font-variant-numeric: tabular-nums;
+}
+.cxapp-part h2 {
+  margin-block: var(--space-2xs) 0;
+  max-width: var(--measure-display);
+}
+.cxapp-part p {
+  max-width: var(--measure);
+  /* Optically level with the heading, not with the eyebrow above it. */
+  margin-block-start: calc(var(--step-1) * 0.5);
+}
+@media (max-width: 60rem) {
+  .cxapp-part {
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: var(--space-l);
+  }
+  .cxapp-part p { grid-column: 2; grid-row: 3; margin-block-start: var(--space-m); }
+}
+@media (max-width: 45rem) {
+  .cxapp-part { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-3xs); }
+  .cxapp-part-no { grid-column: 1; grid-row: 1; }
+  .cxapp-part .label { grid-column: 1; grid-row: 2; }
+  .cxapp-part h2 { grid-column: 1; grid-row: 3; }
+  .cxapp-part p { grid-column: 1; grid-row: 4; }
+}
+
+/* ---- The three views ----
+   With scripts off this is what renders: three frames, each above its own
+   block, in order. Everything below .is-live is the enhancement. */
+.cxapp-views { display: grid; row-gap: var(--space-2xl); }
+.cxapp-view  { display: grid; row-gap: var(--space-m); justify-items: start; }
+.cxapp-block { display: flex; flex-direction: column; max-width: var(--measure); }
+/* The label sits above the heading on screen and after it in the document, so
+   the site's rule that a .label is never an eyebrow still holds for a reader
+   using a screen reader. Same arrangement as .sec-head. */
+.cxapp-block .label { order: -1; margin-block-end: var(--space-2xs); }
+.cxapp-block p { margin-block-start: var(--space-s); }
+
+/* The control is unhidden by the script. No sheet on the site resets [hidden],
+   so an author display value beats the browser's own rule and three inert
+   buttons rendered with scripts off. */
+.cxapp-switch[hidden] { display: none; }
+.cxapp-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin-block-end: var(--space-xl);
+}
+.cxapp-seg {
+  border: var(--rule-hair) solid var(--rule-ink-load);
+  background: transparent;
+  color: var(--fg-lo);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  line-height: var(--lh-label);
+  padding: var(--space-xs) var(--space-m);
+  cursor: pointer;
+}
+.cxapp-seg:hover { color: var(--fg-hi); border-color: var(--fg-hi); }
+.cxapp-seg[aria-pressed="true"] {
+  color: var(--fg-hi);
+  border-color: var(--fg-hi);
+  background: var(--block);
+}
+
+/* The enhanced arrangement: the frames stack in one column and cross-fade, the
+   blocks read down the column beside them. The articles go to display: contents
+   so their two children become grid items of this grid, which is what lets the
+   frames share a cell without the markup moving. */
+.cxapp-views.is-live {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: var(--space-2xl);
+  row-gap: var(--space-xl);
+  align-items: start;
+}
+.cxapp-views.is-live .cxapp-view { display: contents; }
+.cxapp-views.is-live .cxapp-phone {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  position: sticky;
+  /* Clear of the site header, which is fixed. A bare --space-2xl measured from
+     the viewport top slid the frame's own header under it. */
+  top: calc(var(--shell-h) + var(--space-2xl));
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms linear, visibility 0s linear 200ms;
+}
+.cxapp-views.is-live .cxapp-view.is-on .cxapp-phone {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 200ms linear;
+}
+.cxapp-views.is-live .cxapp-block {
+  grid-column: 2;
+  border-inline-start: var(--rule-med) solid transparent;
+  padding-inline-start: var(--space-m);
+  cursor: pointer;
+}
+.cxapp-views.is-live .cxapp-view.is-on .cxapp-block { border-inline-start-color: var(--chrome); }
+
+/* ---- The steps ----
+   The .label and .descriptor pair the link-index rows use, three across,
+   one under the other on a phone. */
+.cxapp-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-l);
+}
+.cxapp-steps li {
+  max-width: none;
+  border-top: var(--rule-hair) solid var(--rule-ink);
+  padding-block-start: var(--space-s);
+}
+.cxapp-step-title {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 500;
+  letter-spacing: var(--track-2);
+  line-height: var(--lh-heading);
+  color: var(--fg-hi);
+  margin-block-start: var(--space-2xs);
+}
+.cxapp-steps .descriptor {
+  display: block;
+  font-size: var(--step--1);
+  color: var(--fg);
+  margin-block-start: var(--space-2xs);
+}
+.cxapp-steps + .cxapp-actions { margin-block-start: var(--space-xl); }
+@media (max-width: 60rem) {
+  .cxapp-steps { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* The swap is set once, at load. A tablet opened in landscape and turned to
+   portrait would otherwise hold the two-column sticky layout in a narrow
+   window. This is the same stack the page renders with scripts off. */
+@media (max-width: 60rem) {
+  .cxapp-switch { display: none; }
+  .cxapp-views.is-live { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2xl); }
+  .cxapp-views.is-live .cxapp-view { display: grid; row-gap: var(--space-m); justify-items: start; }
+  .cxapp-views.is-live .cxapp-phone {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transition: none;
+  }
+  .cxapp-views.is-live .cxapp-block {
+    border-inline-start: 0;
+    padding-inline-start: 0;
+    cursor: auto;
+  }
+}
+
+/* A band in the middle of the page closes its own ground. Only the last band
+   on a page gets that from the sheet, because everywhere else the footer
+   supplies it.
+   The two accent tokens are restated because they are the two the light and
+   muted surface blocks do not declare. A band inside a dark body INHERITS the
+   dark values, so the solid button came out ice on a near-white ground, which
+   is the fill barely separating from the band it sits on. These are the values
+   the sheet already declares at the root, for exactly this ground. */
+.cxapp-band {
+  padding-block-end: var(--space-3xl);
+  --accent: var(--navy);
+  --accent-ink: var(--paper);
+}
+/* The band is full bleed, so the section above it has nothing between its last
+   element and the change of ground. Every other section on the site is followed
+   by one on the same ground, where the next section's own top padding is the
+   gap. Here the phone frame ran straight into the light edge and read as a
+   crop, so the band carries the gap itself, in the dark ground it sits on. */
+.cxapp-band { margin-block-start: var(--space-3xl); }
+@media (max-width: 60rem) {
+  .cxapp-band { padding-block-end: var(--space-2xl); }
+}
+
+/* ---- Part two, the two sides ----
+   No phone frame anywhere in this half, deliberately. The Congress app is a
+   thing a delegate holds, and it is drawn as one. This is a door a company
+   comes through, decided by a person, so it is drawn as a door. The grounds
+   and the shapes both carry the difference, not a label saying they differ. */
+.cxapp-sides {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-l);
+  margin-block-end: var(--space-xl);
+}
+.cxapp-sides .cxapp-side {
+  border-top: var(--rule-hair) solid var(--rule-ink);
+  padding-block-start: var(--space-s);
+}
+.cxapp-side p { margin-block-start: var(--space-2xs); max-width: var(--measure); }
+.cxapp-note {
+  max-width: var(--measure);
+  color: var(--fg-hi);
+  margin-block-end: var(--space-xl);
+}
+/* The chooser is the site's own component and keeps its own rules. It only
+   needs the air above it that a section head would otherwise have given it. */
+.cxapp-doors { margin-block-start: var(--space-l); }
+@media (max-width: 45rem) {
+  .cxapp-sides { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- The persistent action ----
+   The hero's button, kept in reach after the hero scrolls away. The script
+   unhides it, so with scripts off there is no bar and nothing to pad for.
+   At the foot of the screen at every width. */
+.cxapp-bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-top: var(--rule-hair) solid var(--rule-ink-load);
+}
+.cxapp-bar-inner {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: var(--space-xs) var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s);
+}
+.cxapp-bar .label { max-width: none; }
+/* A phone has room for the action or for the label naming it, not both. The
+   bar wrapped to two rows and took a fifth of the screen, so under 30rem the
+   label goes and the button, which carries the same meaning, stays. */
+@media (max-width: 30rem) {
+  .cxapp-bar .label { display: none; }
+  .cxapp-bar-inner { justify-content: stretch; }
+  .cxapp-bar .btn { flex: 1; text-align: center; }
+}
+/* The bar covers the foot of the page while it is up, so the page carries the
+   height of it. Stated on the body so the footer clears it too. */
+body:has(.cxapp-bar:not([hidden])) { padding-block-end: var(--space-4xl); }
+
+/* The bar stays at the foot on a desktop too. Under the header it made a
+   second fixed band, so the top of the window was better than two hundred
+   pixels of chrome before any of the page, and the sticky frame beside it had
+   to dodge both. At the foot it collides with nothing and the page keeps its
+   full height. */
+/* ================= CONGRESS APP PAGE, END ================= */
