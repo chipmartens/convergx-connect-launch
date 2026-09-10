@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>The Congress app | ConvergX</title>
-<meta name="description" content="Your agenda, the people in the room and the meetings ConvergX brokers, on your phone. Push reaches Android only.">
+<meta name="description" content="The Congress app carries the programme, the Opportunity Board and the alerts for Sep 22 to 24. Confirmed delegates receive an invitation by email.">
 <link rel="stylesheet" href="../../_system/tokens.css?v=f59bc737">
 <link rel="stylesheet" href="../../_system/styles.css?v=f59bc737">
+<link rel="stylesheet" href="../../_system/the-app.css?v=c6749025">
 </head>
 <body data-surface="dark">
 
@@ -71,96 +72,333 @@
 </header>
 
 <main id="main">
+<!-- ROW 1 of 6. The hero. Keep it first: the template checks the first row for an
+     h1 and skips its own hero when it finds one. -->
+<section class="section--open">
+  <div class="editorial hero cxapp-hero">
+    <header class="hero-head">
+      <span class="label label--edge"><span class="cxapp-live" aria-hidden="true"></span>Congress app / Sep 22 to 24</span>
+    </header>
+    <h1 class="display--hero hero-title">Your three days in Calgary, kept current in one app</h1>
+    <p class="hero-sub lede-text">The app carries the programme, the Opportunity Board and the alerts for Sep 22 to 24. The same platform is how ConvergX takes in a requirement or a capability for the rest of the year, and decides who should meet.</p>
+    <p class="hero-cta cxapp-actions">
+      <a class="btn btn--solid" href="../../congress/register/">Register for the Congress</a>
+      <a class="link-more" href="#the-rest-of-the-year">The rest of the year</a>
+    </p>
+    <div class="cxapp-hero-shot">
+      <!-- The glow is the only thing on the page that is decoration rather
+           than information. It is one accent at a tenth of its strength,
+           behind the frame, and it is what stops a dark screenshot on a dark
+           ground reading as a hole. -->
+      <span class="cxapp-glow" aria-hidden="true"></span>
+      <figure class="cxapp-phone" data-shot="board">
+        <picture>
+          <source srcset="../../assets/img/app/app-board.webp" type="image/webp">
+          <img src="../../assets/img/app/app-board.png" width="880" height="1725" fetchpriority="high" decoding="async" alt="The Opportunity Board: anonymous posts tagged Problem, Project or Need, each with Participate, Feedback and Partnership buttons">
+        </picture>
+      </figure>
+    </div>
+  </div>
+</section>
 
-  <!-- CONVERSION PAGE. Highest-traffic page of the year, read standing
-       up on a hostile conference network. No hero mechanism, no dot
-       field, no photograph: an image is weight on a network that has
-       none. The page opens with the action and ends 60 words later.
-       The one --step-6 and the one solid orange fill are both here. -->
-  <section class="section--open">
-    <div class="editorial hero">
-      <header class="hero-head">
-        <span class="label label--edge">Congress app / Sep 22 to 24</span>
-      </header>
-      <h1 class="display--hero hero-title">Your agenda lives in the app</h1>
-      <p class="hero-sub lede-text">Sessions, the people in the room and the meetings ConvergX brokers sit alongside it, and each one updates as the programme changes.</p>
-
-      <!-- THE INSTALL SLOT. Built to survive either outcome. No store is
-           named, no download is promised, and no live-looking control
-           ships until the route is confirmed: the visible placeholder
-           holds the space instead. The surrounding copy is true whether
-           the app arrives through a store listing or through a link
-           ConvergX sends delegates, and does not change either way. -->
-      <div class="hero-cta block--accent" data-slot="install">
-        <p class="label">How to get in</p>
-        <p class="push-s">ConvergX sends confirmed delegates an invitation link before the doors open. Open it on the phone you will carry in Calgary.</p>
+<!-- ROW 2 of 6. PART ONE opens here, and the dark ground runs to the end of
+     row 4. The ground is the divider: everything on it is the app a delegate
+     holds at the Congress, and part two, on paper, is the door a company comes
+     through the rest of the year. Two different things, so two grounds. -->
+<section class="section--dense">
+  <div class="wrap">
+    <div class="cxapp-part">
+      <span class="cxapp-part-no" aria-hidden="true">01</span>
+      <div>
+        <span class="label label--lo">At the Congress</span>
+        <h2>Three views, and the app decides which one matters</h2>
+        <p>Every delegate at the Congress has the same three. The programme they are following, the Board where the room posts what it needs, and the alerts that say when either has changed.</p>
       </div>
     </div>
-  </section>
 
-  <hr class="rule-double">
+    <div class="cxapp-switch" role="group" aria-label="Choose a view" hidden>
+      <button type="button" class="cxapp-seg" data-view="agenda" aria-pressed="true">Agenda</button>
+      <button type="button" class="cxapp-seg" data-view="board" aria-pressed="false">Opportunity Board</button>
+      <button type="button" class="cxapp-seg" data-view="alerts" aria-pressed="false">Alerts</button>
+    </div>
 
-  <!-- THE TWO BOUNDARIES. Hairline rows, plain label, plain sentence.
-       Push is Android only and iOS receives nothing. Offline is a
-       read-only cached agenda. Neither is a footnote. -->
-  <section class="section--dense">
-    <div class="wrap">
-      <div class="sec-head">
-        <!-- WAS "Two things worth knowing before you rely on it", changed
-             2026-08-04 by the heading-doctrine pass. The section body is two
-             hairline rows, which makes this a LABEL heading: a noun phrase, no
-             period, and no arithmetic. "Where the app stops" is the site's own
-             existing shape for this move (the industry pages all carry "Where
-             ConvergX stops"), so it borrows a term a reader has already met
-             rather than inventing one. The edge label below is untouched. -->
-        <h2>Where the app stops</h2>
-        <!-- CLOSED. The three flagged labels were decided together by the group-D
-             pass. The ordinal came off per TYPE-AND-SPACE section 7, which left
-             "Before you rely on it": the h2's own tail, repeated at the layout
-             edge. Replaced with what the two rows below actually are. -->
-        <span class="label label--lo label--edge">Push and offline</span>
+    <div class="cxapp-views">
+      <article class="cxapp-view" data-view="agenda">
+        <figure class="cxapp-phone" data-shot="agenda">
+          <picture>
+            <source srcset="../../assets/img/app/app-agenda.webp" type="image/webp">
+            <img src="../../assets/img/app/app-agenda.png" width="880" height="1239" loading="lazy" decoding="async" alt="The Congress app agenda: Day 1 sessions with times, tracks, rooms and RSVP state">
+          </picture>
+        </figure>
+        <div class="cxapp-block">
+          <h3>The programme, as it stands today</h3>
+          <span class="label">Agenda</span>
+          <p>Every session, speaker, track and room for the three days, with a My agenda view of the sessions you have chosen. When the organisers move a session, the agenda updates itself, and the meetings ConvergX arranges for you sit alongside it.</p>
+        </div>
+      </article>
+      <article class="cxapp-view" data-view="board">
+        <figure class="cxapp-phone" data-shot="board">
+          <picture>
+            <source srcset="../../assets/img/app/app-board.webp" type="image/webp">
+            <img src="../../assets/img/app/app-board.png" width="880" height="1725" loading="lazy" decoding="async" alt="The Opportunity Board: anonymous posts tagged Problem, Project or Need, each with Participate, Feedback and Partnership buttons">
+          </picture>
+        </figure>
+        <div class="cxapp-block">
+          <h3>Post what you need without saying who you are</h3>
+          <span class="label">Opportunity Board</span>
+          <p>Posts on the Board are anonymous to other delegates, and ConvergX alone holds the name behind one. Another delegate can answer with Participate, Feedback or Partnership, and ConvergX brokers the introduction from there.</p>
+        </div>
+      </article>
+      <article class="cxapp-view" data-view="alerts">
+        <figure class="cxapp-phone" data-shot="alerts">
+          <picture>
+            <source srcset="../../assets/img/app/app-alerts.webp" type="image/webp">
+            <img src="../../assets/img/app/app-alerts.png" width="880" height="1193" loading="lazy" decoding="async" alt="Alerts: a rescheduled session, new interest in a post, and a follow-up from an organiser">
+          </picture>
+        </figure>
+        <div class="cxapp-block">
+          <h3>Told when something changes</h3>
+          <span class="label">Alerts</span>
+          <p>A rescheduled session, a cancelled one, interest in your post, or a follow-up from an organiser arrives as an alert. The alert itself carries no content, so nothing about your posts leaves the app.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ROW 3 of 6. Still part one: this is how a delegate gets the Congress app. -->
+<section id="how-you-get-in" class="section--dense">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How you get in</h2>
+      <span class="label label--lo label--edge">Three steps</span>
+    </div>
+    <ol class="cxapp-steps">
+      <li>
+        <span class="label">Step 01</span>
+        <p class="cxapp-step-title">Register for the Congress</p>
+        <span class="descriptor">Registration is what puts you on the invitation list.</span>
+      </li>
+      <li>
+        <span class="label">Step 02</span>
+        <p class="cxapp-step-title">Watch for the invitation</p>
+        <span class="descriptor">ConvergX emails confirmed delegates an invitation link before Sep 22, at the address used to register. Open it on the phone you will carry in Calgary.</span>
+      </li>
+      <li>
+        <span class="label">Step 03</span>
+        <p class="cxapp-step-title">Set up your account once</p>
+        <span class="descriptor">After that, signing in is a link sent to your email. There is no password to remember on a conference network.</span>
+      </li>
+    </ol>
+    <p class="cxapp-actions">
+      <a class="btn btn--solid" href="../../congress/register/">Register for the Congress</a>
+    </p>
+  </div>
+</section>
+
+<!-- ROW 4 of 6. The last of part one. -->
+<section class="section--dense">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Where the app stops</h2>
+      <span class="label label--lo label--edge">Push and offline</span>
+    </div>
+    <ul class="link-index">
+      <li>
+        <span class="label">Push notifications</span>
+        <span class="descriptor">They reach Android phones today. On an iPhone, opening the app shows what has changed, and the agenda and the Board are identical on both.</span>
+      </li>
+      <li>
+        <span class="label">Offline</span>
+        <span class="descriptor">The agenda you already loaded still opens. Nothing new arrives until the network returns.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ROW 5 of 6. PART TWO. Paper ground, and no phone anywhere in it, because
+     this half is not something a company opens on a phone. It is a door, so it
+     is drawn as one. The two links are the site's own locked labels and are
+     character-identical to /access/ and the industry pages: do not reword them
+     here without changing them everywhere. -->
+<section id="the-rest-of-the-year" class="section--dense cxapp-band" data-surface="light">
+  <div class="wrap">
+    <div class="cxapp-part">
+      <span class="cxapp-part-no" aria-hidden="true">02</span>
+      <div>
+        <span class="label label--lo">The rest of the year</span>
+        <h2>One door for a requirement, one for a capability</h2>
+        <p>The Congress runs for three days. The work it starts runs the rest of the year, on the same platform, and it comes in through two doors. An organisation with a requirement its own supply base cannot fill uses one. A company with a capability already in service uses the other.</p>
       </div>
+    </div>
+
+    <div class="cxapp-sides">
+      <div class="cxapp-side">
+        <span class="label">The requirement side</span>
+        <p>You describe what you need solved and the industries you already source from. You do not have to say it in public, and you do not have to name yourself to the room.</p>
+      </div>
+      <div class="cxapp-side">
+        <span class="label">The capability side</span>
+        <p>You describe what you have built and where it is already running. ConvergX is reading for capability in service today rather than for the sector it was built for.</p>
+      </div>
+    </div>
+
+    <p class="cxapp-note">A person at ConvergX reads each one and decides. There is no open registration on this side and no account to create: access is decided one request at a time, and ConvergX puts its name on the introduction.</p>
+
+    <div class="two-path cxapp-doors">
+      <a href="../../access/request/">
+        <span class="label">I have a requirement</span>
+        <span class="link-more">Request access</span>
+      </a>
+      <a href="../../access/apply/">
+        <span class="label">I have a capability</span>
+        <span class="link-more">Apply to join</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ROW 6 of 6. The close, the persistent bar, the lightbox and the page's
+     only script. The bar and the dialog sit inside this section rather than
+     after it, so the section stays the last child of main and keeps its
+     closing padding. -->
+<section class="section--dense" data-surface="dark">
+  <div class="wrap">
+    <div class="editorial">
+      <h2>Register, and the invitation follows</h2>
+      <p>The app is for confirmed delegates. Registration covers the three days, and the invitation arrives before the doors open.</p>
+      <p class="cxapp-actions">
+        <a class="btn btn--solid" href="../../congress/register/">Register for the Congress</a>
+      </p>
       <ul class="link-index">
-        <li>
-          <span class="label">Push notifications</span>
-          <!-- ADDED 2026-08-04. The row stated the boundary and left an iPhone
-               delegate at a dead end: told what they do not get, and not what to
-               do instead. The second sentence is the route, and the third stops
-               a reader inferring that iOS is a lesser build. Both are facts this
-               page already carries elsewhere, not new claims: the agenda and the
-               board are what the hero says the app is. -->
-          <span class="descriptor">They reach Android phones, and iPhones receive none. On an iPhone, opening the app shows what has changed. The agenda and the board are identical on both.</span>
-        </li>
-        <li>
-          <span class="label">Offline</span>
-          <span class="descriptor">The agenda you already loaded still opens. Nothing new arrives until the network returns.</span>
-        </li>
+        <li><a href="../../congress/#agenda">Agenda</a><span class="descriptor">What is scheduled, and what happens in the gaps between the sessions.</span></li>
       </ul>
     </div>
-  </section>
+  </div>
 
-
-  <hr class="rule-double">
-
-  <!-- The close. This is the highest-traffic page of Congress week and it
-       ended on a dense block with nowhere to go. Two named destinations,
-       no verb-phrase CTAs, per the locked tertiary-link rule. -->
-  <section class="section--dense">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Before you arrive</h2>
-        <span class="label label--lo label--edge">Next</span>
-      </div>
-      <div class="editorial">
-        <div class="body">
-          <ul class="link-index">
-            <li><a href="../../congress/#agenda">Agenda</a><span class="descriptor">What is scheduled, and what happens in the gaps between the sessions.</span></li>
-            <li><a href="../../congress/register/">Register</a><span class="descriptor">Who the room is for, and what a registration covers.</span></li>
-          </ul>
-        </div>
-      </div>
+  <div class="cxapp-bar" hidden>
+    <div class="cxapp-bar-inner">
+      <p class="label">Congress app / Sep 22 to 24</p>
+      <a class="btn btn--solid" href="../../congress/register/">Register for the Congress</a>
     </div>
-  </section>
+  </div>
+
+  <!-- The site's own rule is that a component must work with zero script, and
+       on that rule it rejected <dialog> once already. This one is different:
+       it is an enlargement of a picture that is already legible in the page,
+       so with no script there is nothing missing, and the button that opens it
+       is added by the script rather than written here. -->
+  <dialog class="cxapp-lightbox" aria-label="Screenshot, enlarged">
+    <img alt="">
+    <form method="dialog"><button class="cxapp-lightbox-close" aria-label="Close">Close</button></form>
+  </dialog>
+</section>
+<script>
+/* Progressive enhancement only. With this file absent the page is three
+   screenshots above their blocks, every word in order, no bottom bar and no
+   enlargement. */
+(function () {
+  var views = document.querySelector(".cxapp-views");
+  var sw = document.querySelector(".cxapp-switch");
+  var bar = document.querySelector(".cxapp-bar");
+  var heroBtn = document.querySelector(".cxapp-hero .btn");
+  var wide = function () { return !window.matchMedia("(max-width: 60rem)").matches; };
+
+  if (views && sw) {
+    var items = Array.prototype.slice.call(views.querySelectorAll(".cxapp-view"));
+    var segs = Array.prototype.slice.call(sw.querySelectorAll("button"));
+
+    var select = function (name) {
+      items.forEach(function (v) {
+        v.classList.toggle("is-on", v.getAttribute("data-view") === name);
+      });
+      segs.forEach(function (b) {
+        b.setAttribute("aria-pressed", b.getAttribute("data-view") === name ? "true" : "false");
+      });
+    };
+
+    /* The swap is a desktop move only. On a phone the frame sits above the
+       blocks and is already scrolled past by the time a lower block is read,
+       so swapping it changed a picture nobody was looking at and the Board and
+       the alerts were never seen at all. A phone gets all three, stacked. */
+    if (wide()) {
+      views.classList.add("is-live");
+      sw.hidden = false;
+      select(items[0].getAttribute("data-view"));
+    }
+
+    segs.forEach(function (b) {
+      b.addEventListener("click", function () { select(b.getAttribute("data-view")); });
+    });
+    items.forEach(function (v) {
+      v.querySelector(".cxapp-block").addEventListener("click", function () {
+        select(v.getAttribute("data-view"));
+      });
+    });
+
+    /* Reading is the other way of choosing. The frame is pinned beside the
+       text here, so the one being read is the one it should be showing, and
+       the reader gets all three without touching anything. Desktop only, for
+       the same reason the swap is. */
+    if (window.IntersectionObserver) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          /* The block, not the article: a live article is display: contents
+             and has no box for an observer to measure. */
+          if (e.isIntersecting && wide()) { select(e.target.parentNode.getAttribute("data-view")); }
+        });
+      }, { rootMargin: "-45% 0px -45% 0px" });
+      items.forEach(function (v) { spy.observe(v.querySelector(".cxapp-block")); });
+    }
+  }
+
+  /* Every screenshot opens at full size. The button is built here rather than
+     written into the markup so that with no script there is no control that
+     does nothing. */
+  var box = document.querySelector(".cxapp-lightbox");
+  if (box && box.showModal) {
+    var full = box.querySelector("img");
+    Array.prototype.forEach.call(document.querySelectorAll(".cxapp-phone"), function (fig) {
+      var img = fig.querySelector("img");
+      var open = document.createElement("button");
+      open.type = "button";
+      open.className = "cxapp-expand";
+      open.innerHTML = "<span>Enlarge</span>";
+      open.setAttribute("aria-label", "Enlarge: " + img.alt);
+      open.addEventListener("click", function () {
+        full.src = img.currentSrc || img.src;
+        full.alt = img.alt;
+        box.showModal();
+      });
+      fig.classList.add("is-live");
+      fig.appendChild(open);
+    });
+    box.addEventListener("click", function (e) { if (e.target === box) { box.close(); } });
+  }
+
+  /* The bar is the hero's button, kept within reach once the hero has gone.
+     Deliberately a scroll handler and not an IntersectionObserver: the
+     observer only reports a crossing, and the link in the hero jumps the
+     reader straight from above the button to well below it. The button is out
+     of frame at both ends, so no crossing is reported, and the bar never
+     arrives. A reload that restores its scroll position does the same. This
+     reads the position it actually has, on a frame, whatever route the reader
+     took to get there. */
+  if (bar && heroBtn) {
+    var queued = false;
+    var sync = function () {
+      queued = false;
+      bar.hidden = heroBtn.getBoundingClientRect().bottom > 0;
+    };
+    var onScroll = function () {
+      if (!queued) { queued = true; requestAnimationFrame(sync); }
+    };
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll);
+    sync();
+  }
+})();
+</script>
 
 </main>
 
