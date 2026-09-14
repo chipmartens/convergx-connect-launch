@@ -22,10 +22,15 @@
    A panel heading and its paragraph are the same size on purpose. Weight and
    ink separate them, which is what lets four panels sit in a column without
    the column turning into a ladder of sizes. */
-.cxapp-title { font-size: var(--step-4); }
+/* The header spans the band. .app-copy's own label and h2 rules in section
+   60c no longer reach these, because they are no longer in that column, so
+   the three elements carry their spacing here. */
+.cxapp-head > .label { display: block; margin-block-end: var(--space-s); }
+.cxapp-title { font-size: var(--step-4); margin-block-end: var(--space-m); }
 .app-band .app-sub {
   font-size: var(--step-1);
   max-width: var(--measure);
+  margin-block-end: 0;
 }
 
 /* THE PANEL LIST. Everything down to the .is-live block is the resting,
