@@ -398,9 +398,27 @@
    the offsets can open up. The captures keep their own edge and shadow,
    which is what still separates them from the page and from each other. */
 .cxp-stack {
+  /* Local, for the same reason the stage's two ramp colours are local:
+     tokens.css carries no glow value. One declaration, read once. */
+  --cxp-glow: rgba(255, 255, 255, 0.11);
+  position: relative;
+  isolation: isolate;
   display: grid;
   place-items: center;
   padding-block: var(--space-2xl);
+}
+/* A soft light behind the pair, so two near-black screens sit off the
+   near-black page instead of on it. Radial and very low alpha: the ground
+   is the brand's, the glow only has to separate, not decorate. Behind the
+   captures by z-index, not by source order, so the layers keep their
+   stacking. */
+.cxp-stack::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  z-index: -1;
+  background: radial-gradient(ellipse 65% 60% at 50% 48%, var(--cxp-glow), transparent 72%);
+  pointer-events: none;
 }
 .cxp-stack .cxp-shot--crop { grid-area: 1 / 1; inline-size: 94%; }
 .cxp-shot--back {
@@ -422,6 +440,22 @@
    drawing can carry weight there. Full width in the wrap puts them at 1108px
    and 694px, which is 0.69 and 0.43 of the artboard. */
 .cxp-fig { margin: 0; display: grid; row-gap: var(--space-s); }
+
+/* THE DRAWINGS SIT IN A BOX. Chip, 2026-09-14. A hairline line drawing on a
+   bare ground has no edge of its own, so it read as floating text rather
+   than as a figure. A panel with a rounded corner and a soft lift gives it
+   the same standing the captures get from their frame, and the two media
+   types then sit at the same level in the page rather than one looking
+   finished and the other looking like a sketch.
+   --cxp-lift is local because tokens.css carries no elevation value; it is
+   the only thing here that is not already a token. */
+.cxp-step .cxp-fig {
+  --cxp-lift: rgba(0, 0, 0, 0.10);
+  padding: var(--space-xl) var(--space-l);
+  border: var(--rule-hair) solid var(--rule-ink);
+  border-radius: var(--space-m);
+  box-shadow: 0 var(--space-xs) var(--space-xl) var(--cxp-lift);
+}
 .cxp-fig svg { display: block; inline-size: 100%; block-size: auto; }
 /* The strokes are 1px to 2px in artboard units, so at 0.4 scale they land at
    under half a pixel and the drawing greys out. non-scaling-stroke holds them
