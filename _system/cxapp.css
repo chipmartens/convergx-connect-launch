@@ -1,0 +1,137 @@
+/* ============ CONGRESS APP SECTION + THE PLATFORM PAGE, START ============
+ *
+ * Append to wp-content/themes/convergx/assets/styles.css and bump the theme
+ * version so the cache clears. Everything here is scoped to .cxapp- and
+ * .cxp- class names and is used on two places only: the app section on
+ * /congress/ and the /platform/ page. No existing rule is touched.
+ *
+ * Every colour, size and space reads a variable already declared in
+ * tokens.css, so a later brand change carries through without editing this
+ * block.
+ * ======================================================================= */
+
+/* ---- GOAL 1. The app section on /congress/ ---------------------------- */
+
+/* THE CAPTURE IS NO LONGER A SLICE IN THIS SECTION.
+ * Section 42 gives .app-band .mod-shot-frame a height of 0 with min-height
+ * 100%, a 30rem cap and a fade mask, all so a single tall capture reads as a
+ * cropped slice beside two short paragraphs. This section has three feature
+ * blocks instead, so that geometry stretched the frame to the height of the
+ * copy column and filled the gap above the image with the panel colour.
+ * Here the frame sizes to the capture and shows the whole screen, and it
+ * sticks so the phone stays in view while the three blocks are read. The
+ * percentage min-height has to be zeroed explicitly: it resolves against the
+ * grid area, so align-self alone does not release it. */
+.app-band .cxapp-inner > .mod-shot-frame {
+  align-self: start;
+  position: sticky;
+  /* --anchor-offset is declared in section 33 as the height of both stacked
+     sticky bars plus a line of air, and it already has a correct JS-off
+     branch. Reusing it means the frame and an in-page jump agree by
+     construction. The fallback covers a page with no subnav. */
+  top: calc(var(--anchor-offset, calc(var(--shell-h) + var(--space-m))) + var(--space-s));
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+
+.cxapp-features {
+  list-style: none;
+  margin: var(--space-xl) 0 0;
+  padding: 0;
+  display: grid;
+  row-gap: var(--space-l);
+  max-width: var(--measure);
+}
+.cxapp-features > li {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--rule-hair) solid var(--rule-ink);
+  padding-block-start: var(--space-s);
+}
+/* The label reads above the heading and sits after it in the document, so the
+   site rule that a .label is never an eyebrow still holds for a screen reader.
+   Same arrangement as .sec-head and .cxapp-block. */
+.cxapp-features > li .label { order: -1; margin-block-end: var(--space-2xs); }
+.cxapp-features > li h3 { margin: 0; line-height: var(--lh-heading); }
+.cxapp-features > li p { margin-block-start: var(--space-2xs); color: var(--fg-hi); }
+
+.cxapp-getin {
+  margin-block-start: var(--space-xl);
+  max-width: var(--measure);
+  color: var(--fg-hi);
+}
+
+@media (max-width: 60rem) {
+  .app-band .cxapp-inner > .mod-shot-frame { position: static; }
+}
+
+/* ---- GOAL 2. The Platform page --------------------------------------- */
+
+/* The hero carries a button and a quiet link on one line. */
+.hero-cta .link-more { margin-inline-start: var(--space-m); }
+
+.cxp-sides {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-l);
+  margin-block: var(--space-xl);
+}
+.cxp-sides .cxp-side {
+  border-top: var(--rule-hair) solid var(--rule-ink);
+  padding-block-start: var(--space-s);
+}
+.cxp-side p { margin-block-start: var(--space-2xs); }
+
+/* THE NOTE SITS IN AN .editorial, NOT ON ITS OWN.
+   A bare capped-width <p> is a direct child of .wrap, and .wrap centres its
+   children on the page container: capping the measure here centred the note
+   on the page while every block above it stayed on the left edge. .editorial
+   is the site's own measure container and already resolves that edge, so the
+   note goes inside one and this rule only carries colour and spacing. */
+.cxp-note {
+  color: var(--fg-hi);
+  margin-block-end: var(--space-xl);
+}
+
+/* Two captures, each beside its own text. The phone leads on a narrow screen
+   and sits beside the copy from two columns up. */
+.cxp-views {
+  display: grid;
+  row-gap: var(--space-2xl);
+  margin-block-end: var(--space-2xl);
+}
+.cxp-view { display: grid; row-gap: var(--space-m); }
+
+.cxp-phone {
+  margin: 0;
+  max-inline-size: var(--measure-lede);
+  border: var(--rule-hair) solid var(--rule-ink-load);
+  border-radius: var(--space-m);
+  overflow: hidden;
+  background: var(--block);
+  box-shadow: inset 0 0 var(--space-l) var(--bg);
+}
+.cxp-phone img { display: block; width: 100%; height: auto; }
+
+.cxp-block { display: flex; flex-direction: column; max-width: var(--measure); }
+.cxp-block .label { order: -1; margin-block-end: var(--space-2xs); }
+.cxp-block h3 { margin: 0; line-height: var(--lh-heading); }
+.cxp-block p { margin-block-start: var(--space-s); color: var(--fg-hi); }
+
+@media (min-width: 60rem) {
+  .cxp-view {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: var(--space-2xl);
+    align-items: center;
+  }
+  /* The second capture leads from the other side, so the page does not read
+     as two identical rows stacked. */
+  .cxp-view:nth-child(even) .cxp-phone { order: 2; }
+}
+
+.cxp-doors { margin-block-start: var(--space-xl); }
+
+/* ============ CONGRESS APP SECTION + THE PLATFORM PAGE, END ============ */

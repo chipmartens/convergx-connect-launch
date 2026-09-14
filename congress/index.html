@@ -8,6 +8,7 @@
 <meta name="description" content="Sep 22 to 24, 2026, Calgary. Two invite-only roundtables, a reception, then two days of sessions. The 10th Anniversary.">
 <link rel="stylesheet" href="../_system/tokens.css?v=f59bc737">
 <link rel="stylesheet" href="../_system/styles.css?v=f59bc737">
+<link rel="stylesheet" href="../_system/cxapp.css?v=821e8eca">
 </head>
 <body data-surface="dark" data-hero="photo">
 
@@ -982,6 +983,7 @@
            The header CTA carries Register; sponsorship asks go to the form at
            #sponsor-contact below. -->
       <li><a href="#sponsor-contact">Contact</a></li>
+      <li><a href="#app">The app</a></li>
       <!-- THE APP STAYS OUT OF THIS BAR, 2026-08-04, Chip: "remove The App from
            the sub menu. Keep the block on the page, but just leave the app out
            for now. They find it as they scroll."
@@ -1920,32 +1922,52 @@
     </div>
   </section>
 
+  <!-- =====================================================================
+       GOAL 1. The Congress app, as a SECTION on /congress/.
+       Replaces the body of template-parts/congress/app-band.php.
+       Keeps id="app" so the existing #app anchor and the new subnav entry
+       both land here. No switcher, no lightbox, no script: one screenshot
+       and the three things the app does.
+       ===================================================================== -->
   <section id="app" class="app-band">
     <div class="wrap">
-      <!-- RESTACKED 2026-08-14 (Chip): the eyebrow and the h2 moved INTO the
-           left column, so the capture top-aligns with the title and the
-           taller column shows more of the app. The coming-soon eyebrow is
-           still the availability statement (client instruction 2026-08-13);
-           it just sits above the title now. -->
-      <div class="app-inner">
+      <div class="app-inner cxapp-inner">
+
         <div class="app-copy">
-          <span class="label label--lo">Coming soon</span>
+          <span class="label label--lo">At the Congress</span>
           <h2>The Congress app</h2>
-          <p class="app-sub">The agenda, the sessions, and your meetings, in one place</p>
-          <p>The Congress app carries the full programme for the three days: sessions, speakers, rooms, and the meetings arranged for you. When the schedule changes, the app is current.</p>
-          <p>More detail closer to the Congress.</p>
-          <p class="push-s"><a class="link-more" href="../congress/the-app/">The Congress app</a></p>
+          <p class="app-sub">The programme, the Opportunity Board and the alerts, for the three days in Calgary</p>
+          <p>Every confirmed delegate carries the same app. It holds the full schedule for the three days, the Board where the room posts what it needs, and the alerts that say when either has changed.</p>
+
+          <ul class="cxapp-features">
+            <li>
+              <span class="label">Agenda</span>
+              <h3>The programme, as it stands today</h3>
+              <p>Every session, speaker, track and room for the three days, with a My agenda view of the sessions you have chosen. When the organisers move a session the agenda updates itself, and the meetings ConvergX arranges for you sit alongside it.</p>
+            </li>
+            <li>
+              <span class="label">Opportunity Board</span>
+              <h3>Post what you need without saying who you are</h3>
+              <p>Posts on the Board are anonymous to other delegates, and ConvergX alone holds the name behind one. Another delegate can answer with Participate, Feedback or Partnership, and ConvergX brokers the introduction from there.</p>
+            </li>
+            <li>
+              <span class="label">Alerts</span>
+              <h3>Told when something changes</h3>
+              <p>A rescheduled session, a cancelled one, interest in your post, or a follow-up from an organiser arrives as an alert. The alert itself carries no content, so nothing about your posts leaves the app.</p>
+            </li>
+          </ul>
+
+          <p class="cxapp-getin">The app reaches confirmed delegates by invitation. Register for the Congress and the invitation arrives by email, at the address you registered with, before the doors open.</p>
+          <p class="push-s"><a class="btn btn--solid" href="../congress/register/">Register for the Congress</a></p>
         </div>
-        <!-- REAL CAPTURE landed 2026-08-13: the agenda view, from the app
-             team's store screenshots. Synthetic seed data only (no real
-             attendee or company names), which is what the old data-spec
-             required. The home-screen capture exists too but carries a
-             seeded sponsor logo and a placeholder event name, so it stays
-             off this site. -->
+
         <figure class="mod-shot-frame">
-          <img src="../assets/img/congress-app-agenda.png" width="880" height="1912" loading="lazy" decoding="async" alt="The Congress app agenda screen: Day 1 sessions with times, tracks, rooms and RSVP state">
-          <figcaption>Congress app</figcaption>
+          <picture>
+            <source srcset="../assets/img/app/app-agenda.webp" type="image/webp">
+            <img src="../assets/img/app/app-agenda.png" width="880" height="1239" loading="lazy" decoding="async" alt="The Congress app agenda: Day 1 sessions with times, tracks, rooms and RSVP state">
+          </picture>
         </figure>
+
       </div>
     </div>
   </section>
