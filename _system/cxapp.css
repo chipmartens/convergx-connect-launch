@@ -1,0 +1,285 @@
+/* ============ CONGRESS APP SECTION + THE PLATFORM PAGE, START ============
+ *
+ * Append to wp-content/themes/convergx/assets/styles.css and bump the theme
+ * version so the cache clears. Everything here is scoped to .cxapp- and
+ * .cxp- class names and is used on two places only: the app section on
+ * /congress/ and the /platform/ page. No existing rule is touched.
+ *
+ * Every colour, size and space reads a variable already declared in
+ * tokens.css, so a later brand change carries through without editing this
+ * block.
+ * ======================================================================= */
+
+/* ---- GOAL 1. The app section on /congress/ ---------------------------- */
+
+/* THE TYPE IN THIS SECTION IS THREE SIZES, NOT FOUR. Chip, 2026-09-14, on the
+   first build: the standfirst was nearly as large as the title and the panel
+   headings were a third size between it and the body, so the column read as a
+   slope with no step in it.
+     title       --step-4, the one large thing
+     standfirst  --step-1, clearly under the title, clearly over the panels
+     panels      --step-0, headings and paragraphs at ONE size
+   A panel heading and its paragraph are the same size on purpose. Weight and
+   ink separate them, which is what lets four panels sit in a column without
+   the column turning into a ladder of sizes. */
+.cxapp-title { font-size: var(--step-4); }
+.app-band .app-sub {
+  font-size: var(--step-1);
+  max-width: var(--measure);
+}
+
+/* THE PANEL LIST. Everything down to the .is-live block is the resting,
+   scripts-off state: every paragraph open, nothing dimmed, no progress.
+
+   ONE LINE, AND IT RUNS DOWN THE LEFT. The first build drew a hairline above
+   every panel and a progress track under every heading, which put two rules on
+   each row of a four row list. The rail replaces both: it is the separator
+   when it is grey and the progress when it fills, so the section carries one
+   line instead of nine. */
+.cxapp-tabs {
+  --cxapp-dur: 8s;              /* one panel's turn. The longest paragraph
+                                   here runs past it, which is what hover,
+                                   focus and a click on any heading are for. */
+  list-style: none;
+  margin: var(--space-xl) 0 0;
+  padding: 0;
+  display: grid;
+  row-gap: var(--space-m);
+  max-width: var(--measure);
+}
+.cxapp-tab {
+  position: relative;
+  border-inline-start: 2px solid var(--rule-ink);
+  padding-inline-start: var(--space-m);
+}
+.cxapp-tab-head { margin: 0; }
+/* The heading IS the control. A button inside the h3 keeps the outline rank
+   the content has and still gives a keyboard reader one tab stop per panel,
+   which a click handler on the h3 would not. */
+.cxapp-tab-head button {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: start;
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  letter-spacing: normal;
+  color: inherit;
+  cursor: pointer;
+}
+.cxapp-tab-head button:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
+.cxapp-tab-body p {
+  margin: 0;
+  padding-block-start: var(--space-2xs);
+  font-size: var(--step-0);
+  color: var(--fg-hi);
+}
+
+/* The rail's filling half only exists while the script is driving. */
+.cxapp-progress { display: none; }
+
+.cxapp-getin {
+  margin-block-start: var(--space-xl);
+  max-width: var(--measure);
+  color: var(--fg-hi);
+}
+
+/* THE STAGE. Scripts off, the four captures read in order, each named, so a
+   reader who never sees the carousel still sees every screen. */
+.cxapp-stage {
+  display: grid;
+  row-gap: var(--space-xl);
+  justify-items: center;
+  align-content: start;
+}
+.cxapp-shot {
+  margin: 0;
+  inline-size: min(100%, 20rem);
+  display: grid;
+  row-gap: var(--space-2xs);
+  justify-items: center;
+}
+/* The frame hugs its capture. These are crops of four different lengths, so a
+   shared height would leave the short one stretched and the long one a strip;
+   they share a width instead, and the stage takes the height of the longest.
+   NO CAP AND NO FADE. Section 42's masked slice was tried here first and the
+   fade is a property of the box, not of whether the capture overflows it, so
+   it ate the tab bar off the short Home capture to cap a long Board one. At
+   this width the longest capture is about 40rem, which the section can carry
+   whole, so the simpler thing is to show all four in full. Re-check that if a
+   re-shoot makes one of them much longer. */
+.cxapp-shot picture {
+  display: block;
+  inline-size: 100%;
+  border: var(--rule-hair) solid var(--rule-ink-load);
+  border-radius: var(--space-m);
+  overflow: hidden;
+}
+.cxapp-shot img { display: block; inline-size: 100%; block-size: auto; }
+.cxapp-shot figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--fg-lo);
+}
+
+/* ---- the live carousel, switched on by the script ---------------------- */
+
+.cxapp-tabs.is-live .cxapp-tab-head button { color: var(--fg-lo); transition: color 200ms ease; }
+.cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-tab-head button,
+.cxapp-tabs.is-live .cxapp-tab-head button:hover { color: var(--fg); }
+
+/* The 0fr to 1fr grid row is the collapse. It animates a real height without
+   a measured pixel value, so a panel whose paragraph rewraps at another width
+   still opens to the right size. */
+.cxapp-tabs.is-live .cxapp-tab-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 260ms ease;
+}
+.cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-tab-body { grid-template-rows: 1fr; }
+.cxapp-tabs.is-live .cxapp-tab-body > * { overflow: hidden; }
+/* THE CLOSED PANEL HAS TO MEASURE ZERO, and padding on the clipped child is
+   what stopped it: overflow:hidden releases the child's content min-size but
+   its padding still contributes, so every closed panel kept a 9px band and
+   the list never sat still. The open state carries the spacing instead. */
+.cxapp-tabs.is-live .cxapp-tab-body p { padding-block-start: 0; }
+.cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-tab-body p { padding-block-start: var(--space-2xs); }
+
+/* The fill sits ON the rail, covering the panel's own left border, so the one
+   line is grey while the panel waits and inked while it runs. */
+.cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-progress {
+  display: block;
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: -2px;
+  inline-size: 2px;
+  overflow: hidden;
+}
+.cxapp-tabs.is-live .cxapp-progress > span {
+  display: block;
+  block-size: 100%;
+  background: var(--fg);
+  transform: scaleY(0);
+  transform-origin: center top;
+}
+/* THE CLOCK. The script advances on this animation's animationend, so the
+   panel's turn and the line the reader watches are the same object and
+   cannot drift apart. */
+.cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-progress > span {
+  animation: cxapp-fill var(--cxapp-dur, 8s) linear forwards;
+}
+/* Pausing is CSS, not script. Hover and focus-within are the two states a
+   reader is actually in while reading a panel, and both are expressible here,
+   so the script carries no hover, blur or leave handling at all. .is-held is
+   the one case CSS cannot see: the section scrolled out of view. */
+.cxapp-tabs.is-live:hover .cxapp-tab.is-on .cxapp-progress > span,
+.cxapp-tabs.is-live:focus-within .cxapp-tab.is-on .cxapp-progress > span,
+.cxapp-tabs.is-live.is-held .cxapp-tab.is-on .cxapp-progress > span { animation-play-state: paused; }
+@keyframes cxapp-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+/* One cell, four captures, the open one on top. */
+.cxapp-stage.is-live { row-gap: 0; }
+.cxapp-stage.is-live .cxapp-shot {
+  grid-area: 1 / 1;
+  align-self: start;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 240ms ease, visibility 0s linear 240ms;
+}
+.cxapp-stage.is-live .cxapp-shot.is-on {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 240ms ease;
+}
+.cxapp-stage.is-live figcaption { display: none; }
+
+@media (min-width: 60rem) {
+  .cxapp-stage.is-live { position: sticky; top: calc(var(--anchor-offset, calc(var(--shell-h) + var(--space-m))) + var(--space-s)); }
+}
+
+/* NO AUTOPLAY ON prefers-reduced-motion, and it costs no branch in the
+   script: with the animation suppressed, animationend never fires and the
+   panels only ever move when a reader asks. The rail keeps its grey so the
+   list still reads, and nothing looks like a stalled progress bar. */
+@media (prefers-reduced-motion: reduce) {
+  .cxapp-tabs.is-live .cxapp-tab-body,
+  .cxapp-tabs.is-live .cxapp-tab-head button,
+  .cxapp-stage.is-live .cxapp-shot { transition: none; }
+  .cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-progress > span { animation: none; }
+  .cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-progress { display: none; }
+}
+
+/* ---- GOAL 2. The Platform page --------------------------------------- */
+
+/* The hero carries a button and a quiet link on one line. */
+.hero-cta .link-more { margin-inline-start: var(--space-m); }
+
+.cxp-sides {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-l);
+  margin-block: var(--space-xl);
+}
+.cxp-sides .cxp-side {
+  border-top: var(--rule-hair) solid var(--rule-ink);
+  padding-block-start: var(--space-s);
+}
+.cxp-side p { margin-block-start: var(--space-2xs); }
+
+/* THE NOTE SITS IN AN .editorial, NOT ON ITS OWN.
+   A bare capped-width <p> is a direct child of .wrap, and .wrap centres its
+   children on the page container: capping the measure here centred the note
+   on the page while every block above it stayed on the left edge. .editorial
+   is the site's own measure container and already resolves that edge, so the
+   note goes inside one and this rule only carries colour and spacing. */
+.cxp-note {
+  color: var(--fg-hi);
+  margin-block-end: var(--space-xl);
+}
+
+/* Two captures, each beside its own text. The phone leads on a narrow screen
+   and sits beside the copy from two columns up. */
+.cxp-views {
+  display: grid;
+  row-gap: var(--space-2xl);
+  margin-block-end: var(--space-2xl);
+}
+.cxp-view { display: grid; row-gap: var(--space-m); }
+
+.cxp-phone {
+  margin: 0;
+  max-inline-size: var(--measure-lede);
+  border: var(--rule-hair) solid var(--rule-ink-load);
+  border-radius: var(--space-m);
+  overflow: hidden;
+  background: var(--block);
+  box-shadow: inset 0 0 var(--space-l) var(--bg);
+}
+.cxp-phone img { display: block; width: 100%; height: auto; }
+
+.cxp-block { display: flex; flex-direction: column; max-width: var(--measure); }
+.cxp-block .label { order: -1; margin-block-end: var(--space-2xs); }
+.cxp-block h3 { margin: 0; line-height: var(--lh-heading); }
+.cxp-block p { margin-block-start: var(--space-s); color: var(--fg-hi); }
+
+@media (min-width: 60rem) {
+  .cxp-view {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: var(--space-2xl);
+    align-items: center;
+  }
+  /* The second capture leads from the other side, so the page does not read
+     as two identical rows stacked. */
+  .cxp-view:nth-child(even) .cxp-phone { order: 2; }
+}
+
+.cxp-doors { margin-block-start: var(--space-xl); }
+
+/* ============ CONGRESS APP SECTION + THE PLATFORM PAGE, END ============ */

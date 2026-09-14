@@ -107,6 +107,7 @@
      * consulting or for congresses. The bar answers that question; the
      * brand name Xpand stays on the page, the homepage block and the
      * logo. Path unchanged, so nothing inbound breaks. */
+    { label: "The Platform",   href: "/platform/", live: true },
     { label: "Consulting",     href: "/xpand/",     mega: "xpand",      live: true }
   ];
   /* About is a UTILITY link and it now TAKES A PANEL. Chip, 2026-07-29:
@@ -395,6 +396,11 @@
      * coming-soon thing should not make. NOTHING ELSE MOVED: /congress/the-app/
      * still resolves, the section on /congress/ stays, and the FOOTER below
      * still carries the row, so the page is still reachable without JS.
+     * SUPERSEDED 2026-09-14: the app is no longer marked coming soon, the
+     * section on /congress/ now carries its three views, and
+     * /congress/the-app/ is a redirect to /congress/#app rather than a
+     * page. The panel row is still out; the subnav on /congress/ carries
+     * the stop instead.
      * Its old note, if the row comes back: "The agenda, the sessions and the
      * people in the room, on the phone you already carry."
      *
@@ -480,10 +486,15 @@
       { label: "Overview",             href: "/congress/" },
       { label: "Agenda",               href: "/congress/#agenda" },
       { label: "Speakers",             href: "/congress/#speakers" },
-      { label: "The app",              href: "/congress/the-app/" },
+      { label: "The app",              href: "/congress/#app" },
       { label: "Register",             href: "/congress/register/" },
       { label: "Sponsor",              href: "/congress/#sponsor-contact" },
       { label: "Xchange Partnerships", href: "/congress/partnerships/" }
+    ]},
+    { title: "The Platform", links: [
+      { label: "The Platform", href: "/platform/" },
+      { label: "Request access", href: "/access/request/" },
+      { label: "Apply to join",  href: "/access/apply/" }
     ]},
     { title: "Consulting", links: [
       { label: "Overview",        href: "/xpand/" },
