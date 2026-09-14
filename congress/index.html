@@ -8,7 +8,7 @@
 <meta name="description" content="Sep 22 to 24, 2026, Calgary. Two invite-only roundtables, a reception, then two days of sessions. The 10th Anniversary.">
 <link rel="stylesheet" href="../_system/tokens.css?v=f59bc737">
 <link rel="stylesheet" href="../_system/styles.css?v=f59bc737">
-<link rel="stylesheet" href="../_system/cxapp.css?v=821e8eca">
+<link rel="stylesheet" href="../_system/cxapp.css?v=9fd18cab">
 </head>
 <body data-surface="dark" data-hero="photo">
 
@@ -1929,31 +1929,84 @@
        both land here. No switcher, no lightbox, no script: one screenshot
        and the three things the app does.
        ===================================================================== -->
+  <!-- =====================================================================
+       GOAL 1. The Congress app, as a SECTION on /congress/.
+       Replaces the body of template-parts/congress/app-band.php.
+       Keeps id="app" so the existing #app anchor and the subnav entry both
+       land here.
+
+       FOUR PANELS, ONE AT A TIME, ADVANCING ON THEIR OWN. The copy column
+       holds the four headings; the stage on the right holds the four
+       captures. Only the open panel shows its paragraph, and a progress
+       line under its heading runs for the panel's turn and then hands over
+       to the next one.
+
+       THE PROGRESS LINE IS A CSS ANIMATION, NOT A TIMER, and the script
+       advances on its animationend. That is the whole clock. It buys three
+       things a setInterval would each have to be written for: pausing is
+       one property, a reader on prefers-reduced-motion gets no animation
+       and therefore no autoplay without a branch, and a browser that
+       throttles background tabs stops the carousel for free.
+
+       WITH SCRIPTS OFF every paragraph is open and all four captures are
+       visible in order, each named by its own caption.
+       ===================================================================== -->
   <section id="app" class="app-band">
     <div class="wrap">
       <div class="app-inner cxapp-inner">
 
         <div class="app-copy">
           <span class="label label--lo">At the Congress</span>
-          <h2>The Congress app</h2>
-          <p class="app-sub">The programme, the Opportunity Board and the alerts, for the three days in Calgary</p>
-          <p>Every confirmed delegate carries the same app. It holds the full schedule for the three days, the Board where the room posts what it needs, and the alerts that say when either has changed.</p>
+          <h2 class="cxapp-title">The Congress app</h2>
+          <p class="app-sub">Everything for the three days in Calgary, on the phone you are already carrying</p>
 
-          <ul class="cxapp-features">
-            <li>
-              <span class="label">Agenda</span>
-              <h3>The programme, as it stands today</h3>
-              <p>Every session, speaker, track and room for the three days, with a My agenda view of the sessions you have chosen. When the organisers move a session the agenda updates itself, and the meetings ConvergX arranges for you sit alongside it.</p>
+          <ul class="cxapp-tabs">
+            <li class="cxapp-tab" data-view="home">
+              <h3 class="cxapp-tab-head">
+                <button type="button" id="cxapp-tab-home" aria-expanded="true" aria-controls="cxapp-panel-home">
+                  Where the day stands when you open it
+                </button>
+              </h3>
+              <span class="cxapp-progress" aria-hidden="true"><span></span></span>
+              <div class="cxapp-tab-body" id="cxapp-panel-home" role="region" aria-labelledby="cxapp-tab-home">
+                <p>The session happening next, how many of your own are still to come, and anything waiting on you. On a full day it is often the only screen you open.</p>
+              </div>
             </li>
-            <li>
-              <span class="label">Opportunity Board</span>
-              <h3>Post what you need without saying who you are</h3>
-              <p>Posts on the Board are anonymous to other delegates, and ConvergX alone holds the name behind one. Another delegate can answer with Participate, Feedback or Partnership, and ConvergX brokers the introduction from there.</p>
+
+            <li class="cxapp-tab" data-view="agenda">
+              <h3 class="cxapp-tab-head">
+                <button type="button" id="cxapp-tab-agenda" aria-expanded="true" aria-controls="cxapp-panel-agenda">
+                  The whole schedule at a glance
+                </button>
+              </h3>
+              <span class="cxapp-progress" aria-hidden="true"><span></span></span>
+              <div class="cxapp-tab-body" id="cxapp-panel-agenda" role="region" aria-labelledby="cxapp-tab-agenda">
+                <p>Every session, speaker, track and room for the three days, with a My agenda view of the ones you have chosen. When the organisers move a session the agenda updates itself, and the meetings ConvergX arranges for you sit alongside it.</p>
+              </div>
             </li>
-            <li>
-              <span class="label">Alerts</span>
-              <h3>Told when something changes</h3>
-              <p>A rescheduled session, a cancelled one, interest in your post, or a follow-up from an organiser arrives as an alert. The alert itself carries no content, so nothing about your posts leaves the app.</p>
+
+            <li class="cxapp-tab" data-view="board">
+              <h3 class="cxapp-tab-head">
+                <button type="button" id="cxapp-tab-board" aria-expanded="true" aria-controls="cxapp-panel-board">
+                  Ask the room for what you need
+                </button>
+              </h3>
+              <span class="cxapp-progress" aria-hidden="true"><span></span></span>
+              <div class="cxapp-tab-body" id="cxapp-panel-board" role="region" aria-labelledby="cxapp-tab-board">
+                <p>Post a problem, a project or a need without putting your name on it. Posts are anonymous to other delegates, and ConvergX alone holds the name behind one. Another delegate answers with Participate, Feedback or Partnership, and ConvergX brokers the introduction from there.</p>
+              </div>
+            </li>
+
+            <li class="cxapp-tab" data-view="alerts">
+              <h3 class="cxapp-tab-head">
+                <button type="button" id="cxapp-tab-alerts" aria-expanded="true" aria-controls="cxapp-panel-alerts">
+                  Know the moment something changes
+                </button>
+              </h3>
+              <span class="cxapp-progress" aria-hidden="true"><span></span></span>
+              <div class="cxapp-tab-body" id="cxapp-panel-alerts" role="region" aria-labelledby="cxapp-tab-alerts">
+                <p>A rescheduled session, interest in one of your posts, or a follow-up from an organiser arrives as an alert. The alert itself carries no content, so nothing about your posts leaves the app.</p>
+              </div>
             </li>
           </ul>
 
@@ -1961,16 +2014,100 @@
           <p class="push-s"><a class="btn btn--solid" href="../congress/register/">Register for the Congress</a></p>
         </div>
 
-        <figure class="mod-shot-frame">
-          <picture>
-            <source srcset="../assets/img/app/app-agenda.webp" type="image/webp">
-            <img src="../assets/img/app/app-agenda.png" width="880" height="1239" loading="lazy" decoding="async" alt="The Congress app agenda: Day 1 sessions with times, tracks, rooms and RSVP state">
-          </picture>
-        </figure>
+        <div class="cxapp-stage">
+          <figure class="cxapp-shot" data-view="home">
+            <picture>
+              <source srcset="../assets/img/app/app-home.webp" type="image/webp">
+              <img src="../assets/img/app/app-home.png" width="880" height="742" loading="lazy" decoding="async" alt="The Congress app home screen: the session happening next, counters for your sessions, unread alerts and your posts, and a card reporting new interest in one of your posts">
+            </picture>
+            <figcaption>Home</figcaption>
+          </figure>
+          <figure class="cxapp-shot" data-view="agenda">
+            <picture>
+              <source srcset="../assets/img/app/app-agenda.webp" type="image/webp">
+              <img src="../assets/img/app/app-agenda.png" width="880" height="1239" loading="lazy" decoding="async" alt="The Congress app agenda: Day 1 sessions with times, tracks, rooms and RSVP state">
+            </picture>
+            <figcaption>Agenda</figcaption>
+          </figure>
+          <figure class="cxapp-shot" data-view="board">
+            <picture>
+              <source srcset="../assets/img/app/app-board.webp" type="image/webp">
+              <img src="../assets/img/app/app-board.png" width="880" height="1725" loading="lazy" decoding="async" alt="The Opportunity Board: anonymous posts tagged Problem, Project or Need, each with Participate, Feedback and Partnership buttons">
+            </picture>
+            <figcaption>Opportunity Board</figcaption>
+          </figure>
+          <figure class="cxapp-shot" data-view="alerts">
+            <picture>
+              <source srcset="../assets/img/app/app-alerts.webp" type="image/webp">
+              <img src="../assets/img/app/app-alerts.png" width="880" height="1193" loading="lazy" decoding="async" alt="Alerts: new interest in a post, and a follow-up from an organiser">
+            </picture>
+            <figcaption>Alerts</figcaption>
+          </figure>
+        </div>
 
       </div>
     </div>
   </section>
+
+  <script>
+  /* The Congress app carousel on /congress/#app.
+   *
+   * Progressive enhancement. The markup renders complete without this file:
+   * every paragraph open, all four captures visible and captioned. Everything
+   * below turns that into one panel at a time.
+   *
+   * THERE IS NO TIMER IN HERE. The progress line is a CSS animation and this
+   * advances on its animationend, so the line a reader watches and the panel's
+   * turn are the same object. Pausing on hover and focus is CSS too. What is
+   * left is: switch panels, advance, and stop while the section is off screen.
+   */
+  (function () {
+    var tabs = document.querySelector('.cxapp-tabs');
+    var stage = document.querySelector('.cxapp-stage');
+    if (!tabs || !stage) return;
+
+    var panels = [].slice.call(tabs.querySelectorAll('.cxapp-tab'));
+    var shots = [].slice.call(stage.querySelectorAll('.cxapp-shot'));
+    if (panels.length < 2 || shots.length !== panels.length) return;
+
+    tabs.classList.add('is-live');
+    stage.classList.add('is-live');
+
+    var at = -1;
+
+    function show(next) {
+      if (next === at) return;
+      at = next;
+      panels.forEach(function (panel, i) {
+        var on = i === next;
+        panel.classList.toggle('is-on', on);
+        panel.querySelector('.cxapp-tab-head button').setAttribute('aria-expanded', String(on));
+      });
+      shots.forEach(function (shot, i) { shot.classList.toggle('is-on', i === next); });
+    }
+
+    /* The animation restarts by itself: the class moves to an element that did
+     * not have it, so the fill runs from zero. No reflow hack is needed. */
+    tabs.addEventListener('animationend', function (e) {
+      if (e.animationName === 'cxapp-fill') show((at + 1) % panels.length);
+    });
+
+    tabs.addEventListener('click', function (e) {
+      var button = e.target.closest('.cxapp-tab-head button');
+      if (button) show(panels.indexOf(button.closest('.cxapp-tab')));
+    });
+
+    /* Off screen is the one pause CSS cannot express. Without it the sequence
+     * runs down while nobody is looking and the reader arrives mid-rotation. */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        tabs.classList.toggle('is-held', !entries[0].isIntersecting);
+      }, { threshold: 0.15 }).observe(tabs);
+    }
+
+    show(0);
+  })();
+  </script>
 
   <!-- SECTIONS 9, 11 AND 12 WERE DELETED 2026-07-31, and the whole muted band
        with them. Chip: "You can remove the Tickets and Sponsorship blocks from
