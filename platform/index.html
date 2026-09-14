@@ -213,66 +213,97 @@
       </li>
 
       <li class="cxp-step">
-        <figure class="cxp-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="102 62 1396 630"
-     preserveAspectRatio="xMidYMid meet" role="img"
-     aria-label="Diagram: two separate systems of circles that do not touch. A single dot between them, labelled a person at ConvergX, is joined to each side by a short solid line. Nothing else crosses the gap.">
-  <!-- Fig. 5 in FIGURE-SYSTEM.md section 2. Geometry copied unit for unit.
-     * Solid bodies first, then dashed orbits, then the dot, then labels.
-     * Ink is inherited: currentColor only, no colour value anywhere. -->
+        <figure class="cxp-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="80 34 1440 630" role="img"
+     aria-label="Diagram: an unbroken solid vertical line divides the drawing. From the left, one dashed line arrives at a single dot on that line, labelled a person at ConvergX. From the right, five dashed lines converge on the same dot. Every line stops at the dot. Nothing crosses the vertical line anywhere else.">
+  <!-- Fig. 10, The only link. Replaces fig-5-two-sides-one-broker.
+       Ink is currentColor only. Order: solid, dashed, dot, labels, so the
+       site reveal (styles.css section 20) plays in DOM order. -->
 
-  <!-- the two systems. Solid body, one per side. They never touch. -->
-  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="400" cy="360" r="190"/>
-  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="1200" cy="360" r="190"/>
+  <!-- The screen. One unbroken solid line, top to bottom. Nothing passes it. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        x1="800" y1="60" x2="800" y2="640"/>
 
-  <!-- the only two things crossing the gap. A person, drawn as two short
-     * reaches. No arrowhead: direction and force are not claimed. -->
-  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="590" y1="360" x2="794" y2="360"/>
-  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="806" y1="360" x2="1010" y2="360"/>
+  <!-- The side asking. ONE requirement, arriving from the left, stopping at the dot. -->
+  <line class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        x1="100" y1="350" x2="792" y2="350"/>
 
-  <!-- orbits. Dashed, no pathLength: it would destroy the dash pattern. -->
-  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="400" cy="360" r="250"/>
-  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="1200" cy="360" r="250"/>
+  <!-- The sides answering. FIVE member companies, converging from the right on the same dot. -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 110 C 1250 110, 1000 290, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 230 C 1250 230, 1000 320, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 350 C 1250 350, 1000 350, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 470 C 1250 470, 1000 380, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 590 C 1250 590, 1000 410, 808 350"/>
 
-  <!-- the broker. A person, at the node where both reaches end. -->
-  <circle class="fig-dot" cx="800" cy="360" r="6"/>
+  <!-- The person. The one point on the screen that both sides touch. -->
+  <circle class="fig-dot" fill="currentColor" stroke="none" cx="800" cy="350" r="10"/>
 
-  <!-- y 240, not 300: at 300 the label sat on the connecting line and crowded it. -->
-  <text class="fig-label" text-anchor="middle" x="800" y="240">A person at ConvergX</text>
-  <text class="fig-label" text-anchor="start" x="280" y="640">The side asking</text>
-  <text class="fig-label" text-anchor="start" x="1080" y="640">The side answering</text>
+  <g class="fig-label" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" letter-spacing="3">
+    <text x="100" y="310" text-anchor="start">THE SIDE ASKING</text>
+    <text x="1500" y="80" text-anchor="end">MEMBER COMPANIES</text>
+    <text x="770" y="410" text-anchor="end">A PERSON AT CONVERGX</text>
+    <text x="820" y="635" text-anchor="start">NOTHING ELSE CROSSES</text>
+  </g>
 </svg></figure>
         <div class="cxp-step-copy">
           <span class="label">03 Read</span>
           <h3>The two sides never meet each other</h3>
-          <p>The side asking and the side answering do not see one another. A person at ConvergX is the only thing that joins them.</p>
+          <p>One requirement goes in. Member companies answer. Neither side sees the other, and a person at ConvergX is the only thing that joins them.</p>
         </div>
       </li>
 
       <li class="cxp-step">
-        <figure class="cxp-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="212 32 1436 656"
-     preserveAspectRatio="xMidYMid meet" role="img"
-     aria-label="Diagram: a dashed path passes through a narrow gate between two vertical lines, with a dot at the point where the questions are asked. Past the gate the path either continues as a solid line off the edge of the frame, labelled introduced, or ends a short way in, labelled not taken forward.">
-  <!-- Reworked 2026-07-28 per POLISH-SPEC section 4. Geometry only: the gate moved from
-       x 820 to x 700, the entering path now starts at x 260 instead of the frame edge,
-       and the ending branch travels further before it stops. Nothing the figure says
-       changed. Labels, caption and aria-label stay FIGURE-SYSTEM section 2's, character
-       for character. -->
-  <!-- The gate. Two vertical segments, the aperture between them at y 300 to 420, unchanged. -->
-  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="700" y1="80" x2="700" y2="300"/>
-  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="700" y1="420" x2="700" y2="640"/>
-  <!-- Continuing branch. Solid because the meeting happened. Cropped by the right frame edge at y 320. -->
-  <path class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" d="M 708 360 C 950 350, 1250 330, 1600 320"/>
-  <!-- Entering path. Dashed: a proposal. Begins in frame at x 260, so the left half is
-       composition rather than empty plate. -->
-  <path class="fig-dash" vector-effect="non-scaling-stroke" d="M 260 380 C 400 380, 545 370, 692 360"/>
-  <!-- Ending branch. Travels to (1120, 540) and stops. No terminal mark: a decision not to
-       introduce, not a defect found. -->
-  <path class="fig-dash" vector-effect="non-scaling-stroke" d="M 708 368 C 850 412, 1000 470, 1120 540"/>
-  <!-- The asking happens here. -->
-  <circle class="fig-dot" cx="700" cy="360" r="6"/>
-  <text class="fig-label" text-anchor="start" x="740" y="120">The questions are asked here</text>
-  <text class="fig-label" text-anchor="start" x="1330" y="280">Introduced</text>
-  <text class="fig-label" text-anchor="start" x="1000" y="600">Not taken forward</text>
+        <figure class="cxp-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="80 104 1480 564" role="img"
+     aria-label="Diagram: a dashed line comes in from the left and reaches a dot on a short solid vertical line, labelled the call. Two lines leave the dot in different directions. The upper one is solid and runs all the way to the right edge, labelled introduced. The lower one stays dashed, drops away, and stops at a short solid bar, labelled not taken forward.">
+  <!-- Fig. 11, The call. Replaces fig-6-vetting-aperture.
+       Ink is currentColor only. Order: solid, dashed, dot, labels, so the
+       site reveal (styles.css section 20) plays in DOM order. -->
+
+  <!-- The call. A short solid vertical through the dot: the moment, not a wall. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        x1="700" y1="230" x2="700" y2="470"/>
+
+  <!-- Introduced. Solid the moment it leaves the dot, and it keeps going to the edge. -->
+  <path class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        d="M 708 350 C 900 350, 1050 180, 1540 180"/>
+
+  <!-- The stop. A short solid bar across the end of the lower branch. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        x1="1060" y1="532" x2="1060" y2="588"/>
+
+  <!-- Under review. Dashed, arriving from the left. -->
+  <line class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        x1="100" y1="350" x2="692" y2="350"/>
+
+  <!-- Not taken forward. Still dashed, drops away, and ends at the bar. -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 708 350 C 830 350, 900 540, 1060 560"/>
+
+  <!-- The decision is made here. -->
+  <circle class="fig-dot" fill="currentColor" stroke="none" cx="700" cy="350" r="10"/>
+
+  <g class="fig-label" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" letter-spacing="3">
+    <text x="100" y="310" text-anchor="start">UNDER REVIEW</text>
+    <text x="700" y="200" text-anchor="middle">THE CALL</text>
+    <text x="1540" y="150" text-anchor="end">INTRODUCED</text>
+    <text x="1060" y="640" text-anchor="middle">NOT TAKEN FORWARD</text>
+  </g>
 </svg></figure>
         <div class="cxp-step-copy">
           <span class="label">04 Decided</span>
