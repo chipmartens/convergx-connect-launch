@@ -93,44 +93,103 @@
    the button's own top margin was coming from that paragraph. */
 .app-copy > .push-s { margin-block-start: var(--space-xl); }
 
-/* THE STAGE. Scripts off, the four captures read in order, each named, so a
-   reader who never sees the carousel still sees every screen. */
+/* THE STAGE, ON THE CONGRESS GROUND.
+ *
+ * Chip, 2026-09-14: one square for every capture, each as large as it will
+ * go, on the brand gradient with the mesh over it.
+ *
+ * THE GROUND IS THE BRAND BOOK'S, NOT A NEW ONE. Black to a cool slate with
+ * a low spotlight, and a 1px mesh at 6.5% white over it: brand book p.28,
+ * and the same ramp the 2026 app icon is built on (app-icon-2026/_build/
+ * compose.py, ground_stage). It is drawn in CSS rather than shipped as an
+ * image, so it stays sharp at any size, costs no request, and re-skins with
+ * the two values below.
+ *
+ * THE TWO COLOURS ARE DECLARED HERE because tokens.css carries neither: the
+ * site's dark ground is --ground (#171717), a neutral, and the stage ramp
+ * runs from true black to a cool slate. Declared once, read three times, so
+ * the block still has a single place to change. They belong in tokens.css
+ * whenever the brand swap reaches it.
+ *
+ * THE SQUARE IS ONLY FOR THE CAROUSEL. With scripts off the stage keeps the
+ * ground but not the ratio, because four captures stacked in a square would
+ * either overflow it or shrink to nothing. */
 .cxapp-stage {
+  --cxapp-stage-top: #000000;
+  --cxapp-stage-base: #262a32;
+  --cxapp-mesh: rgba(255, 255, 255, 0.065);
+  --cxapp-glow: rgba(255, 255, 255, 0.07);
+  --cxapp-edge: rgba(255, 255, 255, 0.16);  /* the capture's own edge. The
+                                               band's --rule-ink-load is dark
+                                               ink for a chrome ground and is
+                                               invisible on this one. */
+  --cxapp-lift: rgba(0, 0, 0, 0.55);
+  --cxapp-cells: 6.25%;                     /* 16 across, the book's 48-cell
+                                               field at this scale */
   display: grid;
   row-gap: var(--space-xl);
   justify-items: center;
   align-content: start;
-}
-.cxapp-shot {
-  margin: 0;
-  inline-size: min(100%, 20rem);
-  display: grid;
-  row-gap: var(--space-2xs);
-  justify-items: center;
-}
-/* The frame hugs its capture. These are crops of four different lengths, so a
-   shared height would leave the short one stretched and the long one a strip;
-   they share a width instead, and the stage takes the height of the longest.
-   NO CAP AND NO FADE. Section 42's masked slice was tried here first and the
-   fade is a property of the box, not of whether the capture overflows it, so
-   it ate the tab bar off the short Home capture to cap a long Board one. At
-   this width the longest capture is about 40rem, which the section can carry
-   whole, so the simpler thing is to show all four in full. Re-check that if a
-   re-shoot makes one of them much longer. */
-.cxapp-shot picture {
-  display: block;
-  inline-size: 100%;
+  padding: var(--space-l);
   border: var(--rule-hair) solid var(--rule-ink-load);
   border-radius: var(--space-m);
   overflow: hidden;
+  /* mesh, mesh, spotlight, ramp. The bare 65% in the ramp is a colour
+     interpolation hint, not a stop: it pulls the midpoint down to match the
+     book's 1.6 power curve without inventing a third colour. */
+  background-color: var(--cxapp-stage-top);
+  background-image:
+    linear-gradient(to right, var(--cxapp-mesh) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--cxapp-mesh) 1px, transparent 1px),
+    radial-gradient(ellipse 150% 80% at 50% 106%, var(--cxapp-glow), transparent 70%),
+    linear-gradient(to bottom, var(--cxapp-stage-top), 65%, var(--cxapp-stage-base));
+  background-size:
+    var(--cxapp-cells) 100%,
+    100% var(--cxapp-cells),
+    100% 100%,
+    100% 100%;
 }
-.cxapp-shot img { display: block; inline-size: 100%; block-size: auto; }
+
+/* EVERY CAPTURE IS AS LARGE AS THE SQUARE ALLOWS. They are crops of four
+   different shapes, so "the same size" is the frame, not the picture: the
+   tall Board capture reaches the square's full height and the wide Home
+   capture reaches its full width. Both are at their ceiling. */
+.cxapp-shot {
+  margin: 0;
+  display: grid;
+  row-gap: var(--space-2xs);
+  justify-items: center;
+  max-inline-size: 100%;
+  min-block-size: 0;
+}
+/* The capture is a near-black screen on a near-black ground, so without an
+   edge and a shadow it bleeds into the stage and stops reading as a device. */
+.cxapp-shot picture {
+  display: block;
+  min-block-size: 0;
+  max-block-size: 100%;
+  border: var(--rule-hair) solid var(--cxapp-edge);
+  border-radius: var(--space-m);
+  overflow: hidden;
+  box-shadow: 0 var(--space-s) var(--space-2xl) var(--cxapp-lift);
+}
+.cxapp-shot img {
+  display: block;
+  inline-size: auto;
+  block-size: auto;
+  max-inline-size: 100%;
+  max-block-size: 100%;
+  object-fit: contain;
+}
+/* The captions read on the stage ground, which is dark whatever surface the
+   band itself is on, so they take the dark-surface ink rather than the
+   band's --fg-lo. */
 .cxapp-shot figcaption {
   font-family: var(--font-mono);
   font-size: var(--step--2);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  color: var(--fg-lo);
+  color: var(--ink-lo);
 }
 
 /* ---- the live carousel, switched on by the script ---------------------- */
@@ -188,11 +247,16 @@
 .cxapp-tabs.is-live.is-held .cxapp-tab.is-on .cxapp-progress > span { animation-play-state: paused; }
 @keyframes cxapp-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
-/* One cell, four captures, the open one on top. */
-.cxapp-stage.is-live { row-gap: 0; }
+/* One square, four captures in one cell, the open one on top. */
+.cxapp-stage.is-live {
+  row-gap: 0;
+  aspect-ratio: 1;
+  place-content: center;
+  place-items: center;
+}
 .cxapp-stage.is-live .cxapp-shot {
   grid-area: 1 / 1;
-  align-self: start;
+  max-block-size: 100%;
   opacity: 0;
   visibility: hidden;
   transition: opacity 240ms ease, visibility 0s linear 240ms;
