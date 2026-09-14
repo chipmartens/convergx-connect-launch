@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="80 104 1480 564" role="img"
+     aria-label="Diagram: a dashed line comes in from the left and reaches a dot on a short solid vertical line, labelled the call. Two lines leave the dot in different directions. The upper one is solid and runs all the way to the right edge, labelled introduced. The lower one stays dashed, drops away, and stops at a short solid bar, labelled not taken forward.">
+  <!-- Fig. 11, The call. Replaces fig-6-vetting-aperture.
+       Ink is currentColor only. Order: solid, dashed, dot, labels, so the
+       site reveal (styles.css section 20) plays in DOM order. -->
+
+  <!-- The call. A short solid vertical through the dot: the moment, not a wall. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        x1="700" y1="230" x2="700" y2="470"/>
+
+  <!-- Introduced. Solid the moment it leaves the dot, and it keeps going to the edge. -->
+  <path class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        d="M 708 350 C 900 350, 1050 180, 1540 180"/>
+
+  <!-- The stop. A short solid bar across the end of the lower branch. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        x1="1060" y1="532" x2="1060" y2="588"/>
+
+  <!-- Under review. Dashed, arriving from the left. -->
+  <line class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        x1="100" y1="350" x2="692" y2="350"/>
+
+  <!-- Not taken forward. Still dashed, drops away, and ends at the bar. -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 708 350 C 830 350, 900 540, 1060 560"/>
+
+  <!-- The decision is made here. -->
+  <circle class="fig-dot" fill="currentColor" stroke="none" cx="700" cy="350" r="10"/>
+
+  <g class="fig-label" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" letter-spacing="3">
+    <text x="100" y="310" text-anchor="start">UNDER REVIEW</text>
+    <text x="700" y="200" text-anchor="middle">THE CALL</text>
+    <text x="1540" y="150" text-anchor="end">INTRODUCED</text>
+    <text x="1060" y="640" text-anchor="middle">NOT TAKEN FORWARD</text>
+  </g>
+</svg>

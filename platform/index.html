@@ -8,7 +8,7 @@
 <meta name="description" content="A requirement posted on the ConvergX platform reaches the companies that can answer it, read and introduced by a person at ConvergX.">
 <link rel="stylesheet" href="../_system/tokens.css?v=f59bc737">
 <link rel="stylesheet" href="../_system/styles.css?v=f59bc737">
-<link rel="stylesheet" href="../_system/cxapp.css?v=ba430d5a">
+<link rel="stylesheet" href="../_system/cxapp.css?v=1ad58185">
 </head>
 <body data-surface="dark">
 
@@ -74,7 +74,7 @@
 <main id="main">
 <!-- =====================================================================
      GOAL 2. "The Platform" (XPND). A page at /platform/ on the page-flex
-     template, four Exact rows. Main nav entry reads "The Platform".
+     template, three Exact rows. Main nav entry reads "The Platform".
 
      REGISTER, 2026-09-14 (Chip): the shape is heliosintel.ai's. A long
      specific sentence that names the layer and the outcome, then single
@@ -91,17 +91,17 @@
      pixel and its labels at six.
      ===================================================================== -->
 
-<!-- ROW 1 of 5. The hero. Must stay first: page-flex checks the first row
+<!-- ROW 1 of 3. The hero. Must stay first: page-flex checks the first row
      for an h1 and suppresses its own hero when it finds one. -->
 <section class="section--open cxp-sec">
   <div class="wrap">
     <div class="cxp-hero">
       <div class="editorial hero">
         <header class="hero-head">
-          <span class="label label--edge">XPND / The platform</span>
+          <span class="label label--edge">ConvergX XPND</span>
         </header>
-        <h1 class="display--hero hero-title">XPND is the introduction layer for industrial sourcing</h1>
-        <p class="hero-sub lede-text">It brings the requirement, the capability and the decision into one place, so an organisation can reach a company it has no record of, judge whether it can be trusted, and defend the choice afterwards.</p>
+        <h1 class="display--hero hero-title">The introduction layer for industrial sourcing</h1>
+        <p class="hero-sub lede-text">XPND brings the requirement, the capability and the decision into one place, so an organisation can reach a company it has no record of, judge whether it can be trusted, and defend the choice afterwards.</p>
         <p class="hero-cta">
           <a class="btn btn--solid" href="../access/request/">Request access</a>
           <a class="link-more" href="#how-it-works">How it works</a>
@@ -125,7 +125,7 @@
            Board behind, and interest coming back in front. Same
            composition, same before-and-after read, no claim the brand
            cannot stand behind. -->
-      <div class="cxp-stage cxp-stage--shot cxp-stage--stack">
+      <div class="cxp-stack">
         <figure class="cxp-shot cxp-shot--crop cxp-shot--back">
           <picture>
             <source srcset="../assets/img/app/app-post.webp" type="image/webp">
@@ -143,61 +143,7 @@
   </div>
 </section>
 
-<!-- ROW 2 of 5. The problem, in two sentences and one large figure. -->
-<section id="the-constraint" class="section--dense cxp-sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Your sourcing system ranks the suppliers you have</h2>
-      <span class="label label--lo label--edge">The constraint</span>
-    </div>
-
-    <div class="editorial">
-      <p>A company that solved your problem in another sector holds no record with you, so the search cannot return it. And a supplier with no history is hard to defend on paper, so the work goes back to the one you already use.</p>
-    </div>
-
-    <figure class="cxp-fig cxp-fig--wide">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="22 -98 1556 1056"
-     preserveAspectRatio="xMidYMid meet" role="img"
-     aria-label="Diagram: four circles, one for each industry, all touching at a single shared point marked by a dot. The labels read aerospace and defence, energy, mining and natural resources, and agriculture.">
-  <!-- Fig. 7. Where the lines meet. Geometry, labels and aria-label copied
-       character for character from _reference/FIGURE-SYSTEM.md section 2.
-
-       REBUILT 2026-07-27 by the integration agent. The batch-slot-4 agent
-       shipped a byte-near duplicate of fig-1 (the spec's Fig. 4) into this
-       filename and Fig. 7 was never drawn. It read the site-wide figure
-       number as its batch index. Nothing else in the batch is affected.
-
-       Four circles, one per industry, every one tangent to the same node at
-       (800, 390). Two solid, two dashed, so the plate keeps the two-weight
-       grammar. The top and bottom circles are cropped by the frame on
-       purpose: the system is larger than the frame.
-
-       Tangency, checkable: (540,390) r260 touches at its rightmost point;
-       (1060,390) r260 at its leftmost; (800,170) r220 at its bottom;
-       (800,650) r260 at its top. All four land on (800, 390). -->
-
-  <!-- solid: tangent from the left and from the right -->
-  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="540" cy="390" r="260"/>
-  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="1060" cy="390" r="260"/>
-
-  <!-- dashed: tangent from above and from below, both cropped by the frame -->
-  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="800" cy="170" r="220"/>
-  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="800" cy="650" r="260"/>
-
-  <!-- the shared node. The only dot on the plate. -->
-  <circle class="fig-dot" cx="800" cy="390" r="6"/>
-
-  <text class="fig-label" text-anchor="start"  x="70"   y="380">Aerospace and defence</text>
-  <text class="fig-label" text-anchor="end"    x="1530" y="380">Energy</text>
-  <text class="fig-label" text-anchor="middle" x="800"  y="40">Mining and natural resources</text>
-  <text class="fig-label" text-anchor="middle" x="800"  y="685">Agriculture</text>
-</svg>
-      <figcaption>Where the lines meet</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ROW 3 of 4. THE WHOLE JOURNEY, ONCE.
+<!-- ROW 2 of 3. THE WHOLE JOURNEY, ONCE.
      Chip, 2026-09-14: "How an introduction is made" and "What the platform
      holds" were two tellings of the same journey, one drawn and one
      screenshotted, and the posting claim was being made four times on the
@@ -267,66 +213,97 @@
       </li>
 
       <li class="cxp-step">
-        <figure class="cxp-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="102 62 1396 630"
-     preserveAspectRatio="xMidYMid meet" role="img"
-     aria-label="Diagram: two separate systems of circles that do not touch. A single dot between them, labelled a person at ConvergX, is joined to each side by a short solid line. Nothing else crosses the gap.">
-  <!-- Fig. 5 in FIGURE-SYSTEM.md section 2. Geometry copied unit for unit.
-     * Solid bodies first, then dashed orbits, then the dot, then labels.
-     * Ink is inherited: currentColor only, no colour value anywhere. -->
+        <figure class="cxp-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="80 34 1440 630" role="img"
+     aria-label="Diagram: an unbroken solid vertical line divides the drawing. From the left, one dashed line arrives at a single dot on that line, labelled a person at ConvergX. From the right, five dashed lines converge on the same dot. Every line stops at the dot. Nothing crosses the vertical line anywhere else.">
+  <!-- Fig. 10, The only link. Replaces fig-5-two-sides-one-broker.
+       Ink is currentColor only. Order: solid, dashed, dot, labels, so the
+       site reveal (styles.css section 20) plays in DOM order. -->
 
-  <!-- the two systems. Solid body, one per side. They never touch. -->
-  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="400" cy="360" r="190"/>
-  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="1200" cy="360" r="190"/>
+  <!-- The screen. One unbroken solid line, top to bottom. Nothing passes it. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        x1="800" y1="60" x2="800" y2="640"/>
 
-  <!-- the only two things crossing the gap. A person, drawn as two short
-     * reaches. No arrowhead: direction and force are not claimed. -->
-  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="590" y1="360" x2="794" y2="360"/>
-  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="806" y1="360" x2="1010" y2="360"/>
+  <!-- The side asking. ONE requirement, arriving from the left, stopping at the dot. -->
+  <line class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        x1="100" y1="350" x2="792" y2="350"/>
 
-  <!-- orbits. Dashed, no pathLength: it would destroy the dash pattern. -->
-  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="400" cy="360" r="250"/>
-  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="1200" cy="360" r="250"/>
+  <!-- The sides answering. FIVE member companies, converging from the right on the same dot. -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 110 C 1250 110, 1000 290, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 230 C 1250 230, 1000 320, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 350 C 1250 350, 1000 350, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 470 C 1250 470, 1000 380, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 590 C 1250 590, 1000 410, 808 350"/>
 
-  <!-- the broker. A person, at the node where both reaches end. -->
-  <circle class="fig-dot" cx="800" cy="360" r="6"/>
+  <!-- The person. The one point on the screen that both sides touch. -->
+  <circle class="fig-dot" fill="currentColor" stroke="none" cx="800" cy="350" r="10"/>
 
-  <!-- y 240, not 300: at 300 the label sat on the connecting line and crowded it. -->
-  <text class="fig-label" text-anchor="middle" x="800" y="240">A person at ConvergX</text>
-  <text class="fig-label" text-anchor="start" x="280" y="640">The side asking</text>
-  <text class="fig-label" text-anchor="start" x="1080" y="640">The side answering</text>
+  <g class="fig-label" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" letter-spacing="3">
+    <text x="100" y="310" text-anchor="start">THE SIDE ASKING</text>
+    <text x="1500" y="80" text-anchor="end">MEMBER COMPANIES</text>
+    <text x="770" y="410" text-anchor="end">A PERSON AT CONVERGX</text>
+    <text x="820" y="635" text-anchor="start">NOTHING ELSE CROSSES</text>
+  </g>
 </svg></figure>
         <div class="cxp-step-copy">
           <span class="label">03 Read</span>
           <h3>The two sides never meet each other</h3>
-          <p>The side asking and the side answering do not see one another. A person at ConvergX is the only thing that joins them.</p>
+          <p>One requirement goes in. Member companies answer. Neither side sees the other, and a person at ConvergX is the only thing that joins them.</p>
         </div>
       </li>
 
       <li class="cxp-step">
-        <figure class="cxp-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="212 32 1436 656"
-     preserveAspectRatio="xMidYMid meet" role="img"
-     aria-label="Diagram: a dashed path passes through a narrow gate between two vertical lines, with a dot at the point where the questions are asked. Past the gate the path either continues as a solid line off the edge of the frame, labelled introduced, or ends a short way in, labelled not taken forward.">
-  <!-- Reworked 2026-07-28 per POLISH-SPEC section 4. Geometry only: the gate moved from
-       x 820 to x 700, the entering path now starts at x 260 instead of the frame edge,
-       and the ending branch travels further before it stops. Nothing the figure says
-       changed. Labels, caption and aria-label stay FIGURE-SYSTEM section 2's, character
-       for character. -->
-  <!-- The gate. Two vertical segments, the aperture between them at y 300 to 420, unchanged. -->
-  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="700" y1="80" x2="700" y2="300"/>
-  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="700" y1="420" x2="700" y2="640"/>
-  <!-- Continuing branch. Solid because the meeting happened. Cropped by the right frame edge at y 320. -->
-  <path class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" d="M 708 360 C 950 350, 1250 330, 1600 320"/>
-  <!-- Entering path. Dashed: a proposal. Begins in frame at x 260, so the left half is
-       composition rather than empty plate. -->
-  <path class="fig-dash" vector-effect="non-scaling-stroke" d="M 260 380 C 400 380, 545 370, 692 360"/>
-  <!-- Ending branch. Travels to (1120, 540) and stops. No terminal mark: a decision not to
-       introduce, not a defect found. -->
-  <path class="fig-dash" vector-effect="non-scaling-stroke" d="M 708 368 C 850 412, 1000 470, 1120 540"/>
-  <!-- The asking happens here. -->
-  <circle class="fig-dot" cx="700" cy="360" r="6"/>
-  <text class="fig-label" text-anchor="start" x="740" y="120">The questions are asked here</text>
-  <text class="fig-label" text-anchor="start" x="1330" y="280">Introduced</text>
-  <text class="fig-label" text-anchor="start" x="1000" y="600">Not taken forward</text>
+        <figure class="cxp-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="80 104 1480 564" role="img"
+     aria-label="Diagram: a dashed line comes in from the left and reaches a dot on a short solid vertical line, labelled the call. Two lines leave the dot in different directions. The upper one is solid and runs all the way to the right edge, labelled introduced. The lower one stays dashed, drops away, and stops at a short solid bar, labelled not taken forward.">
+  <!-- Fig. 11, The call. Replaces fig-6-vetting-aperture.
+       Ink is currentColor only. Order: solid, dashed, dot, labels, so the
+       site reveal (styles.css section 20) plays in DOM order. -->
+
+  <!-- The call. A short solid vertical through the dot: the moment, not a wall. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        x1="700" y1="230" x2="700" y2="470"/>
+
+  <!-- Introduced. Solid the moment it leaves the dot, and it keeps going to the edge. -->
+  <path class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        d="M 708 350 C 900 350, 1050 180, 1540 180"/>
+
+  <!-- The stop. A short solid bar across the end of the lower branch. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        x1="1060" y1="532" x2="1060" y2="588"/>
+
+  <!-- Under review. Dashed, arriving from the left. -->
+  <line class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        x1="100" y1="350" x2="692" y2="350"/>
+
+  <!-- Not taken forward. Still dashed, drops away, and ends at the bar. -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 708 350 C 830 350, 900 540, 1060 560"/>
+
+  <!-- The decision is made here. -->
+  <circle class="fig-dot" fill="currentColor" stroke="none" cx="700" cy="350" r="10"/>
+
+  <g class="fig-label" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" letter-spacing="3">
+    <text x="100" y="310" text-anchor="start">UNDER REVIEW</text>
+    <text x="700" y="200" text-anchor="middle">THE CALL</text>
+    <text x="1540" y="150" text-anchor="end">INTRODUCED</text>
+    <text x="1060" y="640" text-anchor="middle">NOT TAKEN FORWARD</text>
+  </g>
 </svg></figure>
         <div class="cxp-step-copy">
           <span class="label">04 Decided</span>
@@ -358,64 +335,35 @@
   </div>
 </section>
 
-<!-- ROW 4 of 4. The close, on the page's thesis figure at full width. The
+<!-- ROW 3 of 3. The close, on the page's thesis figure at full width. The
      two links are the site's locked labels and are character-identical to
      /access/ and the industry pages. Do not reword them here without
      changing them everywhere. -->
 <section class="section--dense cxp-sec" data-surface="dark">
   <div class="wrap">
-    <figure class="cxp-fig cxp-fig--wide">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-48 32 1696 656"
-     preserveAspectRatio="xMidYMid meet" role="img"
-     aria-label="Diagram: two dashed paths meet at a dot, separate again, and end a short way later. From the meeting point a single solid line continues to the edge of the frame, labelled the record.">
-  <!-- Fig. 8 in the site-wide append-only numbering. Reworked 2026-07-28 per POLISH-SPEC
-       section 4: the arriving paths enter at the frame's top and bottom corners and turn
-       up late, so the convergence has real angle instead of reading as four faint
-       scratches; the departing paths run to x 1150; "The introduction" moves below-left of
-       the dot, off the stroke it was colliding with. The solid record line and its label
-       are exactly as built. Every string is unchanged, character for character.
-       Solid first, then dashed, then dots, then labels. -->
-
-  <!-- The record. The only solid element: it outlasts every dashed path on the plate. -->
-  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
-        x1="600" y1="350" x2="1600" y2="350"/>
-
-  <!-- The two parties arriving, both cropped by the left frame edge. They run long and
-       turn up late, so the pinch at the node is the figure's loudest moment and so the
-       lower path passes UNDER "The introduction" instead of through it. -->
-  <path class="fig-dash" vector-effect="non-scaling-stroke"
-        d="M 0 80 C 340 100, 560 140, 600 350"/>
-  <path class="fig-dash" vector-effect="non-scaling-stroke"
-        d="M 0 640 C 340 620, 560 580, 600 350"/>
-
-  <!-- The two parties leaving. They end plainly. No terminal mark. -->
-  <path class="fig-dash" vector-effect="non-scaling-stroke"
-        d="M 600 350 C 780 290, 960 220, 1150 140"/>
-  <path class="fig-dash" vector-effect="non-scaling-stroke"
-        d="M 600 350 C 780 410, 960 480, 1150 560"/>
-
-  <!-- The introduction. The one node where the four paths and the record share a point. -->
-  <circle class="fig-dot" cx="600" cy="350" r="6"/>
-
-  <text class="fig-label" x="560" y="430" text-anchor="end">The introduction</text>
-  <text class="fig-label" x="1190" y="120" text-anchor="start">The parties</text>
-  <text class="fig-label" x="1560" y="320" text-anchor="end">The record</text>
-</svg>
-      <figcaption>The record persists</figcaption>
-    </figure>
-
-    <div class="editorial">
+    <div class="sec-head">
       <h2>Two ways in</h2>
-      <p>One door for a requirement your own supply base cannot fill. One for a capability already in service.</p>
+      <span class="label label--lo label--edge">Access</span>
     </div>
-    <div class="two-path cxp-doors">
-      <a href="../access/request/">
+
+    <!-- THE ACTION IS THE HEADING. Chip, 2026-09-14: the two doors were the
+         quietest thing on the section whose only job is to be clicked. The
+         locked labels, "Request access" and "Apply to join", are character
+         identical to /access/ and the industry pages and are the headings
+         now rather than a link under one. Do not reword them here without
+         changing them everywhere. -->
+    <div class="cxp-doors">
+      <a class="cxp-door" href="../access/request/">
         <span class="label">I have a requirement</span>
-        <span class="link-more">Request access</span>
+        <h3>Request access</h3>
+        <p>For an organisation with a requirement its own supply base cannot fill. Tell ConvergX what you need solved and which industries you already source from. A person reads it and decides what belongs in front of it.</p>
+        <span class="cxp-door-go" aria-hidden="true">Request access</span>
       </a>
-      <a href="../access/apply/">
+      <a class="cxp-door" href="../access/apply/">
         <span class="label">I have a capability</span>
-        <span class="link-more">Apply to join</span>
+        <h3>Apply to join</h3>
+        <p>For a company with a capability already in service. Tell ConvergX what you have built and where it runs. The sector it was built for does not matter, and there is no open registration to work around.</p>
+        <span class="cxp-door-go" aria-hidden="true">Apply to join</span>
       </a>
     </div>
   </div>
