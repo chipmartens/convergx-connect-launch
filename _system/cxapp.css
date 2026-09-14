@@ -383,25 +383,25 @@
   max-block-size: none;
 }
 
-/* THE HERO STACK. Two captures in one cell, the posted requirement behind
-   and the answer coming back in front, offset so both read as separate
-   screens rather than one cropped image. The back layer is stepped down in
-   size and ink so the front one is unambiguously the top of the pile.
-   Sized off the stage rather than the viewport, so the pair holds its
-   geometry at any width. */
-.cxp-stage--stack { display: grid; place-items: center; overflow: visible; }
-.cxp-stage--stack .cxp-shot--crop { grid-area: 1 / 1; inline-size: 82%; }
+/* THE HERO STACK, ON THE PAGE, NOT ON A STAGE. Chip, 2026-09-14: drop the
+   ground so the captures can be much larger, and space them so each one
+   reads. The gradient and mesh were a frame around two screens that had to
+   shrink to fit inside it; without it the pair runs to the full column and
+   the offsets can open up. The captures keep their own edge and shadow,
+   which is what still separates them from the page and from each other. */
+.cxp-stack {
+  display: grid;
+  place-items: center;
+  padding-block: var(--space-2xl);
+}
+.cxp-stack .cxp-shot--crop { grid-area: 1 / 1; inline-size: 88%; }
 .cxp-shot--back {
-  transform: translate(-11%, -13%) scale(0.94);
-  opacity: 0.72;
-  filter: saturate(0.85);
+  transform: translate(-19%, -22%) scale(0.92);
+  opacity: 0.6;
+  filter: saturate(0.8);
 }
-.cxp-shot--front { transform: translate(11%, 13%); }
-.cxp-shot--front picture { box-shadow: 0 var(--space-m) var(--space-3xl) var(--cxapp-lift); }
-
-@media (prefers-reduced-motion: no-preference) {
-  .cxp-stage--stack .cxp-shot--crop { transition: transform 240ms ease; }
-}
+.cxp-shot--front { transform: translate(19%, 22%); }
+.cxp-shot--front picture { box-shadow: 0 var(--space-m) var(--space-4xl) var(--cxapp-lift); }
 
 /* ---- the figures ---------------------------------------------------- */
 
@@ -474,7 +474,51 @@
   padding: var(--space-s) var(--space-xl);
 }
 
-.cxp-doors { margin-block-start: var(--space-2xl); }
+/* THE DOORS ARE THE ACTION. The locked label is the heading, the paragraph
+   under it says who the door is for, and the button at the foot repeats it
+   as the thing being clicked. Each door is a panel with its own ground so
+   the pair reads as two buttons, not two paragraphs with a rule between. */
+.cxp-doors {
+  display: grid;
+  gap: var(--space-l);
+  margin-block-start: var(--space-2xl);
+}
+.cxp-door {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl);
+  border: var(--rule-hair) solid var(--rule-ink);
+  border-radius: var(--space-m);
+  background: var(--block);
+  text-decoration: none;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+.cxp-door:hover { border-color: var(--fg); transform: translateY(-2px); }
+.cxp-door:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
+.cxp-door .label { color: var(--fg-lo); margin-block-end: var(--space-s); }
+.cxp-door h3 { margin: 0; font-size: var(--step-3); line-height: var(--lh-heading); }
+.cxp-door p { margin-block: var(--space-m) 0; color: var(--fg-hi); max-width: var(--measure); }
+/* A span, not a second link: the whole panel is the anchor, so a nested
+   control would be a second tab stop to the same place. */
+.cxp-door-go {
+  display: inline-flex;
+  align-items: center;
+  align-self: start;
+  gap: var(--space-2xs);
+  margin-block-start: var(--space-xl);
+  padding: var(--space-s) var(--space-xl);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  font-weight: 700;
+  line-height: 1;
+}
+.cxp-door-go::after { content: "\2192"; }
+@media (prefers-reduced-motion: reduce) {
+  .cxp-door { transition: none; }
+  .cxp-door:hover { transform: none; }
+}
 .cxp-doors a {
   padding: var(--space-l) var(--space-l) var(--space-m);
   transition: background-color 160ms ease;
@@ -490,13 +534,18 @@
 }
 
 @media (min-width: 60rem) {
-  /* The copy and the crop take equal tracks. */
+  /* THE CAPTURES TAKE THE WIDER TRACK. The headline lost four words when it
+     dropped "XPND is", so the copy needs less room and the pair of screens
+     can have it. The stack has no frame now, so it runs to the track. */
   .cxp-hero {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     column-gap: var(--space-2xl);
     align-items: center;
   }
-  .cxp-hero .cxp-stage { justify-self: end; max-inline-size: 32rem; }
+  .cxp-hero .cxp-stack { justify-self: end; inline-size: 100%; }
+
+  /* Two doors, side by side. */
+  .cxp-doors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   /* MEDIA AND COPY ALTERNATE SIDES, and BOTH children are pinned to row 1.
      That second half is the fix for a real defect: the previous version set

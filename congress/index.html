@@ -8,7 +8,7 @@
 <meta name="description" content="Sep 22 to 24, 2026, Calgary. Two invite-only roundtables, a reception, then two days of sessions. The 10th Anniversary.">
 <link rel="stylesheet" href="../_system/tokens.css?v=f59bc737">
 <link rel="stylesheet" href="../_system/styles.css?v=f59bc737">
-<link rel="stylesheet" href="../_system/cxapp.css?v=ba430d5a">
+<link rel="stylesheet" href="../_system/cxapp.css?v=1ad58185">
 </head>
 <body data-surface="dark" data-hero="photo">
 
@@ -2149,6 +2149,28 @@
        WITH SCRIPTS OFF every paragraph is open and all four captures are
        visible in order, each named by its own caption.
        ===================================================================== -->
+  <!-- =====================================================================
+       GOAL 1. The Congress app, as a SECTION on /congress/.
+       Replaces the body of template-parts/congress/app-band.php.
+       Keeps id="app" so the existing #app anchor and the subnav entry both
+       land here.
+
+       FOUR PANELS, ONE AT A TIME, ADVANCING ON THEIR OWN. The copy column
+       holds the four headings; the stage on the right holds the four
+       captures. Only the open panel shows its paragraph, and a progress
+       line under its heading runs for the panel's turn and then hands over
+       to the next one.
+
+       THE PROGRESS LINE IS A CSS ANIMATION, NOT A TIMER, and the script
+       advances on its animationend. That is the whole clock. It buys three
+       things a setInterval would each have to be written for: pausing is
+       one property, a reader on prefers-reduced-motion gets no animation
+       and therefore no autoplay without a branch, and a browser that
+       throttles background tabs stops the carousel for free.
+
+       WITH SCRIPTS OFF every paragraph is open and all four captures are
+       visible in order, each named by its own caption.
+       ===================================================================== -->
   <section id="app" class="app-band">
     <div class="wrap">
       <!-- THE TITLE SITS ABOVE THE SPLIT, not in the left column. Chip,
@@ -2251,6 +2273,66 @@
       </div>
     </div>
   </section>
+
+  <script>
+  /* The Congress app carousel on /congress/#app.
+   *
+   * Progressive enhancement. The markup renders complete without this file:
+   * every paragraph open, all four captures visible and captioned. Everything
+   * below turns that into one panel at a time.
+   *
+   * THERE IS NO TIMER IN HERE. The progress line is a CSS animation and this
+   * advances on its animationend, so the line a reader watches and the panel's
+   * turn are the same object. Pausing on hover and focus is CSS too. What is
+   * left is: switch panels, advance, and stop while the section is off screen.
+   */
+  (function () {
+    var tabs = document.querySelector('.cxapp-tabs');
+    var stage = document.querySelector('.cxapp-stage');
+    if (!tabs || !stage) return;
+
+    var panels = [].slice.call(tabs.querySelectorAll('.cxapp-tab'));
+    var shots = [].slice.call(stage.querySelectorAll('.cxapp-shot'));
+    if (panels.length < 2 || shots.length !== panels.length) return;
+
+    tabs.classList.add('is-live');
+    stage.classList.add('is-live');
+
+    var at = -1;
+
+    function show(next) {
+      if (next === at) return;
+      at = next;
+      panels.forEach(function (panel, i) {
+        var on = i === next;
+        panel.classList.toggle('is-on', on);
+        panel.querySelector('.cxapp-tab-head button').setAttribute('aria-expanded', String(on));
+      });
+      shots.forEach(function (shot, i) { shot.classList.toggle('is-on', i === next); });
+    }
+
+    /* The animation restarts by itself: the class moves to an element that did
+     * not have it, so the fill runs from zero. No reflow hack is needed. */
+    tabs.addEventListener('animationend', function (e) {
+      if (e.animationName === 'cxapp-fill') show((at + 1) % panels.length);
+    });
+
+    tabs.addEventListener('click', function (e) {
+      var button = e.target.closest('.cxapp-tab-head button');
+      if (button) show(panels.indexOf(button.closest('.cxapp-tab')));
+    });
+
+    /* Off screen is the one pause CSS cannot express. Without it the sequence
+     * runs down while nobody is looking and the reader arrives mid-rotation. */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        tabs.classList.toggle('is-held', !entries[0].isIntersecting);
+      }, { threshold: 0.15 }).observe(tabs);
+    }
+
+    show(0);
+  })();
+  </script>
 
   <script>
   /* The Congress app carousel on /congress/#app.

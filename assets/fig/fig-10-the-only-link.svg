@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="80 34 1440 630" role="img"
+     aria-label="Diagram: an unbroken solid vertical line divides the drawing. From the left, one dashed line arrives at a single dot on that line, labelled a person at ConvergX. From the right, five dashed lines converge on the same dot. Every line stops at the dot. Nothing crosses the vertical line anywhere else.">
+  <!-- Fig. 10, The only link. Replaces fig-5-two-sides-one-broker.
+       Ink is currentColor only. Order: solid, dashed, dot, labels, so the
+       site reveal (styles.css section 20) plays in DOM order. -->
+
+  <!-- The screen. One unbroken solid line, top to bottom. Nothing passes it. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="2"
+        x1="800" y1="60" x2="800" y2="640"/>
+
+  <!-- The side asking. ONE requirement, arriving from the left, stopping at the dot. -->
+  <line class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        x1="100" y1="350" x2="792" y2="350"/>
+
+  <!-- The sides answering. FIVE member companies, converging from the right on the same dot. -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 110 C 1250 110, 1000 290, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 230 C 1250 230, 1000 320, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 350 C 1250 350, 1000 350, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 470 C 1250 470, 1000 380, 808 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 9"
+        d="M 1500 590 C 1250 590, 1000 410, 808 350"/>
+
+  <!-- The person. The one point on the screen that both sides touch. -->
+  <circle class="fig-dot" fill="currentColor" stroke="none" cx="800" cy="350" r="10"/>
+
+  <g class="fig-label" fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" letter-spacing="3">
+    <text x="100" y="310" text-anchor="start">THE SIDE ASKING</text>
+    <text x="1500" y="80" text-anchor="end">MEMBER COMPANIES</text>
+    <text x="770" y="410" text-anchor="end">A PERSON AT CONVERGX</text>
+    <text x="820" y="635" text-anchor="start">NOTHING ELSE CROSSES</text>
+  </g>
+</svg>
