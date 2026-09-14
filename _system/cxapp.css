@@ -383,6 +383,26 @@
   max-block-size: none;
 }
 
+/* THE HERO STACK. Two captures in one cell, the posted requirement behind
+   and the answer coming back in front, offset so both read as separate
+   screens rather than one cropped image. The back layer is stepped down in
+   size and ink so the front one is unambiguously the top of the pile.
+   Sized off the stage rather than the viewport, so the pair holds its
+   geometry at any width. */
+.cxp-stage--stack { display: grid; place-items: center; overflow: visible; }
+.cxp-stage--stack .cxp-shot--crop { grid-area: 1 / 1; inline-size: 82%; }
+.cxp-shot--back {
+  transform: translate(-11%, -13%) scale(0.94);
+  opacity: 0.72;
+  filter: saturate(0.85);
+}
+.cxp-shot--front { transform: translate(11%, 13%); }
+.cxp-shot--front picture { box-shadow: 0 var(--space-m) var(--space-3xl) var(--cxapp-lift); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .cxp-stage--stack .cxp-shot--crop { transition: transform 240ms ease; }
+}
+
 /* ---- the figures ---------------------------------------------------- */
 
 /* THE FIGURES ARE THE SITE'S OWN, inline <svg> at 1600x700 drawn in
