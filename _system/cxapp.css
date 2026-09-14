@@ -322,8 +322,16 @@
 
 /* The hero headline was the same size as every h2 on the page, so the first
    screen looked like the third. One step up, and the h2s stay where they are. */
+/* THREE LINES, NOT FIVE. Chip, 2026-09-14: the headline breaks as
+   "The introduction / layer for industrial / sourcing". At --step-5 in this
+   column it ran to five and the hero read as squeezed. One step down, and a
+   measure in ch rather than a track fraction, so the break holds wherever
+   the column lands: the longest of the three lines is 20 characters and 22ch
+   is the smallest measure that still fits it without taking a fourth. */
 .cxp-hero .hero-title {
-  font-size: var(--step-5);
+  font-size: var(--step-4);
+  max-width: 22ch;
+  text-wrap: balance;
   margin-block: var(--space-m) var(--space-l);
 }
 .cxp-hero .hero-sub { max-width: var(--measure); margin-block-end: var(--space-xl); }
@@ -394,13 +402,13 @@
   place-items: center;
   padding-block: var(--space-2xl);
 }
-.cxp-stack .cxp-shot--crop { grid-area: 1 / 1; inline-size: 88%; }
+.cxp-stack .cxp-shot--crop { grid-area: 1 / 1; inline-size: 94%; }
 .cxp-shot--back {
-  transform: translate(-19%, -22%) scale(0.92);
+  transform: translate(-15%, -19%) scale(0.93);
   opacity: 0.6;
   filter: saturate(0.8);
 }
-.cxp-shot--front { transform: translate(19%, 22%); }
+.cxp-shot--front { transform: translate(15%, 19%); }
 .cxp-shot--front picture { box-shadow: 0 var(--space-m) var(--space-4xl) var(--cxapp-lift); }
 
 /* ---- the figures ---------------------------------------------------- */
@@ -537,8 +545,10 @@
   /* THE CAPTURES TAKE THE WIDER TRACK. The headline lost four words when it
      dropped "XPND is", so the copy needs less room and the pair of screens
      can have it. The stack has no frame now, so it runs to the track. */
+  /* The copy takes the wider track now that the headline needs room for a
+     20 character line, and the captures come down to suit. */
   .cxp-hero {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
     column-gap: var(--space-2xl);
     align-items: center;
   }
