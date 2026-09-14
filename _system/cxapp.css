@@ -383,6 +383,26 @@
   max-block-size: none;
 }
 
+/* THE HERO STACK. Two captures in one cell, the posted requirement behind
+   and the answer coming back in front, offset so both read as separate
+   screens rather than one cropped image. The back layer is stepped down in
+   size and ink so the front one is unambiguously the top of the pile.
+   Sized off the stage rather than the viewport, so the pair holds its
+   geometry at any width. */
+.cxp-stage--stack { display: grid; place-items: center; overflow: visible; }
+.cxp-stage--stack .cxp-shot--crop { grid-area: 1 / 1; inline-size: 82%; }
+.cxp-shot--back {
+  transform: translate(-11%, -13%) scale(0.94);
+  opacity: 0.72;
+  filter: saturate(0.85);
+}
+.cxp-shot--front { transform: translate(11%, 13%); }
+.cxp-shot--front picture { box-shadow: 0 var(--space-m) var(--space-3xl) var(--cxapp-lift); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .cxp-stage--stack .cxp-shot--crop { transition: transform 240ms ease; }
+}
+
 /* ---- the figures ---------------------------------------------------- */
 
 /* THE FIGURES ARE THE SITE'S OWN, inline <svg> at 1600x700 drawn in
@@ -431,6 +451,10 @@
   align-items: center;
   max-width: none;
 }
+/* Every capture in the sequence is the same 4:3 crop in the same frame, so
+   the three of them read as one set. build_detail_shots.py cuts them all to
+   one band height for exactly this. */
+.cxp-step .cxp-stage--shot { aspect-ratio: 4 / 3; inline-size: 100%; }
 .cxp-step-copy { display: flex; flex-direction: column; max-width: var(--measure); }
 .cxp-step-copy .label { order: -1; margin-block-end: var(--space-2xs); }
 .cxp-step-copy h3 { margin: 0; line-height: var(--lh-heading); }
@@ -438,26 +462,32 @@
 
 /* ---- the product grid ------------------------------------------------ */
 
-/* TWO BY TWO, NOT FOUR ALTERNATING ROWS.
-   The alternating rows also carried a real defect: .cxp-feature set
-   grid-column on both children and nothing set grid-row, so on an even row
-   the auto placement cursor had already passed column 1 and the copy landed
-   in an implicit SECOND row. Rows 2 and 4 measured two tracks and the copy
-   sat under the stage with a dead square beside it. A plain grid of cards
-   cannot express that bug. */
-.cxp-grid {
-  display: grid;
-  gap: var(--space-2xl);
-  margin-block-start: var(--space-2xl);
-}
-.cxp-card { display: grid; row-gap: var(--space-l); align-content: start; }
-.cxp-block { display: flex; flex-direction: column; max-width: var(--measure); }
-.cxp-block .label { order: -1; margin-block-end: var(--space-2xs); }
-.cxp-block h3 { margin: 0; line-height: var(--lh-heading); }
-.cxp-block p { margin-block-start: var(--space-s); color: var(--fg-hi); }
-
 .cxp-note { color: var(--fg-hi); margin-block: var(--space-2xl) 0; }
-.cxp-doors { margin-block-start: var(--space-xl); }
+/* THE CTAs. Measured before touching them: the hero button set its label at
+   13.5px, which is under the body size, and the page's two real doors were
+   18px text links with no ground under them at all, on the one section whose
+   whole job is to be clicked. Bigger, and the doors become buttons rather
+   than sentences with an arrow after them. Scoped to this page's sections so
+   .btn is unchanged everywhere else. */
+.cxp-sec .btn--solid {
+  font-size: var(--step-0);
+  padding: var(--space-s) var(--space-xl);
+}
+
+.cxp-doors { margin-block-start: var(--space-2xl); }
+.cxp-doors a {
+  padding: var(--space-l) var(--space-l) var(--space-m);
+  transition: background-color 160ms ease;
+}
+.cxp-doors a:hover { background-color: var(--block); }
+.cxp-doors .label { font-size: var(--step--1); }
+.cxp-doors .link-more {
+  font-size: var(--step-2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--fg);
+  margin-block-start: var(--space-2xs);
+}
 
 @media (min-width: 60rem) {
   /* The copy and the crop take equal tracks. */
@@ -468,14 +498,26 @@
   }
   .cxp-hero .cxp-stage { justify-self: end; max-inline-size: 32rem; }
 
-  /* Copy left, figure right, every step the same way round. Alternation buys
-     nothing with three items and breaks the sequence's rhythm. */
+  /* MEDIA AND COPY ALTERNATE SIDES, and BOTH children are pinned to row 1.
+     That second half is the fix for a real defect: the previous version set
+     grid-column on both and left grid-row to auto placement, so on an even
+     row the cursor had already passed column 1 and the copy landed in an
+     implicit SECOND row. Rows 2 and 4 measured two tracks, the copy sat
+     under its stage, and a dead square sat beside it. Pinning the row is
+     what makes an explicit column swap safe. */
+  /* EQUAL TRACKS. On 6fr/5fr the swap put the media in the narrower column
+     every other step, so the captures came out 545px and 455px and stopped
+     being one set. Same class of error as the row bug below it. */
   .cxp-step {
-    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-    column-gap: var(--space-2xl);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-3xl);
   }
-
-  .cxp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cxp-step > .cxp-stage,
+  .cxp-step > .cxp-fig { grid-row: 1; grid-column: 1; }
+  .cxp-step > .cxp-step-copy { grid-row: 1; grid-column: 2; }
+  .cxp-step:nth-child(even) > .cxp-stage,
+  .cxp-step:nth-child(even) > .cxp-fig { grid-column: 2; }
+  .cxp-step:nth-child(even) > .cxp-step-copy { grid-column: 1; }
 }
 
 /* ============ CONGRESS APP SECTION + THE PLATFORM PAGE, END ============ */
