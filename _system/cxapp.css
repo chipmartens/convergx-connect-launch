@@ -310,19 +310,63 @@
 }
 .cxp-hero .hero-cta .link-more { margin-inline-start: 0; white-space: nowrap; }
 
-/* HERO: copy left, one capture right. The .hero editorial keeps its own
-   vertical rhythm; only the track around it is new. */
+/* HERO: copy left, one capture right.
+ *
+ * THE EDITORIAL STOPS BEING A TWELVE COLUMN GRID IN HERE, and this is the
+ * whole fix for a hero that read as squeezed. .editorial is the site's 12
+ * column track and its hero children carry spans measured for a hero that
+ * owns the full container: the h1 spans 8 of 12 and the lede spans 5. At
+ * 1108px those are a 740px headline and a 460px lede. Dropped into a column
+ * half that wide the same spans resolve to 320px and 190px, so the headline
+ * broke after one or two words a line and the lede ran at four. A max-width
+ * cannot reach that, because the span is what is doing it.
+ *
+ * In here the editorial is plain flow, every child takes the column, and the
+ * lede gets a reading measure of its own rather than a fraction of a grid it
+ * is no longer in. Outside .cxp-hero the component is untouched. */
 .cxp-hero { display: grid; row-gap: var(--space-2xl); }
-.cxp-hero > .hero { min-height: 0; }
+.cxp-hero > .hero {
+  display: block;
+  min-height: 0;
+  max-width: none;
+  padding-block: 0;
+}
+.cxp-hero .hero-head,
+.cxp-hero .hero-title,
+.cxp-hero .hero-sub,
+.cxp-hero .hero-cta { grid-column: auto; max-width: none; }
+
 /* .display--hero is --step-6, sized for a hero that owns the full container.
-   This one shares the row with a capture, so at that size the headline came
-   out at roughly one word a line. --step-4 is the same size the app section's
-   title takes and it sets four lines in this column. */
-.cxp-hero .hero-title { font-size: var(--step-4); }
-/* The lede's own measure was set for a full-width hero and is narrower than
-   this column, so it wrapped at about four words a line beside a headline
-   running to nine. The column is the measure here. */
-.cxp-hero .hero-sub { max-width: none; }
+   This one shares the row with a capture, so it takes the step that keeps the
+   same words-per-line in a column this width. */
+.cxp-hero .hero-title {
+  font-size: var(--step-3);
+  margin-block: var(--space-m) var(--space-l);
+}
+.cxp-hero .hero-sub { max-width: var(--measure); margin-block-end: var(--space-xl); }
+
+/* The hero carries a button and a quiet link on one line. A row, not two
+   inline boxes: .link-more's arrow is an ::after and it was wrapping onto its
+   own line under the label in the narrower hero column. */
+.cxp-hero .hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-m);
+  margin-block: 0;
+}
+.cxp-hero .hero-cta .link-more { margin-inline-start: 0; white-space: nowrap; }
+
+/* THE HERO STAGE IS NOT SQUARE. The square is what makes four visuals of four
+   shapes read as one set on the feature rows. The hero holds one phone, and a
+   square around a portrait capture is mostly empty ground: it left the device
+   at about half the height the column could carry. Portrait here, and the
+   capture is as tall as the stage allows. */
+.cxp-hero .cxp-stage {
+  aspect-ratio: 4 / 5;
+  max-inline-size: 24rem;
+  justify-self: end;
+}
 
 /* Every stage on this page is the same square, for the same reason it is on
    /congress/: four visuals of four shapes read as one set only if the frame
@@ -407,10 +451,16 @@
 .cxp-doors { margin-block-start: var(--space-xl); }
 
 @media (min-width: 60rem) {
-  .cxp-hero,
   .cxp-split {
     grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
     column-gap: var(--space-2xl);
+  }
+  /* The copy takes the wider track. The capture is capped, so the leftover
+     goes to the words rather than to more empty stage. */
+  .cxp-hero {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: var(--space-2xl);
+    align-items: center;
   }
   /* EQUAL TRACKS, AND THE SWAP IS A COLUMN, NOT AN ORDER. On 5fr/6fr an
      alternating row put the stage in the wider track every other time and the
