@@ -88,11 +88,10 @@
 /* The rail's filling half only exists while the script is driving. */
 .cxapp-progress { display: none; }
 
-.cxapp-getin {
-  margin-block-start: var(--space-xl);
-  max-width: var(--measure);
-  color: var(--fg-hi);
-}
+/* The paragraph that sat here was removed 2026-09-14 (Chip). The button
+   below the panels carries the action on its own. .cxapp-actions is kept:
+   the button's own top margin was coming from that paragraph. */
+.app-copy > .push-s { margin-block-start: var(--space-xl); }
 
 /* THE STAGE. Scripts off, the four captures read in order, each named, so a
    reader who never sees the carousel still sees every screen. */
