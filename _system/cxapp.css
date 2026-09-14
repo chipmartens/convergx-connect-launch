@@ -12,15 +12,30 @@
 
 /* ---- GOAL 1. The app section on /congress/ ---------------------------- */
 
-/* Chip, 2026-09-14: the title reads larger. .app-sub is already --step-2 and
-   the h2 was sitting a rung above it, which is too close for a title that now
-   opens a four panel sequence rather than two paragraphs. */
+/* THE TYPE IN THIS SECTION IS THREE SIZES, NOT FOUR. Chip, 2026-09-14, on the
+   first build: the standfirst was nearly as large as the title and the panel
+   headings were a third size between it and the body, so the column read as a
+   slope with no step in it.
+     title       --step-4, the one large thing
+     standfirst  --step-1, clearly under the title, clearly over the panels
+     panels      --step-0, headings and paragraphs at ONE size
+   A panel heading and its paragraph are the same size on purpose. Weight and
+   ink separate them, which is what lets four panels sit in a column without
+   the column turning into a ladder of sizes. */
 .cxapp-title { font-size: var(--step-4); }
+.app-band .app-sub {
+  font-size: var(--step-1);
+  max-width: var(--measure);
+}
 
-/* THE PANEL LIST. Each panel is a heading, a progress line and a paragraph.
-   Everything below this comment is the resting, scripts-off state: every
-   paragraph open, nothing dimmed, no progress line. The .is-live rules
-   further down are what the script switches on. */
+/* THE PANEL LIST. Everything down to the .is-live block is the resting,
+   scripts-off state: every paragraph open, nothing dimmed, no progress.
+
+   ONE LINE, AND IT RUNS DOWN THE LEFT. The first build drew a hairline above
+   every panel and a progress track under every heading, which put two rules on
+   each row of a four row list. The rail replaces both: it is the separator
+   when it is grey and the progress when it fills, so the section carries one
+   line instead of nine. */
 .cxapp-tabs {
   --cxapp-dur: 8s;              /* one panel's turn. The longest paragraph
                                    here runs past it, which is what hover,
@@ -29,12 +44,13 @@
   margin: var(--space-xl) 0 0;
   padding: 0;
   display: grid;
-  row-gap: var(--space-l);
+  row-gap: var(--space-m);
   max-width: var(--measure);
 }
 .cxapp-tab {
-  border-top: var(--rule-hair) solid var(--rule-ink);
-  padding-block-start: var(--space-s);
+  position: relative;
+  border-inline-start: 2px solid var(--rule-ink);
+  padding-inline-start: var(--space-m);
 }
 .cxapp-tab-head { margin: 0; }
 /* The heading IS the control. A button inside the h3 keeps the outline rank
@@ -48,18 +64,23 @@
   border: 0;
   background: none;
   text-align: start;
-  font: inherit;
-  color: inherit;
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  font-weight: 600;
   line-height: var(--lh-heading);
+  letter-spacing: normal;
+  color: inherit;
   cursor: pointer;
 }
 .cxapp-tab-head button:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
-/* Padding, not margin. The collapse clips the panel's child, and a margin
-   sits outside that box, so with margin a closed panel still measured its own
-   top margin and the list never fully closed. */
-.cxapp-tab-body p { margin: 0; padding-block-start: var(--space-2xs); color: var(--fg-hi); }
+.cxapp-tab-body p {
+  margin: 0;
+  padding-block-start: var(--space-2xs);
+  font-size: var(--step-0);
+  color: var(--fg-hi);
+}
 
-/* The progress line only exists while the script is driving. */
+/* The rail's filling half only exists while the script is driving. */
 .cxapp-progress { display: none; }
 
 .cxapp-getin {
@@ -69,10 +90,7 @@
 }
 
 /* THE STAGE. Scripts off, the four captures read in order, each named, so a
-   reader who never sees the carousel still sees every screen. The captures
-   share one width rather than one height: they are crops of different
-   lengths, and matching their heights would have left the short ones wide
-   and the long ones a strip. */
+   reader who never sees the carousel still sees every screen. */
 .cxapp-stage {
   display: grid;
   row-gap: var(--space-xl);
@@ -134,28 +152,28 @@
 .cxapp-tabs.is-live .cxapp-tab-body p { padding-block-start: 0; }
 .cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-tab-body p { padding-block-start: var(--space-2xs); }
 
-/* ONLY THE OPEN PANEL CARRIES A TRACK. Drawn on every panel it read as a
-   second hairline under each heading, on a list whose rows are already
-   separated by one. */
+/* The fill sits ON the rail, covering the panel's own left border, so the one
+   line is grey while the panel waits and inked while it runs. */
 .cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-progress {
   display: block;
-  block-size: 2px;
-  margin-block-start: var(--space-xs);
-  background: var(--rule-ink);
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: -2px;
+  inline-size: 2px;
   overflow: hidden;
 }
 .cxapp-tabs.is-live .cxapp-progress > span {
   display: block;
   block-size: 100%;
   background: var(--fg);
-  transform: scaleX(0);
-  transform-origin: left center;
+  transform: scaleY(0);
+  transform-origin: center top;
 }
 /* THE CLOCK. The script advances on this animation's animationend, so the
    panel's turn and the line the reader watches are the same object and
-   cannot drift apart. Pausing is one property on the list. */
+   cannot drift apart. */
 .cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-progress > span {
-  animation: cxapp-fill var(--cxapp-dur, 7s) linear forwards;
+  animation: cxapp-fill var(--cxapp-dur, 8s) linear forwards;
 }
 /* Pausing is CSS, not script. Hover and focus-within are the two states a
    reader is actually in while reading a panel, and both are expressible here,
@@ -164,7 +182,7 @@
 .cxapp-tabs.is-live:hover .cxapp-tab.is-on .cxapp-progress > span,
 .cxapp-tabs.is-live:focus-within .cxapp-tab.is-on .cxapp-progress > span,
 .cxapp-tabs.is-live.is-held .cxapp-tab.is-on .cxapp-progress > span { animation-play-state: paused; }
-@keyframes cxapp-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes cxapp-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
 /* One cell, four captures, the open one on top. */
 .cxapp-stage.is-live { row-gap: 0; }
@@ -188,14 +206,14 @@
 
 /* NO AUTOPLAY ON prefers-reduced-motion, and it costs no branch in the
    script: with the animation suppressed, animationend never fires and the
-   panels only ever move when a reader asks. The line is held at its start so
-   nothing reads as a stalled progress bar. */
+   panels only ever move when a reader asks. The rail keeps its grey so the
+   list still reads, and nothing looks like a stalled progress bar. */
 @media (prefers-reduced-motion: reduce) {
   .cxapp-tabs.is-live .cxapp-tab-body,
   .cxapp-tabs.is-live .cxapp-tab-head button,
   .cxapp-stage.is-live .cxapp-shot { transition: none; }
   .cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-progress > span { animation: none; }
-  .cxapp-tabs.is-live .cxapp-progress { visibility: hidden; }
+  .cxapp-tabs.is-live .cxapp-tab.is-on .cxapp-progress { display: none; }
 }
 
 /* ---- GOAL 2. The Platform page --------------------------------------- */
