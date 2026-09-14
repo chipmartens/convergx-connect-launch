@@ -292,38 +292,22 @@
    bottom padding and the interval between two sections is the NEXT one's top
    padding. That works while both sit on the same ground. At a surface change
    the interval lands inside the incoming ground and the outgoing section's
-   last line sits on the seam with nothing under it, which is what happened
-   between the constraint and the method. A band owns both its edges, and the
-   section before a band pays for its own bottom. */
+   last line sits on the seam. A band owns both its edges, and the section
+   before a band pays for its own bottom. */
 .cxp-sec[data-surface] { padding-block: var(--space-3xl); }
 .cxp-sec:has(+ .cxp-sec[data-surface]) { padding-block-end: var(--space-3xl); }
 .cxp-sec:last-child { padding-block-end: var(--space-4xl); }
 
-/* The hero carries a button and a quiet link on one line. A row, not two
-   inline boxes: .link-more's arrow is an ::after and it was wrapping onto its
-   own line under the label in the narrower hero column. */
-.cxp-hero .hero-cta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-m);
-}
-.cxp-hero .hero-cta .link-more { margin-inline-start: 0; white-space: nowrap; }
-
-/* HERO: copy left, one capture right.
+/* HERO: copy left, one crop right.
  *
- * THE EDITORIAL STOPS BEING A TWELVE COLUMN GRID IN HERE, and this is the
- * whole fix for a hero that read as squeezed. .editorial is the site's 12
- * column track and its hero children carry spans measured for a hero that
- * owns the full container: the h1 spans 8 of 12 and the lede spans 5. At
- * 1108px those are a 740px headline and a 460px lede. Dropped into a column
- * half that wide the same spans resolve to 320px and 190px, so the headline
- * broke after one or two words a line and the lede ran at four. A max-width
- * cannot reach that, because the span is what is doing it.
- *
- * In here the editorial is plain flow, every child takes the column, and the
- * lede gets a reading measure of its own rather than a fraction of a grid it
- * is no longer in. Outside .cxp-hero the component is untouched. */
+ * THE EDITORIAL STOPS BEING A TWELVE COLUMN GRID IN HERE. .editorial is the
+ * site's 12 column track and its hero children carry spans measured for a
+ * hero that owns the full container: the h1 spans 8 of 12 and the lede spans
+ * 5. At 1108px those are a 740px headline and a 460px lede. Dropped into a
+ * column half that wide the same spans resolve to 320px and 190px, so the
+ * headline broke after a word or two a line. A max-width cannot reach that,
+ * because the span is what is doing it. In here the editorial is plain flow.
+ * Outside .cxp-hero the component is untouched. */
 .cxp-hero { display: grid; row-gap: var(--space-2xl); }
 .cxp-hero > .hero {
   display: block;
@@ -336,18 +320,16 @@
 .cxp-hero .hero-sub,
 .cxp-hero .hero-cta { grid-column: auto; max-width: none; }
 
-/* .display--hero is --step-6, sized for a hero that owns the full container.
-   This one shares the row with a capture, so it takes the step that keeps the
-   same words-per-line in a column this width. */
+/* The hero headline was the same size as every h2 on the page, so the first
+   screen looked like the third. One step up, and the h2s stay where they are. */
 .cxp-hero .hero-title {
-  font-size: var(--step-3);
+  font-size: var(--step-5);
   margin-block: var(--space-m) var(--space-l);
 }
 .cxp-hero .hero-sub { max-width: var(--measure); margin-block-end: var(--space-xl); }
 
-/* The hero carries a button and a quiet link on one line. A row, not two
-   inline boxes: .link-more's arrow is an ::after and it was wrapping onto its
-   own line under the label in the narrower hero column. */
+/* A row, not two inline boxes: .link-more's arrow is an ::after and it was
+   wrapping onto its own line under the label in the narrower hero column. */
 .cxp-hero .hero-cta {
   display: flex;
   flex-wrap: wrap;
@@ -357,124 +339,143 @@
 }
 .cxp-hero .hero-cta .link-more { margin-inline-start: 0; white-space: nowrap; }
 
-/* THE HERO STAGE IS NOT SQUARE. The square is what makes four visuals of four
-   shapes read as one set on the feature rows. The hero holds one phone, and a
-   square around a portrait capture is mostly empty ground: it left the device
-   at about half the height the column could carry. Portrait here, and the
-   capture is as tall as the stage allows. */
-.cxp-hero .cxp-stage {
-  aspect-ratio: 4 / 5;
-  max-inline-size: 24rem;
-  justify-self: end;
+/* ---- the app crops -------------------------------------------------- */
+
+/* THE GRADIENT STAGE IS FOR PRODUCT ONLY. It was built to give a phone
+   screenshot a ground. A hairline drawing does not need one, and the mesh
+   sits at the same grey as a 0.3px stroke and competes with it. Screens get
+   the stage; figures get the page.
+
+   NO FORCED SQUARE HERE. The square is what makes four whole phone screens
+   read as one set on /congress/. These are four detail crops of four
+   different shapes, and a square around the 880x170 ones left an 85px strip
+   floating in a 518px box. The frame is what is constant: same width, same
+   padding, same edge, same ground. The crop sets the height. */
+.cxp-stage--shot {
+  display: grid;
+  place-items: center;
+  align-content: center;
 }
 
-/* Every stage on this page is the same square, for the same reason it is on
-   /congress/: four visuals of four shapes read as one set only if the frame
-   is constant. */
-/* A DEFINITE COLUMN, NOT place-content: center. With the track shrink-wrapped
-   to its content, a figure asking for inline-size: 100% is sizing against a
-   track that is sizing against it, so it fell back to the SVG default of
-   300px and the diagrams sat small in the middle of the square. One 1fr
-   track is definite, and the captures still centre inside it. */
-.cxp-stage {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-content: center;
-  justify-items: center;
-  align-items: center;
-  aspect-ratio: 1;
-}
-/* Same shape as .cxapp-shot, and for the same reason: a block box does not
-   pass a definite height down to the picture, so the capture overflowed the
-   square and the stage's overflow:hidden cut it off at the bottom. */
-.cxp-shot {
+/* THE CROP FILLS THE FRAME. Shown whole, an 880x1725 phone inside a square
+   shrank to 206px wide and the post text landed at about four pixels. These
+   are surface crops, and they run to the frame's width and bleed off its
+   bottom edge, which is the treatment the Congress section already uses and
+   the one the client called good. */
+.cxp-shot--crop {
   margin: 0;
-  display: grid;
-  justify-items: center;
-  max-inline-size: 100%;
-  max-block-size: 100%;
+  inline-size: 100%;
   min-block-size: 0;
 }
+.cxp-shot--crop picture {
+  display: block;
+  inline-size: 100%;
+  max-block-size: 100%;
+  border: var(--rule-hair) solid var(--cxapp-edge);
+  border-radius: var(--space-m);
+  overflow: hidden;
+  box-shadow: 0 var(--space-s) var(--space-2xl) var(--cxapp-lift);
+}
+.cxp-shot--crop img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  max-block-size: none;
+}
 
-/* THE FIGURES ARE THE SITE'S OWN, drawn in currentColor at 1600x700. On the
-   stage they take the dark-surface ink, because the stage is dark whatever
-   surface the section around it is on. */
-.cxp-fig { margin: 0; display: grid; row-gap: var(--space-s); justify-items: start; }
-/* The figures are inline <svg>, not <img>: see inline_figs() in sync_v3.py.
-   Their width and height attributes are stripped on the way in, so the sizing
-   is here and the viewBox keeps the ratio. */
+/* ---- the figures ---------------------------------------------------- */
+
+/* THE FIGURES ARE THE SITE'S OWN, inline <svg> at 1600x700 drawn in
+   currentColor. See inline_figs() in sync_v3.py for why they cannot be
+   <img>. Their width and height attributes are stripped on the way in, so
+   the sizing is here and the viewBox keeps the ratio.
+   SCALE IS THE WHOLE POINT. At 444px these render 1px strokes at 0.28px and
+   22px labels at 6px, which is under the floor for both. Nothing in a
+   drawing can carry weight there. Full width in the wrap puts them at 1108px
+   and 694px, which is 0.69 and 0.43 of the artboard. */
+.cxp-fig { margin: 0; display: grid; row-gap: var(--space-s); }
 .cxp-fig svg { display: block; inline-size: 100%; block-size: auto; }
+/* The strokes are 1px to 2px in artboard units, so at 0.4 scale they land at
+   under half a pixel and the drawing greys out. non-scaling-stroke holds them
+   at their nominal width whatever the figure is scaled to, which is what the
+   property exists for and costs nothing. */
+.cxp-fig svg * { vector-effect: non-scaling-stroke; }
 .cxp-fig figcaption {
   font-family: var(--font-mono);
   font-size: var(--step--2);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--fg-lo);
+  border-top: var(--rule-hair) solid var(--rule-ink);
+  padding-block-start: var(--space-s);
 }
-.cxp-fig--stage { inline-size: 100%; justify-items: center; color: var(--ink-hi); }
+.cxp-fig--wide { margin-block-start: var(--space-2xl); }
 
-/* Text and a figure side by side, the figure second on a narrow screen. */
-.cxp-split { display: grid; row-gap: var(--space-xl); align-items: center; }
+/* THE METHOD IS ONE SEQUENCE, NOT THREE ISOLATED DRAWINGS. Three frames of
+   the same story, same width, same alignment, numbered, so a reader follows
+   them rather than meeting each one cold. */
+.cxp-steps {
+  list-style: none;
+  margin: var(--space-2xl) 0 0;
+  padding: 0;
+  display: grid;
+  row-gap: var(--space-3xl);
+}
+/* max-width is released explicitly: the sheet caps a list item at --measure
+   (549px), which is right for prose and wrong for a row that carries a
+   figure. Every step was rendering at half the wrap and its drawing at
+   304px, which is under the legibility floor for a 1600px artboard. */
+.cxp-step {
+  display: grid;
+  row-gap: var(--space-l);
+  align-items: center;
+  max-width: none;
+}
+.cxp-step-copy { display: flex; flex-direction: column; max-width: var(--measure); }
+.cxp-step-copy .label { order: -1; margin-block-end: var(--space-2xs); }
+.cxp-step-copy h3 { margin: 0; line-height: var(--lh-heading); }
+.cxp-step-copy p { margin-block-start: var(--space-s); color: var(--fg-hi); }
 
-/* THE FEATURE ROWS. One visual, one block, alternating sides so the page does
-   not read as four identical rows stacked. */
-.cxp-features { display: grid; row-gap: var(--space-4xl); }
-.cxp-feature { display: grid; row-gap: var(--space-l); }
+/* ---- the product grid ------------------------------------------------ */
+
+/* TWO BY TWO, NOT FOUR ALTERNATING ROWS.
+   The alternating rows also carried a real defect: .cxp-feature set
+   grid-column on both children and nothing set grid-row, so on an even row
+   the auto placement cursor had already passed column 1 and the copy landed
+   in an implicit SECOND row. Rows 2 and 4 measured two tracks and the copy
+   sat under the stage with a dead square beside it. A plain grid of cards
+   cannot express that bug. */
+.cxp-grid {
+  display: grid;
+  gap: var(--space-2xl);
+  margin-block-start: var(--space-2xl);
+}
+.cxp-card { display: grid; row-gap: var(--space-l); align-content: start; }
 .cxp-block { display: flex; flex-direction: column; max-width: var(--measure); }
 .cxp-block .label { order: -1; margin-block-end: var(--space-2xs); }
 .cxp-block h3 { margin: 0; line-height: var(--lh-heading); }
 .cxp-block p { margin-block-start: var(--space-s); color: var(--fg-hi); }
 
-.cxp-sides {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-l);
-  margin-block: var(--space-xl);
-}
-.cxp-sides .cxp-side {
-  border-top: var(--rule-hair) solid var(--rule-ink);
-  padding-block-start: var(--space-s);
-}
-.cxp-side p { margin-block-start: var(--space-2xs); }
-
-/* THE NOTE SITS IN AN .editorial, NOT ON ITS OWN.
-   A bare capped-width <p> is a direct child of .wrap, and .wrap centres its
-   children on the page container: capping the measure here centred the note
-   on the page while every block above it stayed on the left edge. .editorial
-   is the site's own measure container and already resolves that edge, so the
-   note goes inside one and this rule only carries colour and spacing. */
-.cxp-note {
-  color: var(--fg-hi);
-  margin-block-end: 0;
-}
-
+.cxp-note { color: var(--fg-hi); margin-block: var(--space-2xl) 0; }
 .cxp-doors { margin-block-start: var(--space-xl); }
 
 @media (min-width: 60rem) {
-  .cxp-split {
-    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-    column-gap: var(--space-2xl);
-  }
-  /* The copy takes the wider track. The capture is capped, so the leftover
-     goes to the words rather than to more empty stage. */
+  /* The copy and the crop take equal tracks. */
   .cxp-hero {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    column-gap: var(--space-2xl);
-    align-items: center;
-  }
-  /* EQUAL TRACKS, AND THE SWAP IS A COLUMN, NOT AN ORDER. On 5fr/6fr an
-     alternating row put the stage in the wider track every other time and the
-     four squares came out at two sizes. Equal tracks and explicit placement
-     keep every square identical. */
-  .cxp-feature {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: var(--space-2xl);
     align-items: center;
   }
-  .cxp-feature > .cxp-stage { grid-column: 1; }
-  .cxp-feature > .cxp-block { grid-column: 2; }
-  .cxp-feature:nth-child(even) > .cxp-stage { grid-column: 2; }
-  .cxp-feature:nth-child(even) > .cxp-block { grid-column: 1; }
+  .cxp-hero .cxp-stage { justify-self: end; max-inline-size: 32rem; }
+
+  /* Copy left, figure right, every step the same way round. Alternation buys
+     nothing with three items and breaks the sequence's rhythm. */
+  .cxp-step {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    column-gap: var(--space-2xl);
+  }
+
+  .cxp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ============ CONGRESS APP SECTION + THE PLATFORM PAGE, END ============ */
