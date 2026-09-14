@@ -8,7 +8,7 @@
 <meta name="description" content="A requirement posted on the ConvergX platform reaches the companies that can answer it, read and introduced by a person at ConvergX.">
 <link rel="stylesheet" href="../_system/tokens.css?v=f59bc737">
 <link rel="stylesheet" href="../_system/styles.css?v=f59bc737">
-<link rel="stylesheet" href="../_system/cxapp.css?v=fea00309">
+<link rel="stylesheet" href="../_system/cxapp.css?v=65268421">
 </head>
 <body data-surface="dark">
 
@@ -73,42 +73,102 @@
 
 <main id="main">
 <!-- =====================================================================
-     GOAL 2. "The Platform" (XPND). A new page at /platform/ on the
-     page-flex template, five Exact rows. Main nav entry reads
-     "The Platform". This page is about the platform only: the Congress
-     app lives on /congress/#app and is not re-explained here.
+     GOAL 2. "The Platform" (XPND). A page at /platform/ on the page-flex
+     template, five Exact rows. Main nav entry reads "The Platform".
+
+     REGISTER, 2026-09-14 (Chip): plain and short. Say the thing once, in
+     the fewest words that still carry it, and let a visual do the work a
+     paragraph was doing. No word is here to sound like anything.
+
+     THE VISUALS ARE THE SITE'S OWN FIGURES, not new drawings. Fig. 4, 5,
+     6, 7 and 8 were built to FIGURE-SYSTEM.md and have been sitting in
+     assets/fig/ unplaced. Each carries a locked one-sentence meaning and
+     its own aria-label, and each is drawn in currentColor, so they read on
+     either ground. Do not redraw them to fit copy: change the copy.
      ===================================================================== -->
 
 <!-- ROW 1 of 5. The hero. Must stay first: page-flex checks the first row
      for an h1 and suppresses its own hero when it finds one. -->
-<section class="section--open">
+<section class="section--open cxp-sec">
   <div class="wrap">
-    <div class="editorial hero">
-      <header class="hero-head">
-        <span class="label label--edge">XPND / The platform</span>
-      </header>
-      <h1 class="display--hero hero-title">The platform ConvergX runs between the Congresses</h1>
-      <p class="hero-sub lede-text">A requirement posted here reaches the companies that can answer it, read and introduced by a person at ConvergX. The three days in Calgary are where this practice started. The platform is how it carries on for the rest of the year.</p>
-      <p class="hero-cta">
-        <a class="btn btn--solid" href="../access/request/">Request access</a>
-        <a class="link-more" href="#how-it-works">How it works</a>
-      </p>
+    <div class="cxp-hero">
+      <div class="editorial hero">
+        <header class="hero-head">
+          <span class="label label--edge">XPND / The platform</span>
+        </header>
+        <h1 class="display--hero hero-title">XPND puts your requirement in front of who can answer it</h1>
+        <p class="hero-sub lede-text">Post what you need. A person at ConvergX reads it and makes the introduction. There is no public directory and nothing to search.</p>
+        <p class="hero-cta">
+          <a class="btn btn--solid" href="../access/request/">Request access</a>
+          <a class="link-more" href="#how-it-works">How it works</a>
+        </p>
+      </div>
+
+      <div class="cxp-stage">
+        <figure class="cxp-shot">
+          <picture>
+            <source srcset="../assets/img/app/app-board.webp" type="image/webp">
+            <img src="../assets/img/app/app-board.png" width="880" height="1725" fetchpriority="high" decoding="async" alt="The Opportunity Board: anonymous posts tagged Problem, Project or Need, each with Participate, Feedback and Partnership buttons">
+          </picture>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ROW 2 of 5. The problem, stated as a mechanism rather than a complaint.
-     Two constraints, in the order a buyer meets them: the search, then the
-     decision that follows the search. -->
-<section id="the-constraint" class="section--dense">
+<!-- ROW 2 of 5. The problem, in two sentences and a figure. It ran to two
+     full paragraphs and said the same thing twice. -->
+<section id="the-constraint" class="section--dense cxp-sec">
   <div class="wrap">
     <div class="sec-head">
-      <h2>Why a sourcing search returns the suppliers you have</h2>
+      <h2>Your sourcing system ranks the suppliers you have</h2>
       <span class="label label--lo label--edge">The constraint</span>
     </div>
-    <div class="editorial">
-      <p>Every sourcing system an organisation owns ranks companies that already hold a record with it. A company that has solved the hard version of your requirement somewhere else, in a sector you do not buy from, is not in that ranking, because it has never held a contract with you. The search is doing what it was built to do, and it cannot return that company.</p>
-      <p>The second constraint sits after the search. When a capable company is found and has no history with the organisation, selecting it is difficult to set down on paper and defend, so the work returns to the supplier who was always going to receive it. Both constraints are structural, and neither is solved by searching harder.</p>
+
+    <div class="cxp-split">
+      <div class="editorial">
+        <p>A company that solved your problem in another sector holds no record with you, so the search cannot return it.</p>
+        <p>And a supplier with no history is hard to defend on paper, so the work goes back to the one you already use.</p>
+      </div>
+      <figure class="cxp-fig">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700"
+     preserveAspectRatio="xMidYMid meet" role="img"
+     aria-label="Diagram: four circles, one for each industry, all touching at a single shared point marked by a dot. The labels read aerospace and defence, energy, mining and natural resources, and agriculture.">
+  <!-- Fig. 7. Where the lines meet. Geometry, labels and aria-label copied
+       character for character from _reference/FIGURE-SYSTEM.md section 2.
+
+       REBUILT 2026-07-27 by the integration agent. The batch-slot-4 agent
+       shipped a byte-near duplicate of fig-1 (the spec's Fig. 4) into this
+       filename and Fig. 7 was never drawn. It read the site-wide figure
+       number as its batch index. Nothing else in the batch is affected.
+
+       Four circles, one per industry, every one tangent to the same node at
+       (800, 390). Two solid, two dashed, so the plate keeps the two-weight
+       grammar. The top and bottom circles are cropped by the frame on
+       purpose: the system is larger than the frame.
+
+       Tangency, checkable: (540,390) r260 touches at its rightmost point;
+       (1060,390) r260 at its leftmost; (800,170) r220 at its bottom;
+       (800,650) r260 at its top. All four land on (800, 390). -->
+
+  <!-- solid: tangent from the left and from the right -->
+  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="540" cy="390" r="260"/>
+  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="1060" cy="390" r="260"/>
+
+  <!-- dashed: tangent from above and from below, both cropped by the frame -->
+  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="800" cy="170" r="220"/>
+  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="800" cy="650" r="260"/>
+
+  <!-- the shared node. The only dot on the plate. -->
+  <circle class="fig-dot" cx="800" cy="390" r="6"/>
+
+  <text class="fig-label" text-anchor="start"  x="70"   y="380">Aerospace and defence</text>
+  <text class="fig-label" text-anchor="end"    x="1530" y="380">Energy</text>
+  <text class="fig-label" text-anchor="middle" x="800"  y="40">Mining and natural resources</text>
+  <text class="fig-label" text-anchor="middle" x="800"  y="685">Agriculture</text>
+</svg>
+        <figcaption>Where the lines meet</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -117,94 +177,228 @@
      person, and drawing it on a dark product ground would say the wrong
      thing about it. Honesty verbs only: ConvergX asks, reads, decides,
      brokers, convenes, arranges. Never knows, sees, verifies or confirms. -->
-<section id="how-it-works" class="section--dense" data-surface="light">
+<section id="how-it-works" class="section--dense cxp-sec" data-surface="light">
   <div class="wrap">
     <div class="sec-head">
-      <h2>What ConvergX does with a requirement</h2>
+      <h2>One person reads both sides</h2>
       <span class="label label--lo label--edge">The method</span>
     </div>
-    <div class="editorial">
-      <p>ConvergX begins at the requirement rather than the supplier list. An organisation describes what it needs solved and the industries it already sources from. A company describes a capability it has in service today and where that capability is running. A person at ConvergX reads both, decides which belongs in front of which, and puts the organisation's name on the introduction.</p>
+
+    <div class="cxp-split">
+      <div class="editorial">
+        <p>An organisation says what it needs solved. A company says what it has running today. A person at ConvergX reads both and decides which belongs in front of which.</p>
+      </div>
+      <figure class="cxp-fig">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700"
+     preserveAspectRatio="xMidYMid meet" role="img"
+     aria-label="Diagram: two separate systems of circles that do not touch. A single dot between them, labelled a person at ConvergX, is joined to each side by a short solid line. Nothing else crosses the gap.">
+  <!-- Fig. 5 in FIGURE-SYSTEM.md section 2. Geometry copied unit for unit.
+     * Solid bodies first, then dashed orbits, then the dot, then labels.
+     * Ink is inherited: currentColor only, no colour value anywhere. -->
+
+  <!-- the two systems. Solid body, one per side. They never touch. -->
+  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="400" cy="360" r="190"/>
+  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="1200" cy="360" r="190"/>
+
+  <!-- the only two things crossing the gap. A person, drawn as two short
+     * reaches. No arrowhead: direction and force are not claimed. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="590" y1="360" x2="794" y2="360"/>
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="806" y1="360" x2="1010" y2="360"/>
+
+  <!-- orbits. Dashed, no pathLength: it would destroy the dash pattern. -->
+  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="400" cy="360" r="250"/>
+  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="1200" cy="360" r="250"/>
+
+  <!-- the broker. A person, at the node where both reaches end. -->
+  <circle class="fig-dot" cx="800" cy="360" r="6"/>
+
+  <!-- y 240, not 300: at 300 the label sat on the connecting line and crowded it. -->
+  <text class="fig-label" text-anchor="middle" x="800" y="240">A person at ConvergX</text>
+  <text class="fig-label" text-anchor="start" x="280" y="640">The side asking</text>
+  <text class="fig-label" text-anchor="start" x="1080" y="640">The side answering</text>
+</svg>
+        <figcaption>Two sides, one broker</figcaption>
+      </figure>
     </div>
 
     <div class="cxp-sides">
       <div class="cxp-side">
         <span class="label">The requirement side</span>
-        <p>You describe what you need solved. You do not have to say it in public, and you do not have to name yourself to the room while you are asking.</p>
+        <p>You say what you need solved. Not in public, and not under your own name.</p>
       </div>
       <div class="cxp-side">
         <span class="label">The capability side</span>
-        <p>You describe what you have built and where it is already in service. ConvergX reads for capability running today rather than for the sector it was built for.</p>
+        <p>You say what you have built and where it runs. The sector it was built for does not matter.</p>
       </div>
     </div>
 
     <div class="editorial">
-      <p class="cxp-note">There is no open registration on this side and no account to create. Access is decided one request at a time, and ConvergX puts its name on the introduction it makes.</p>
+      <p class="cxp-note">No open registration and no account to create. Access is decided one request at a time.</p>
     </div>
   </div>
 </section>
 
-<!-- ROW 4 of 5. What the platform holds, with the two captures that show it.
-     The agenda capture stays off this page: it belongs to the Congress and
-     is on /congress/#app. -->
-<section id="in-the-platform" class="section--dense">
+<!-- ROW 4 of 5. The features, alternating, each with one visual on the
+     Congress ground. Two of the four carry a capture and two carry a
+     figure, because the app has five screens and three of them are the
+     Congress's. A "My posts" capture would make a fifth row; it has not
+     been shot. -->
+<section id="in-the-platform" class="section--dense cxp-sec">
   <div class="wrap">
     <div class="sec-head">
       <h2>What the platform holds</h2>
-      <span class="label label--lo label--edge">In the app</span>
+      <span class="label label--lo label--edge">Four things</span>
     </div>
 
-    <div class="cxp-views">
-      <article class="cxp-view">
-        <figure class="cxp-phone">
-          <picture>
-            <source srcset="../assets/img/app/app-board.webp" type="image/webp">
-            <img src="../assets/img/app/app-board.png" width="880" height="1725" loading="lazy" decoding="async" alt="The Opportunity Board: anonymous posts tagged Problem, Project or Need, each with Participate, Feedback and Partnership buttons">
-          </picture>
-        </figure>
+    <div class="cxp-features">
+      <article class="cxp-feature">
+        <div class="cxp-stage">
+          <figure class="cxp-fig cxp-fig--stage">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Diagram: a dashed path enters from the left and meets a pair of concentric circles at a single point marked by a small unlabelled dot. The path is labelled posted with no name on it. The circles are labelled read by a person at ConvergX.">
+  <!-- Fig. 4, The unnamed requirement. Geometry, labels and aria-label copied
+       character for character from _reference/FIGURE-SYSTEM.md section 2.
+       Monochrome: every stroke and the dot inherit currentColor, which
+       styles.css section 20 sets from the surface ink token on .fig svg.
+       No hex anywhere. -->
+
+  <!-- The concentric pair: the logo's double rule, drawn in two dimensions. -->
+  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="1120" cy="360" r="250"/>
+  <circle class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" cx="1120" cy="360" r="170"/>
+
+  <!-- Outer orbit. -->
+  <circle class="fig-dash" vector-effect="non-scaling-stroke" cx="1120" cy="360" r="330"/>
+
+  <!-- The requirement's route in, cropped by the left frame edge, terminating
+       exactly on the outer solid circle's leftmost point (870, 360). -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke" d="M 0 480 C 320 480, 620 430, 870 360"/>
+
+  <!-- The pinch node. This dot carries no label, and that is the figure. -->
+  <circle class="fig-dot" cx="870" cy="360" r="6"/>
+
+  <text class="fig-label" x="40" y="445">Posted with no name on it</text>
+  <text class="fig-label" text-anchor="end" x="1560" y="655">Read by a person at ConvergX</text>
+</svg>
+          </figure>
+        </div>
         <div class="cxp-block">
           <span class="label">The Opportunity Board</span>
-          <h3>A requirement, posted without a name on it</h3>
-          <p>A post carries the problem, the project or the need, and not the organisation behind it. Other members answer with Participate, Feedback or Partnership. ConvergX alone holds the name behind a post, and decides which answers reach it.</p>
+          <h3>Post without your name on it</h3>
+          <p>A post carries the problem. It does not carry the organisation behind it. ConvergX alone holds the name.</p>
         </div>
       </article>
 
-      <article class="cxp-view">
-        <figure class="cxp-phone">
-          <picture>
-            <source srcset="../assets/img/app/app-alerts.webp" type="image/webp">
-            <img src="../assets/img/app/app-alerts.png" width="880" height="1193" loading="lazy" decoding="async" alt="Alerts: a rescheduled session, new interest in a post, and a follow-up from an organiser">
-          </picture>
-        </figure>
+      <article class="cxp-feature">
+        <div class="cxp-stage">
+          <figure class="cxp-shot">
+            <picture>
+              <source srcset="../assets/img/app/app-alerts.webp" type="image/webp">
+              <img src="../assets/img/app/app-alerts.png" width="880" height="1193" loading="lazy" decoding="async" alt="Alerts: new interest in a post, and a follow-up from an organiser">
+            </picture>
+          </figure>
+        </div>
         <div class="cxp-block">
           <span class="label">Alerts</span>
-          <h3>Told when a post moves</h3>
-          <p>Interest in something you posted, or a follow-up from ConvergX, arrives as an alert. The alert carries no content of its own, so nothing about a requirement travels outside the platform.</p>
+          <h3>Know when a post moves</h3>
+          <p>Interest in your post, or a follow-up from ConvergX, arrives as an alert. The alert carries no content, so nothing leaves the platform.</p>
+        </div>
+      </article>
+
+      <article class="cxp-feature">
+        <div class="cxp-stage">
+          <figure class="cxp-fig cxp-fig--stage">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700"
+     preserveAspectRatio="xMidYMid meet" role="img"
+     aria-label="Diagram: a dashed path passes through a narrow gate between two vertical lines, with a dot at the point where the questions are asked. Past the gate the path either continues as a solid line off the edge of the frame, labelled introduced, or ends a short way in, labelled not taken forward.">
+  <!-- Reworked 2026-07-28 per POLISH-SPEC section 4. Geometry only: the gate moved from
+       x 820 to x 700, the entering path now starts at x 260 instead of the frame edge,
+       and the ending branch travels further before it stops. Nothing the figure says
+       changed. Labels, caption and aria-label stay FIGURE-SYSTEM section 2's, character
+       for character. -->
+  <!-- The gate. Two vertical segments, the aperture between them at y 300 to 420, unchanged. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="700" y1="80" x2="700" y2="300"/>
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" x1="700" y1="420" x2="700" y2="640"/>
+  <!-- Continuing branch. Solid because the meeting happened. Cropped by the right frame edge at y 320. -->
+  <path class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke" d="M 708 360 C 950 350, 1250 330, 1600 320"/>
+  <!-- Entering path. Dashed: a proposal. Begins in frame at x 260, so the left half is
+       composition rather than empty plate. -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke" d="M 260 380 C 400 380, 545 370, 692 360"/>
+  <!-- Ending branch. Travels to (1120, 540) and stops. No terminal mark: a decision not to
+       introduce, not a defect found. -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke" d="M 708 368 C 850 412, 1000 470, 1120 540"/>
+  <!-- The asking happens here. -->
+  <circle class="fig-dot" cx="700" cy="360" r="6"/>
+  <text class="fig-label" text-anchor="start" x="740" y="120">The questions are asked here</text>
+  <text class="fig-label" text-anchor="start" x="1330" y="280">Introduced</text>
+  <text class="fig-label" text-anchor="start" x="1000" y="600">Not taken forward</text>
+</svg>
+          </figure>
+        </div>
+        <div class="cxp-block">
+          <span class="label">Vetting</span>
+          <h3>A person decides</h3>
+          <p>ConvergX asks the questions and makes the call. There is no score and no ranking.</p>
+        </div>
+      </article>
+
+      <article class="cxp-feature">
+        <div class="cxp-stage">
+          <figure class="cxp-fig cxp-fig--stage">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700"
+     preserveAspectRatio="xMidYMid meet" role="img"
+     aria-label="Diagram: two dashed paths meet at a dot, separate again, and end a short way later. From the meeting point a single solid line continues to the edge of the frame, labelled the record.">
+  <!-- Fig. 8 in the site-wide append-only numbering. Reworked 2026-07-28 per POLISH-SPEC
+       section 4: the arriving paths enter at the frame's top and bottom corners and turn
+       up late, so the convergence has real angle instead of reading as four faint
+       scratches; the departing paths run to x 1150; "The introduction" moves below-left of
+       the dot, off the stroke it was colliding with. The solid record line and its label
+       are exactly as built. Every string is unchanged, character for character.
+       Solid first, then dashed, then dots, then labels. -->
+
+  <!-- The record. The only solid element: it outlasts every dashed path on the plate. -->
+  <line class="fig-solid" pathLength="1" vector-effect="non-scaling-stroke"
+        x1="600" y1="350" x2="1600" y2="350"/>
+
+  <!-- The two parties arriving, both cropped by the left frame edge. They run long and
+       turn up late, so the pinch at the node is the figure's loudest moment and so the
+       lower path passes UNDER "The introduction" instead of through it. -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        d="M 0 80 C 340 100, 560 140, 600 350"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        d="M 0 640 C 340 620, 560 580, 600 350"/>
+
+  <!-- The two parties leaving. They end plainly. No terminal mark. -->
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        d="M 600 350 C 780 290, 960 220, 1150 140"/>
+  <path class="fig-dash" vector-effect="non-scaling-stroke"
+        d="M 600 350 C 780 410, 960 480, 1150 560"/>
+
+  <!-- The introduction. The one node where the four paths and the record share a point. -->
+  <circle class="fig-dot" cx="600" cy="350" r="6"/>
+
+  <text class="fig-label" x="560" y="430" text-anchor="end">The introduction</text>
+  <text class="fig-label" x="1190" y="120" text-anchor="start">The parties</text>
+  <text class="fig-label" x="1560" y="320" text-anchor="end">The record</text>
+</svg>
+          </figure>
+        </div>
+        <div class="cxp-block">
+          <span class="label">The record</span>
+          <h3>The introduction leaves a record</h3>
+          <p>Who was introduced, and why. It is yours to defend the decision with later.</p>
         </div>
       </article>
     </div>
-
-    <ul class="link-index">
-      <li>
-        <span class="label">Who is in it</span>
-        <span class="descriptor">Members admitted one request at a time, across the industries ConvergX convenes. There is no public directory and no member list to browse.</span>
-      </li>
-      <li>
-        <span class="label">On a phone</span>
-        <span class="descriptor">The platform reaches members by invitation after access is granted. Signing in afterwards is a link sent to your email, so there is no password to carry.</span>
-      </li>
-    </ul>
   </div>
 </section>
 
 <!-- ROW 5 of 5. The close. The two links are the site's locked labels and
      are character-identical to /access/ and the industry pages. Do not
      reword them here without changing them everywhere. -->
-<section class="section--dense" data-surface="dark">
+<section class="section--dense cxp-sec" data-surface="dark">
   <div class="wrap">
     <div class="editorial">
       <h2>Two ways in</h2>
-      <p>An organisation with a requirement its own supply base cannot fill comes in through one door. A company with a capability already in service comes in through the other. Both are read by a person, and both are answered.</p>
+      <p>One door for a requirement your own supply base cannot fill. One for a capability already in service.</p>
     </div>
     <div class="two-path cxp-doors">
       <a href="../access/request/">

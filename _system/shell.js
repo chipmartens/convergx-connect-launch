@@ -87,7 +87,7 @@
      * the word conference used for the event, and every page already calls
      * it the Congress, so the bar now agrees with them. No path changes:
      * /congress/ was always the path. */
-    { label: "Congresses",       href: "/congress/",   mega: "congress",   live: true },
+    { label: "The Congress",     href: "/congress/",   mega: "congress",   live: true },
     /* Xpand takes a panel, decided 2026-07-28. The earlier reading was that
      * two pages do not earn one; what that missed is that the bar now shows
      * a panel on every other item, so the one item without one reads as the
@@ -1073,9 +1073,21 @@
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       header.style.transition = "none";
     }
+    function settle() {
+      header.classList.toggle(
+        "shell-header--floating",
+        sentinel.getBoundingClientRect().bottom <= 0
+      );
+    }
     new IntersectionObserver(function (entries) {
       header.classList.toggle("shell-header--floating", !entries[0].isIntersecting);
     }, { threshold: 0 }).observe(sentinel);
+    /* The backup path, for the frames the observer does not get. Passive, one
+     * layout read, and idempotent against the observer above. */
+    addEventListener("scroll", settle, { passive: true });
+    addEventListener("resize", settle, { passive: true });
+    document.addEventListener("visibilitychange", settle);
+    settle();
   }
 
   /* THE REAL DISTANCE FROM THE TOP OF THE VIEWPORT TO THE CONTENT.
