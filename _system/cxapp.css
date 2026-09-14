@@ -441,20 +441,19 @@
    and 694px, which is 0.69 and 0.43 of the artboard. */
 .cxp-fig { margin: 0; display: grid; row-gap: var(--space-s); }
 
-/* THE DRAWINGS SIT IN A BOX. Chip, 2026-09-14. A hairline line drawing on a
-   bare ground has no edge of its own, so it read as floating text rather
-   than as a figure. A panel with a rounded corner and a soft lift gives it
-   the same standing the captures get from their frame, and the two media
-   types then sit at the same level in the page rather than one looking
-   finished and the other looking like a sketch.
-   --cxp-lift is local because tokens.css carries no elevation value; it is
-   the only thing here that is not already a token. */
+/* THE DRAWINGS SIT IN A BOX. Chip, 2026-09-14: one stroke, no shadow, and
+   the stroke matches the drawing's own.
+
+   THE BORDER READS THE SAME EXPRESSION THE FIGURE'S SOLID LINE DOES.
+   Section 20 of the sheet sets .fig-solid to calc(var(--rule-hair) * 2),
+   and the box repeats that calc rather than hard-coding 2px, so the frame
+   and the line inside it cannot drift apart if --rule-hair ever moves.
+   The ink is --fg-lo rather than --rule-ink so the frame sits just under
+   the drawing it holds instead of competing with it. */
 .cxp-step .cxp-fig {
-  --cxp-lift: rgba(0, 0, 0, 0.10);
   padding: var(--space-xl) var(--space-l);
-  border: var(--rule-hair) solid var(--rule-ink);
+  border: calc(var(--rule-hair) * 2) solid var(--fg-lo);
   border-radius: var(--space-m);
-  box-shadow: 0 var(--space-xs) var(--space-xl) var(--cxp-lift);
 }
 .cxp-fig svg { display: block; inline-size: 100%; block-size: auto; }
 /* The strokes are 1px to 2px in artboard units, so at 0.4 scale they land at
